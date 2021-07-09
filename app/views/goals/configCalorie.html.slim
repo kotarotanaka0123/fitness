@@ -1,0 +1,12 @@
+p どのくらいの期間でどれほど痩せたいかを入力してください。
+
+= form_with model: @goal, local: true do |f|  
+    .form-group 
+        = f.label :deadline
+        = f.date_select :deadline
+    .form-group 
+        = f.label :slim
+        = f.number_field :slim, step: "0.1"
+    = f.submit "登録する", class: 'btn btn-primary'
+
+= link_to 'あなたの情報を再入力', configBody_goals_path

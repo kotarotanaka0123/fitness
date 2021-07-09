@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-lignt
+      .navbar-brand Fitness
+    table.table.table-hover
+      thead.thead-fefault
+        tr.align-content-start
+          - if current_user
+            th= link_to 'ホーム', fitness_path
+            - if current_user.weight
+              - if current_user.goal
+                th= link_to '目標', goals_path
+              - else 
+                th= link_to '目標', configCalorie_goals_path 
+            - else
+              th= link_to '目標', configBody_goals_path
+            th= link_to 'フード', foods_path 
+            th= link_to 'エクササイズ', exercises_path 
+            th= link_to 'ログアウト', logout_url, method: :delete
+          - else 
+            th= link_to 'ログイン', login_url
+            / th= link_to '共有', share_path 
+    .container
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
+      div#modalArea
+      = yield

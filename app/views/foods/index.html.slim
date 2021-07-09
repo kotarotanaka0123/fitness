@@ -1,0 +1,16 @@
+div.row 
+    div.col-sm
+        h2 マイフード一覧
+        tbody 
+            - @foods.each do |food|
+                tr 
+                    td= food.name
+                    td= food.description 
+                    td= food.protein 
+                    td= food.fat 
+                    td= food.carbon
+                    .text-right
+                        td= link_to '追加', addToMeal_foods_path(food), remote: true
+            = link_to '設定', new_food_path
+    div.col-sm
+        h2 栄養成分表

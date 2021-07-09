@@ -1,0 +1,328 @@
+<mxfile>
+    <diagram id="N3Xr6kCvFkhTgHzyAu0q" name="ページ1">
+        <mxGraphModel dx="968" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="75">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="86">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="60" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="43">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="1130" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="96">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="790" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.119;entryY=-0.015;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="11" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="790" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="60" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="一覧画面&lt;br&gt;/&lt;br&gt;fitness#index" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="20" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="目標画面&lt;br&gt;/my_account/goals&lt;br&gt;goals#index" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="755" y="20" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="70" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="120" width="240" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="1日の摂取カロリー" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="695" y="120" width="107.5" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="125" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="&lt;font style=&quot;font-size: 8px&quot;&gt;残りの必要摂取カロリー&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="147.5" width="60" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="目標摂取カロリー" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="140" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="692.5" y="70" width="255" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="フード画面&lt;br&gt;/my_account/foods&lt;br&gt;foods#index" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="75" y="750" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="フード登録画面&lt;br&gt;/my_account/new_foods&lt;br&gt;foods#new" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="367.5" y="750" width="225" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="朝昼夜ごとの摂取カロリー" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="810" y="120" width="130" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="15" y="800" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="データベース検索" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="840" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="マイフード一覧&lt;br&gt;（直近順）" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="840" width="70" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="新規作成" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="940" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="登録" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="940" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="データベース検索一覧" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="870" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="355" y="800" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="名前" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="364" y="840" width="126" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="栄養素詳細設定" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="367.5" y="870" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="食べ物の&lt;br&gt;イラスト" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="506.25" y="890" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="登録" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="447" y="990" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="フード画面&lt;br&gt;/my_account/foods/:id&lt;br&gt;foods#show" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="75" y="1090" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="名前" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="1180" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="15" y="1140" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="栄養素詳細設定" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="143" y="1180" width="120" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="編集" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="223" y="1330" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="食べ物の&lt;br&gt;イラスト" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="35" y="1220" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="削除" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="183" y="1330" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="1130" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="フード編集画面&lt;br&gt;/my_account/foods/:id/edit&lt;br&gt;foods#edit" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="415" y="1090" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="355" y="1140" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="栄養素詳細設定" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="367" y="1210" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="名前" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="364" y="1180" width="126" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="修正" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="447" y="1330" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="食べ物の&lt;br&gt;イラスト" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="506.25" y="1220" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="一覧に戻る" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="512.5" y="1330" width="67.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="1480" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="フード画面&lt;br&gt;/my_account/report&lt;br&gt;report#index" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="75" y="1440" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="レポートの種類" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="1529" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="15" y="1490" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="グラフ" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="27.5" y="1570" width="225" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="food" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="1811" width="170" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="name: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="56">
+                    <mxGeometry y="26" width="170" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="picture:&#10;&#10;user_id: index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="56">
+                    <mxGeometry y="52" width="170" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="nutrition" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="1810" width="140" height="230" as="geometry">
+                        <mxRectangle x="240" y="1420" width="80" height="26" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="60" value="carbohyde: index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="59">
+                    <mxGeometry y="26" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="protein: index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="59">
+                    <mxGeometry y="52" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="fat: index&#10;&#10;vitaminA: index&#10;.&#10;.&#10;.&#10;.&#10;.&#10;&#10;food_id: index&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="59">
+                    <mxGeometry y="78" width="140" height="152" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="11" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="コメント" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="1670" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="設定" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="210" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="67">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="80" y="1950" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" value="user" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="2000" width="140" height="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="name: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="67">
+                    <mxGeometry y="26" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="email: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="67">
+                    <mxGeometry y="52" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="password_digest: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="67">
+                    <mxGeometry y="78" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="72">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="80" y="2110" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="72" value="goal" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="2170" width="140" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="calorie: index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="72">
+                    <mxGeometry y="26" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="description: string&#10;&#10;goal_date: date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="72">
+                    <mxGeometry y="52" width="140" height="58" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="355" y="60" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="目標画面&lt;br&gt;/my_account/calc_goals&lt;br&gt;goals#calc" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="415" y="20" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="357.5" y="70" width="255" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.008;entryY=0.465;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="79" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="どのくらいの期間でどれくらい痩せるか。" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="120" width="220" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="出典" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="495" y="290" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="計算式の詳細" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="525" y="220" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="absorb_food" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="1940" width="140" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="Item 1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="82">
+                    <mxGeometry y="26" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="Item 2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="82">
+                    <mxGeometry y="52" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="food_date: date&#10;&#10;uset_id: index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="82">
+                    <mxGeometry y="78" width="140" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="410" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="フード画面&lt;br&gt;/my_account/meal&lt;br&gt;meal#index" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="85" y="370" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="420" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="摂取したものを選択" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="460" width="240" height="111" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="登録" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="581" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="86" target="86">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="マイフード一覧" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="35" y="585" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="フードを追加" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="175" y="615" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" value="個数" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+                    <mxGeometry x="384" y="960" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="材料設定" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="384" y="940" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="96" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="790" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" value="フード登録画面&lt;br&gt;/my_account/new_ingredients&lt;br&gt;ingredients#new" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="677.5" y="750" width="225" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="リンク(ホーム、目標設定、フード、レポート)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="665" y="800" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="材料名" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="674" y="840" width="126" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="栄養素詳細設定" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="677.5" y="870" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="食べ物の&lt;br&gt;イラスト" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="816.25" y="890" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="登録" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="757" y="990" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="food_nutrition" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="2110" width="140" height="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="name: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="103">
+                    <mxGeometry y="26" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="105" value="user_id: index&#10;&#10;nutrition_id: index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="103">
+                    <mxGeometry y="52" width="140" height="52" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

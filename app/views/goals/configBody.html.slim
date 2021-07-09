@@ -1,0 +1,10 @@
+p あなたの情報を教えてください
+
+= form_with url: configBody_goals_path, local: true do |f|   #modelがなくても大丈夫なのはなぜ
+    = f.label :weight
+    = f.number_field :weight, step: "0.1"
+    = f.label :height
+    = f.number_field :height, step: "0.1"
+    = f.label :age
+    = f.number_field :age
+    = f.submit "登録する", class: 'btn btn-primary'
