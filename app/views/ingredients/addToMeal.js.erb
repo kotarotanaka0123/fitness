@@ -1,0 +1,7 @@
+$("#modalArea").html("<%= j(render 'form', {meal: @meal, food: @food}) %>");
+
+$("#modalArea").find(".modal").on("shown.bs.modal", () => {
+    $("#modalArea").find(".modal-content").focus();
+})
+
+$("#modalArea").find(".modal").modal('show');

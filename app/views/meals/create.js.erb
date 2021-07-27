@@ -1,0 +1,5 @@
+$("#mealModal").modal("hide");
+$('body').removeClass('modal-open');
+
+$('#breakfast').append("<%= j(render 'meal', { meal: @meal, food: @food } ) %>")
+

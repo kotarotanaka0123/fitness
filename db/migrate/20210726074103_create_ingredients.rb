@@ -1,8 +1,7 @@
-class CreateMaterials < ActiveRecord::Migration[5.2]
+class CreateIngredients < ActiveRecord::Migration[5.2]
   def change
-    create_table :materials do |t|
+    create_table :ingredients do |t|
       t.string :name
-      t.text :description
       t.float :protein, default: 0
       t.float :fat, default: 0
       t.float :carbon, default: 0
@@ -26,9 +25,8 @@ class CreateMaterials < ActiveRecord::Migration[5.2]
       t.float :Cu, default: 0 
       t.float :Mn, default: 0 
 
-      t.references :user, foreign_key: true
-
-
+      t.references :user
+      
       t.timestamps
     end
   end

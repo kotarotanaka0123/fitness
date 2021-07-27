@@ -17,9 +17,15 @@ Rails.application.routes.draw do
     end 
   end
 
-  resources :foods do
+  resources :ingredients do
     collection do
       get :addToMeal
+    end
+  end
+
+  resources :meals do
+    collection do
+      post :time
     end
   end
 

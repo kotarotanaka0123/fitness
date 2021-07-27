@@ -1,0 +1,8 @@
+div.d-flex.flex-column.h-100 style="width: 25rem; min-width: 25rem;"
+    div.font-weight-bold.px-4.py-2.food-header
+        div.pr-5
+            table.table.table-hover 
+                tbody 
+                    tr data-id="#{food.id}"
+                        td= food.name 
+                        td= link_to '削除', food_path(food), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }

@@ -1,6 +1,6 @@
 div.row 
     div.col-sm
-        h2 マイフード一覧
+        h2 材料一覧
         tbody 
             - @foods.each do |food|
                 tr 
@@ -9,8 +9,8 @@ div.row
                     td= food.protein 
                     td= food.fat 
                     td= food.carbon
-                    .text-right
-                        td= link_to '追加', addToMeal_foods_path(food), remote: true
-            = link_to '設定', new_food_path
+                    td= link_to '食事に追加', addToMeal_foods_path(id: food.id), remote: true
+            div 
+                = link_to '新規作成', new_food_path
     div.col-sm
         h2 栄養成分表

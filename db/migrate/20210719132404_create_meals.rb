@@ -1,9 +1,9 @@
-class CreateFoods < ActiveRecord::Migration[5.2]
+class CreateMeals < ActiveRecord::Migration[5.2]
   def change
-    create_table :foods do |t|
+    create_table :meals do |t|
       t.string :name
-      t.text :description
-  
+      t.string :description
+      t.integer :meal_type
       t.float :protein, default: 0
       t.float :fat, default: 0
       t.float :carbon, default: 0
@@ -25,7 +25,7 @@ class CreateFoods < ActiveRecord::Migration[5.2]
       t.float :Fe, default: 0 
       t.float :Zn, default: 0 
       t.float :Cu, default: 0 
-      t.float :Mn, default: 0 
+      t.float :Mn, default: 0
 
       t.references :user
 

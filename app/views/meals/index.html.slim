@@ -1,0 +1,31 @@
+div.row 
+    div.col-sm
+        h2 食事一覧
+        tbody 
+            - @meals.each do |meal|
+                tr 
+                    td= meal.name
+                    td= meal.description 
+                    td= meal.protein 
+                    td= meal.fat 
+                    td= meal.carbon
+                    td= form_with url: time_meals_path(id: meal.id), local: true do |f|
+                        div.form-group 
+                            = f.select :meal_type, {"朝食": 'breakfast', "昼食": 'lunch', "間食": 'between', "夕食": 'dinner'}, {include_blank: "選択してください"}
+                        div.form-group
+                            = f.submit "追加", class: 'btn btn-primary'
+            = link_to '新規作成', new_meal_path
+        div 
+        h3 本日の食事
+        table.table.table-hover 
+            tbody 
+                tr#breakfast
+                    td= "朝"
+                tr#lunch
+                    td= "昼"
+                tr#afternoon
+                    td= "夕方"
+                tr#dinner
+                    td= "夜"
+    div.col-sm
+        h2 栄養成分表
