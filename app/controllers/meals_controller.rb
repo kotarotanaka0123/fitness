@@ -1,7 +1,12 @@
 class MealsController < ApplicationController
     before_action :current_user
     def index
-        @meals = current_user.meals.all
+        @meals = current_user.meals.where(meal_type: nil)
+
+        @breakfast = current_user.meals.where(meal_type: 'breakfast')
+        @lunch = current_user.meals.where(meal_type: 'lunch')
+        @between = current_user.meals.where(meal_type: 'between')
+        @dinner = current_user.meals.where(meal_type: 'dinner')
     end
 
     def new
@@ -17,9 +22,10 @@ class MealsController < ApplicationController
     end
 
     def time
-        binding.pry
-        @meal = current_user.meals.find(params[:id])
-        @time = 
+        origin = current_user.meals.find(params[:id])
+        @meal = origin.dup
+        @meal.save
+        @meal.update(meal_type: params[:meal_type])
     end
 
     def update
@@ -33,7 +39,7 @@ class MealsController < ApplicationController
     #     @food = Food.find(params[:meal][:food_id])
     #     # フードレコードにミールを紐付ける。
     #     @food.update(meal_id: @meal.id)
-    
+
     #     # @food = @meal.foods.find(meal_params[:foods_attributes][:id])
     #     # if @meal.save
     #     # end

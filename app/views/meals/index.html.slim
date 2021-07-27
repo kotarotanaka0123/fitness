@@ -9,7 +9,7 @@ div.row
                     td= meal.protein 
                     td= meal.fat 
                     td= meal.carbon
-                    td= form_with url: time_meals_path(id: meal.id), local: true do |f|
+                    td= form_with url: time_meals_path(id: meal.id), remote: true do |f|
                         div.form-group 
                             = f.select :meal_type, {"朝食": 'breakfast', "昼食": 'lunch', "間食": 'between', "夕食": 'dinner'}, {include_blank: "選択してください"}
                         div.form-group
@@ -21,11 +21,19 @@ div.row
             tbody 
                 tr#breakfast
                     td= "朝"
+                    - @breakfast.each do |breakfast|
+                        td= breakfast.name
                 tr#lunch
                     td= "昼"
-                tr#afternoon
+                    - @lunch.each do |lunch|
+                        td= lunch.name
+                tr#between
                     td= "夕方"
+                    - @between.each do |between|
+                        td= between.name
                 tr#dinner
                     td= "夜"
+                    - @dinner.each do |dinner|
+                        td= dinner.name
     div.col-sm
         h2 栄養成分表

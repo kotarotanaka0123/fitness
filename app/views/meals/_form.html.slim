@@ -5,7 +5,7 @@ div#foodModal.modal.fade tabindex='-1'
                 div.modal-header
                     h6.modal-title 朝昼夜どれに追加しますか？
                 div.modal-body
-                    = m.select :meal_type, [['朝食', 'breakfast'], ['昼食', 'lunch'], ['間食', 'afternoon'], ['夕食', 'dinner']]
+                    = m.select :meal_type, [['朝食', 'breakfast'], ['昼食', 'lunch'], ['間食', 'between'], ['夕食', 'dinner']]
                     = m.hidden_field :food_id, value: food.id 
                 .modal-footer 
                     = m.submit '設定'
