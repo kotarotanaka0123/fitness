@@ -3,9 +3,20 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   namespace :admin do
-    resources :users
+    resources :users do
+      # フォロー・フォロワーに関して
+      resource :relationships, only: [:create, :destroy]
+      get 'followings', to: 'relationships#followings', as: 'followings'
+      get 'followers', to: 'relationships#followers'
+    end
+  end
+
+  # メッセージ機能
+  resources :groups, only: [:index, :new, :create, :edit, :update] do
+    resources :messages, only: [:index, :create]
   end
   
+  # ホーム画面
   get 'fitness', to: 'fitness#index'
   root to: 'fitness#index'
 
@@ -19,15 +30,18 @@ Rails.application.routes.draw do
 
   resources :ingredients do
     collection do
-      get :addToMeal
+      post :addToMeal
+      get :select
     end
   end
 
   resources :meals do
     collection do
       post :time
+      get :error
     end
   end
 
   get 'exercises', to: 'exercises#index'
+
 end

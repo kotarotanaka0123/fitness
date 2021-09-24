@@ -1,11 +1,58 @@
-div#foodModal.modal.fade tabindex='-1'
-    div.modal-dialog
-        div.modal-content
-            = form_with model: meal, remote: true do |m|
-                div.modal-header
-                    h6.modal-title 朝昼夜どれに追加しますか？
-                div.modal-body
-                    = m.select :meal_type, [['朝食', 'breakfast'], ['昼食', 'lunch'], ['間食', 'between'], ['夕食', 'dinner']]
-                    = m.hidden_field :food_id, value: food.id 
-                .modal-footer 
-                    = m.submit '設定'
+= form_with model: meal, local: true do |f|
+    div#mealNameError.mealNameError 名前を入力してください。
+    .form-group
+		= f.label "食事名"
+		= f.text_field :name, class: 'form-control', id: 'meal_name'
+	.form-group
+		= f.label "説明"
+		= f.text_area :description, rows: 5, class: 'form-control', id: 'meal_description'
+    = f.label :protein
+    = f.number_field :protein, STEP: "0.1"
+    = f.label :fat
+    = f.number_field :fat, STEP: "0.1"
+    = f.label :carbon
+    = f.number_field :carbon, STEP: "0.1"
+    = f.label :fiber
+    = f.number_field :fiber, STEP: "0.1"
+    = f.label :vA
+    = f.number_field :vA, STEP: "0.1"
+    = f.label :vE
+    = f.number_field :vE, STEP: "0.1"
+    = f.label :vB1
+    = f.number_field :vB1, STEP: "0.1"
+    = f.label :vB2
+    = f.number_field :vB2, STEP: "0.1"
+    = f.label :vB6
+    = f.number_field :vB6, STEP: "0.1"
+    = f.label :niacin
+    = f.number_field :niacin, STEP: "0.1"
+    = f.label :yosan
+    = f.number_field :yosan, STEP: "0.1"
+    = f.label :panto
+    = f.number_field :panto, STEP: "0.1"
+    = f.label :biotin
+    = f.number_field :biotin, STEP: "0.1"
+    = f.label :Na
+    = f.number_field :Na, STEP: "0.1"
+    = f.label :K
+    = f.number_field :K, STEP: "0.1"
+    = f.label :Ca
+    = f.number_field :Ca, STEP: "0.1"
+    = f.label :Mg
+    = f.number_field :Mg, STEP: "0.1"
+    = f.label :P
+    = f.number_field :P, STEP: "0.1"
+    = f.label :Fe
+    = f.number_field :Fe, STEP: "0.1"
+    = f.label :Zn
+    = f.number_field :Zn, STEP: "0.1"
+    = f.label :Cu
+    = f.number_field :Cu, STEP: "0.1"
+    = f.label :Mn
+    = f.number_field :Mn, STEP: "0.1"
+    div#ingredients
+        = hidden_field_tag :"meal[ingredient_ids]"
+	= f.submit nil, class: 'btn btn-primary'
+
+= button_to "材料から選択する", select_ingredients_path, method: :get, remote: true
+

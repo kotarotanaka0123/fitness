@@ -71,3 +71,10 @@ gem 'pry-rails'
 
 gem "jquery-rails"
 
+gem 'whenever', require: false
+
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'

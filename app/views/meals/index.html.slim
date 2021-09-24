@@ -1,39 +1,124 @@
 div.row 
     div.col-sm
-        h2 食事一覧
-        tbody 
-            - @meals.each do |meal|
+      h2 食事一覧
+      div.table-responsive
+        table.table.table-hover.table-sm
+          - @meals.each do |meal|
+            tbody
                 tr 
-                    td= meal.name
-                    td= meal.description 
-                    td= meal.protein 
-                    td= meal.fat 
-                    td= meal.carbon
-                    td= form_with url: time_meals_path(id: meal.id), remote: true do |f|
-                        div.form-group 
-                            = f.select :meal_type, {"朝食": 'breakfast', "昼食": 'lunch', "間食": 'between', "夕食": 'dinner'}, {include_blank: "選択してください"}
-                        div.form-group
-                            = f.submit "追加", class: 'btn btn-primary'
-            = link_to '新規作成', new_meal_path
+                  td= meal.name
+                  td= meal.description 
+                  td= meal.protein 
+                  td= meal.fat 
+                  td= meal.carbon
+                  td= form_with url: time_meals_path(id: meal.id), remote: true do |f|
+                      div.form-group.col-md-6
+                        = f.select :meal_type, {"朝食": 'breakfast', "昼食": 'lunch', "間食": 'between', "夕食": 'dinner'}, {include_blank: "選択してください"}
+                        = f.submit "追加", class: 'btn btn-primary'
+                  td.table-primary style="text-align: right;"= link_to "編集", edit_meal_path(id: meal.id)
+                  td.table-danger style="text-align: right;"= link_to "削除", meal_path(id: meal.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }
+          = link_to '新規作成', new_meal_path
         div 
         h3 本日の食事
-        table.table.table-hover 
+        table.table.table-hover.table-sm
             tbody 
                 tr#breakfast
                     td= "朝"
                     - @breakfast.each do |breakfast|
-                        td= breakfast.name
+                        td= breakfast.name              
+                        / endが使えない
+                        td= link_to "削除", meal_path(id: breakfast.id), method: :delete, remote: true
                 tr#lunch
                     td= "昼"
                     - @lunch.each do |lunch|
                         td= lunch.name
+                        td= link_to "削除", meal_path(id: lunch.id), method: :delete, remote: true
                 tr#between
                     td= "夕方"
                     - @between.each do |between|
                         td= between.name
+                        td= link_to "削除", meal_path(id: between.id), method: :delete, remote: true
                 tr#dinner
                     td= "夜"
                     - @dinner.each do |dinner|
                         td= dinner.name
+                        td= link_to "削除", meal_path(id: dinner.id), method: :delete, remote: true
     div.col-sm
         h2 栄養成分表
+        div style="width:70%;"
+            canvas#prc width="250" height="260" 
+            javascript:
+              $(document).on('turbolinks:load', function() {
+                const ctx = document.getElementById('prc').getContext("2d");
+                const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: ['タンパク質', '脂質', '炭水化物'],
+                  datasets: [{
+                    label: '摂取量',
+                    data: [#{@total.protein}, #{@total.fat}, #{@total.carbon}],
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                  }, {
+                    label: '目標量',
+                    data: [#{@user.weight*2}, #{@user.weight*0.7}, #{(BMR.new(@user).calc_bmr*1.1-@user.weight*2*4-@user.weight*0.7*9)/4}],
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 3
+                  }]
+                },
+                options: {
+                  title: {
+                    display: true,
+                    text: '摂取量/目標量'
+                  },
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        suggestedMax: 100,
+                        suggestedMin: 0,
+                        stepSize: 10,
+                        callback: function(value, index, values){
+                          return  value +  'g'
+                        }
+                      }
+                    }]
+                  }                  
+                }
+                });
+              });
+
+button#sampleButtonToggle.btn.btn-primary.btn-lg type="button" 
+  | toggle
+button#sampleButtonShow.btn.btn-primary.btn-lg type="button" 
+  | show
+/! モーダル・ダイアログ
+#sampleModal.modal.fade tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button" 
+          span ×
+        h4.modal-title タイトル
+      .modal-body
+        | 本文
+      .modal-footer
+        button#sampleButtonToggle2.btn.btn-default type="button"  toggle
+        button#sampleButtonHide.btn.btn-default type="button"  hide

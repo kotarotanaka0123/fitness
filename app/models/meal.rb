@@ -5,4 +5,6 @@ class Meal < ApplicationRecord
     accepts_nested_attributes_for :meal_ingredients
 
     belongs_to :user
+
+    validates :name, presence: true
 end

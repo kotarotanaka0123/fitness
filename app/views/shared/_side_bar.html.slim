@@ -1,0 +1,22 @@
+.side-bar
+    .header
+        h3.header__name
+            = current_user.name
+        ul.header__lists
+            li.list
+                = link_to new_group_path do
+                    i.fa.fa-pencil-square-o.fa-2x aria-hidden="true" 
+            li.list
+                = link_to edit_admin_user_path(current_user) do
+                    i.fa.fa-cog.fa-2x aria-hidden="true" 
+    / ここから下を編集
+    .groups 
+        - current_user.groups.each do |group|
+            .group
+                = link_to group_messages_path(group) do
+                    .group__name
+                        = group.name
+                    .group__message
+                        = group.show_last_message
+                - if group.user == current_user
+                    = link_to '編集', edit_group_path(id: group.id) 

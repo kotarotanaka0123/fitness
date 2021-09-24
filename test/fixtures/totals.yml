@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  protein: MyString
+  float,: MyString
+  fat: MyString
+  float,: MyString
+  carbon: MyString
+  float: MyString
+
+two:
+  protein: MyString
+  float,: MyString
+  fat: MyString
+  float,: MyString
+  carbon: MyString
+  float: MyString

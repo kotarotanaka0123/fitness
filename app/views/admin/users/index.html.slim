@@ -1,2 +1,19 @@
-h1 Admin::Users#index
-p Find me in app/views/admin/users/index.html.slim
+h1 自分のアカウント
+table.table.table-hover
+    thead
+        tr
+            th = @user.name
+            th = @user.email
+        tr 
+            td= link_to "フォロワー", admin_user_followers_path(@user.id)
+            td= link_to "フォロー", admin_user_followings_path(@user.id)
+
+
+h1　ユーザ一覧
+- @users.each do |user|
+    table.table
+        tr
+            td= user.name 
+            td= user.email
+            td= render 'info', user: user
+

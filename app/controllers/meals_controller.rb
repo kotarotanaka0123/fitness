@@ -7,16 +7,66 @@ class MealsController < ApplicationController
         @lunch = current_user.meals.where(meal_type: 'lunch')
         @between = current_user.meals.where(meal_type: 'between')
         @dinner = current_user.meals.where(meal_type: 'dinner')
+
+        absorbMeals = current_user.meals.where.not(meal_type: nil)
+        @total = Total.new
+        @total.save
+        absorbMeals.each do |absorbMeal|
+            @total.protein += absorbMeal.protein
+            @total.fat += absorbMeal.fat
+            @total.carbon += absorbMeal.carbon
+        end
+
+        @user = current_user
     end
 
     def new
         @meal = current_user.meals.new
+        @ingredients = Ingredient.all
     end
 
     def create
-        @meal = current_user.meals.new(meal_params)
-
+        @meal = current_user.meals.new(params.require(:meal).permit(:name))
         if @meal.save
+            if params[:meal][:ingredient_ids]
+                ingredientsId = params[:meal][:ingredient_ids].split(",").map(&:to_i)
+                @ingredients = Ingredient.where(id: ingredientsId)
+                @ingredients.each do |ingredient|
+                    @meal.update({
+                        protein: @meal.protein+ingredient.protein,
+                        fat: @meal.fat+ingredient.fat,
+                        carbon: @meal.carbon+ingredient.carbon
+                    })
+                end
+                redirect_to meal_path(id: @meal.id)
+            else
+                @meal.update(meal_params)
+                redirect_to meals_path
+            end
+        else
+            redirect_to new_meal_path, notice: "名前を入力してください。"
+        end
+    end
+
+    def show
+        @meal = current_user.meals.find(params[:id])
+        @ingredients = Ingredient.all
+    end
+
+    def update
+        @meal = current_user.meals.find(params[:id])
+        if params[:meal][:ingredient_ids]
+            @ingredients = Ingredient.where(id: params[:meal][:ingredient_ids])
+            @ingredients.each do |ingredient|
+                @meal.update({
+                    protein: @meal.protein+ingredient.protein,
+                    fat: @meal.fat+ingredient.fat,
+                    carbon: @meal.carbon+ingredient.carbon
+                })
+            end
+            redirect_to meal_path(id: @meal.id)
+        else
+            @meal.update(meal_params)
             redirect_to meals_path
         end
     end
@@ -26,9 +76,23 @@ class MealsController < ApplicationController
         @meal = origin.dup
         @meal.save
         @meal.update(meal_type: params[:meal_type])
+
+        redirect_to meals_path
     end
 
-    def update
+    def edit
+        @meal = current_user.meals.find(params[:id])
+        @ingredients = Ingredient.all
+    end
+
+    def destroy
+        @meal = current_user.meals.find(params[:id])
+
+        @meal.destroy
+        redirect_to meals_path
+    end
+
+    def error
     end
 
     # def create  

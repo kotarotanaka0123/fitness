@@ -1,0 +1,22 @@
+h1 食事登録画面
+
+= render 'form', meal: @meal
+
+div#modalArea
+    div.modal.fade tabindex='-1'
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+            div.modal-body
+            div.modal-footer 
+javascript:
+    $("#modalArea").find(".modal").on("shown.bs.modal", () => {
+        $("#modalArea").find(".modal").focus();
+    });
+    
+    $("#modalArea").find(".modal").modal('show'); 
+
+    $("#modalArea").find(".modal-body").append("a");
+
+
+

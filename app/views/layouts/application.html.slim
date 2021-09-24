@@ -5,6 +5,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-lignt
       .navbar-brand Fitness
@@ -22,6 +23,7 @@ html
               th= link_to '目標', configBody_goals_path
             th= link_to '食事', meals_path 
             th= link_to 'エクササイズ', exercises_path 
+            th= link_to 'アカウント', admin_users_path(id: current_user.id)
             th= link_to 'ログアウト', logout_url, method: :delete
           - else 
             th= link_to 'ログイン', login_url
@@ -29,5 +31,52 @@ html
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice
-      div#modalArea
       = yield
+
+      / button.btn.btn-primary data-bs-target="#exampleModal" data-bs-toggle="modal" type="button" 
+      /   | Launch demo modal
+      / #exampleModal.modal aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1" style="display: block;"
+      /   .modal-dialog
+      /     .modal-content
+      /       .modal-header
+      /         h5#exampleModalLabel.modal-title Modal title
+      /         button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+      /     .modal-body
+      /       | \...
+      /     .modal-footer
+      /       button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
+      /       button.btn.btn-primary type="button"  Save changes
+
+    / #exampleModal.modal aria-labelledby="exampleModalLabel" tabindex="-1" 
+    /   .modal-dialog
+    /     .modal-content
+    /       .modal-header
+    /         h5#exampleModalLabel.modal-title New message
+    /       .modal-body
+    /         form
+    /           .mb-3
+    /             label.col-form-label for="recipient-name"  Recipient:
+    /             input#recipient-name.form-control type="text" /
+    /           .mb-3
+    /             label.col-form-label for="message-text"  Message:
+    /             textarea#message-text.form-control
+
+    / .modal tabindex="-1" 
+    /   .modal-dialog
+    /     .modal-content
+    /       .modal-header
+    /         h5.modal-title Modal title
+    /         button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+    /     .modal-body
+    /       p Modal body text goes here.
+    /     .modal-footer
+    /       button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
+    /       button.btn.btn-primary type="button"  Save changes
+
+      
+
+
+              
+
+      
+      
