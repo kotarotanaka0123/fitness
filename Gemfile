@@ -73,7 +73,7 @@ gem "jquery-rails"
 
 gem 'whenever', require: false
 
-gem 'carrierwave'
+gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 
 gem 'font-awesome-rails'

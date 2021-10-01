@@ -1,5 +1,8 @@
+h2 投稿一覧
 .messages
     = render @messages
+
+h3 投稿する
 .form
     = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'

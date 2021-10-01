@@ -11,9 +11,11 @@ table.table.table-hover
 
 h1　ユーザ一覧
 - @users.each do |user|
-    table.table
-        tr
-            td= user.name 
-            td= user.email
-            td= render 'info', user: user
+    - if user != @user
+        table.table
+            tr
+                td= user.name 
+                td= user.email
+                td= link_to '詳細', admin_user_path(user)
+                td= render 'info', user: user
 

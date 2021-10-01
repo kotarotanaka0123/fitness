@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   # メッセージ機能
   resources :groups, only: [:index, :new, :create, :edit, :update] do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:index, :show, :create] do
+      resources :likes, only: [:create, :destroy]
+    end
   end
   
   # ホーム画面

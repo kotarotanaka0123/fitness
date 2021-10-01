@@ -7,5 +7,7 @@
     .lower-message
         - if message.content.present?
             p.lower-message__content
-                = message.content
+                = message.content 
+                | (#{message.liked_users.count})
+                = link_to '詳細', group_message_path(message.group, message)
         = image_tag message.image.url, class: 'lower-message__image' if message.image.present?

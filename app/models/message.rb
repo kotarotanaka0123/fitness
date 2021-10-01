@@ -1,14 +1,15 @@
 class Message < ApplicationRecord
     belongs_to :group
     belongs_to :user
-
-    # validates :content, presence: true, unless: :is_image?
+    has_many :likes
+    has_many :liked_users, through: :likes, source: :user
 
     mount_uploader :image, ImageUploader
 
-    # def is_image?
-    #     binding.pry
-    #     image.present?
-    # end
+    validates :content, presence: true, unless: :is_image?
+
+    def is_image?
+        image.present?
+    end
 
 end

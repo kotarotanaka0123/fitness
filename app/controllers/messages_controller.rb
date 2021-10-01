@@ -6,10 +6,13 @@ class MessagesController < ApplicationController
         @messages = @group.messages.includes(:user)# 「n+1問題」を避けるために、includes(:user)の記述を忘れずに行いましょう。
     end
 
+    def show
+        @message = @group.messages.find(params[:id])
+    end
+
     def create 
         @message = @group.messages.new(message_params)
-        return redirect_to group_messages_path(@group) if (params[:message][:content].blank? && params[:message][:image].blank?)
-        binding.pry
+        # return redirect_to group_messages_path(@group) if (params[:message][:content].blank? && params[:message][:image].blank?)
         if @message.save
             redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'
         else

@@ -13,6 +13,9 @@ class User < ApplicationRecord
 
     has_many :relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
     has_many :followings, through: :relationships, source: :follower
+
+    has_many :likes, dependent: :destroy
+    has_many :liked_messages, through: :likes, source: :message
     
     def follow(user_id)
         relationships.create(follower_id: user_id)
@@ -24,5 +27,9 @@ class User < ApplicationRecord
 
     def following?(user)
         followings.include?(user)
+    end
+
+    def already_liked?(message)
+        self.likes.exists?(message_id: message.id)
     end
 end
