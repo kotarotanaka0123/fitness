@@ -7,6 +7,6 @@ p どのくらいの期間でどれほど痩せたいかを入力してくださ
     .form-group 
         = f.label :slim
         = f.number_field :slim, step: "0.1"
-    = f.submit "登録する", class: 'btn btn-primary'
+    = f.submit nil, class: 'btn btn-primary'
 
 = link_to 'あなたの情報を再入力', configBody_goals_path

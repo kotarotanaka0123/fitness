@@ -78,3 +78,6 @@ gem 'mini_magick'
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+
+# 検索機能
+gem 'ransack'

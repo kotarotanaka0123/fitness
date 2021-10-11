@@ -18,7 +18,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    binding.pry
     @user = User.find(params[:id])
     @users = User.all
   end

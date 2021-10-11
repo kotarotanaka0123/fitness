@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
     before_action :current_user
+    before_action :set_q, only: [:search]
     
     def select
         if params[:format]
@@ -18,6 +19,16 @@ class IngredientsController < ApplicationController
         # フードレコードにミールを紐付ける。
         @ingredient.update(meal_id: @meal.id)
         @meal.protein = @ingredient.protein
+    end
+
+    def search
+        @results = @q.result
+    end
+
+    private
+
+    def set_q
+        @q = Ingredient.ransack(params[:q])
     end
 end
 

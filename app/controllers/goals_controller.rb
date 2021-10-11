@@ -3,6 +3,7 @@ class GoalsController < ApplicationController
     @goal = current_user.goal
     @bmr = BMR.new(current_user).calc_bmr
     @during = (@goal.deadline - @goal.startday).to_i
+    # 1日あたりの摂取目標
     @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during
   end
 
@@ -22,7 +23,7 @@ class GoalsController < ApplicationController
 
   def configCalorie
     if current_user.goal
-      #　何もしない
+      @goal = current_user.goal
     else
       @goal = current_user.build_goal
     end
@@ -39,6 +40,17 @@ class GoalsController < ApplicationController
     end
   end
 
+  def update
+    goal = goal_params.merge(startday: Date.today)
+    @goal = current_user.goal
+    
+    if @goal.update(goal)
+      redirect_to goals_path
+    else
+      render :configCalorie
+    end
+  end
+  
   private
 
   def user_params

@@ -11,7 +11,7 @@ html
       .navbar-brand Fitness
     table.table.table-hover
       thead.thead-fefault
-        tr.align-content-start
+        tr.justify-content-center
           - if current_user
             th= link_to 'ホーム', fitness_path
             - if current_user.weight
@@ -23,6 +23,7 @@ html
               th= link_to '目標', configBody_goals_path
             th= link_to '食事', meals_path 
             th= link_to 'エクササイズ', exercises_path 
+            th= link_to '実績', achievement_path
             th= link_to 'アカウント', admin_users_path(id: current_user.id)
             th= link_to 'ログアウト', logout_url, method: :delete
           - else 

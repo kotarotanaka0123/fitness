@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_one :goal, dependent: :destroy
     has_many :meals
     has_many :ingredients
+    has_many :totals
+    has_one :achievement
 
     has_many :messages
     has_many :group_users, dependent: :destroy

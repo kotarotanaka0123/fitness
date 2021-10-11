@@ -19,9 +19,12 @@
 
 # Learn more: http://github.com/javan/whenever
 
+rails_env = ENV['RAILS_ENV'] || :development
+# cronを実行する環境変数をセット
+set :environment, rails_env
+
 set :output, "log/crontab.log"
 
-every 1.day, at: "0:00 am" do
-    rake "meal:delete"
+every 1.minute do
+    rake "ingredient:delete"
 end
-

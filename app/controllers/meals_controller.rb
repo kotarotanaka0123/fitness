@@ -1,5 +1,7 @@
 class MealsController < ApplicationController
     before_action :current_user
+    before_action :set_q, only: [:index, :search]
+
     def index
         @meals = current_user.meals.where(meal_type: nil)
 
@@ -9,12 +11,15 @@ class MealsController < ApplicationController
         @dinner = current_user.meals.where(meal_type: 'dinner')
 
         absorbMeals = current_user.meals.where.not(meal_type: nil)
-        @total = Total.new
-        @total.save
+        @total = current_user.totals.new
         absorbMeals.each do |absorbMeal|
             @total.protein += absorbMeal.protein
             @total.fat += absorbMeal.fat
             @total.carbon += absorbMeal.carbon
+        end
+        @total.save
+        if current_user.totals.count >= 2
+            current_user.totals.order(created_at: "ASC").limit(1).destroy_all
         end
 
         @user = current_user
@@ -28,7 +33,7 @@ class MealsController < ApplicationController
     def create
         @meal = current_user.meals.new(params.require(:meal).permit(:name))
         if @meal.save
-            if params[:meal][:ingredient_ids]
+            if params[:meal][:ingredient_ids].present?
                 ingredientsId = params[:meal][:ingredient_ids].split(",").map(&:to_i)
                 @ingredients = Ingredient.where(id: ingredientsId)
                 @ingredients.each do |ingredient|
@@ -55,7 +60,7 @@ class MealsController < ApplicationController
 
     def update
         @meal = current_user.meals.find(params[:id])
-        if params[:meal][:ingredient_ids]
+        if params[:meal][:ingredient_ids].present?
             @ingredients = Ingredient.where(id: params[:meal][:ingredient_ids])
             @ingredients.each do |ingredient|
                 @meal.update({
@@ -95,6 +100,10 @@ class MealsController < ApplicationController
     def error
     end
 
+    def search
+        @results = @q.result.where(meal_type: nil)
+    end
+
     # def create  
     #     # ミールを作成する。
     #     @meal = current_user.meals.new(meal_type: params[:meal][:meal_type])
@@ -113,5 +122,9 @@ class MealsController < ApplicationController
     
     def meal_params
         params.require(:meal).permit!
+    end
+
+    def set_q
+        @q = Meal.ransack(params[:q])
     end
 end

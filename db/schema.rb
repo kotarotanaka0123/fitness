@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_29_133809) do
+ActiveRecord::Schema.define(version: 2021_10_11_122820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.float "today", default: 0.0
+    t.float "past", default: 0.0
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -179,6 +188,8 @@ ActiveRecord::Schema.define(version: 2021_09_29_133809) do
     t.float "Mn", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_totals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -193,6 +204,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_133809) do
     t.integer "age"
   end
 
+  add_foreign_key "achievements", "users"
   add_foreign_key "exercises", "users"
   add_foreign_key "goals", "users"
   add_foreign_key "group_users", "groups"

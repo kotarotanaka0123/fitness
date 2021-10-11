@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   # メッセージ機能
   resources :groups, only: [:index, :new, :create, :edit, :update] do
     resources :messages, only: [:index, :show, :create] do
-      resources :likes, only: [:create, :destroy]
+      # resources :likes, only: [:create, :destroy]
+      member do
+        delete :likes, to: "likes#destroy"
+        post :likes, to: "likes#create"
+      end
     end
   end
   
@@ -34,6 +38,7 @@ Rails.application.routes.draw do
     collection do
       post :addToMeal
       get :select
+      get :search
     end
   end
 
@@ -41,9 +46,12 @@ Rails.application.routes.draw do
     collection do
       post :time
       get :error
+      get :search
     end
   end
 
   get 'exercises', to: 'exercises#index'
+
+  get 'achievement', to: 'achievement#index'
 
 end
