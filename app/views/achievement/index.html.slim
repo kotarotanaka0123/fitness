@@ -1,1 +1,18 @@
-h2　本日の実績
+h2　過去の実績
+
+= month_calendar events: @achievements do |date, achievements|
+    = date.day
+    - achievements.each do |achievement|
+        div 
+            - if achievement.calorie < @absorbCalorie
+                | ◯
+                br
+                = (achievement.calorie-@absorbCalorie).round
+                | kcal
+            - else 
+                | ×
+                = (achievement.calorie-@absorbCalorie).round
+                | kcal
+    / - if date.to_s == Date.current.strftime("%Y-%m-%d")
+    /     div ok
+

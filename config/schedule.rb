@@ -25,6 +25,15 @@ set :environment, rails_env
 
 set :output, "log/crontab.log"
 
-every 1.minute do
-    rake "ingredient:delete"
+
+every '0 0 * * * *' do
+    rake "achievement:create"
+end
+
+every '0 0 * * * *' do
+    rake "meal:delete"
+end
+
+every '0 0 * * * * ' do
+    rake "total:delete"
 end

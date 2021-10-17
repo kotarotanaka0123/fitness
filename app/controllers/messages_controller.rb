@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
     def create 
         @message = @group.messages.new(message_params)
         # return redirect_to group_messages_path(@group) if (params[:message][:content].blank? && params[:message][:image].blank?)
-        binding.pry
         if @message.save
             redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'
         else

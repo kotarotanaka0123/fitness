@@ -1,0 +1,23 @@
+.simple-calendar {
+    .day {}
+    .wday-0 {}
+    .wday-1 {}
+    .wday-2 {}
+    .wday-3 {}
+    .wday-4 {}
+    .wday-5 {}
+    .wday-6 {}
+    .today {
+        background: rgba(80, 80, 80, 0.5);
+    }
+    .past {}
+
+    .future {}
+    .start-date {}
+    .prev-month {}
+    .next-month { }
+    .current-month {}
+    .has-events {
+        background: #98fb98;
+    }
+}

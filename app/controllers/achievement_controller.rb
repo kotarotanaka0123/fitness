@@ -1,8 +1,10 @@
 class AchievementController < ApplicationController
     def index
-        @achievement = current_user.build_achievement
-        @total = current_user.totals.find(current_user.totals.ids.max)
-        @achievement.today = @total.protein*4 + @total.fat*9 + @total.carbon*4
-        @achievement.save
+        @achievements = current_user.achievements.all
+        # goals/indexで行っている処理と同じ。
+        goal = current_user.goal
+        bmr = BMR.new(current_user).calc_bmr
+        during = (goal.deadline - goal.startday).to_i
+        @absorbCalorie = bmr*1.1 - 7200*goal.slim/during
     end
 end

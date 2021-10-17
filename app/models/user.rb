@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :meals
     has_many :ingredients
     has_many :totals
-    has_one :achievement
+    has_many :achievements
 
     has_many :messages
     has_many :group_users, dependent: :destroy

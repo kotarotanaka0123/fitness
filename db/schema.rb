@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_122820) do
+ActiveRecord::Schema.define(version: 2021_10_15_093105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "achievements", force: :cascade do |t|
-    t.float "today", default: 0.0
-    t.float "past", default: 0.0
+    t.float "calorie", default: 0.0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
     t.index ["user_id"], name: "index_achievements_on_user_id"
   end
 

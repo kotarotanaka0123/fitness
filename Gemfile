@@ -81,3 +81,5 @@ gem 'font-awesome-sass'
 
 # 検索機能
 gem 'ransack'
+
+gem 'simple_calendar', '~> 2.0'
