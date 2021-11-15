@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'top#index'
+
+  get 'top', to: 'top#index'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -53,5 +57,16 @@ Rails.application.routes.draw do
   get 'exercises', to: 'exercises#index'
 
   get 'achievement', to: 'achievement#index'
+
+  resources :payment do
+    member  do
+      get 'temporary_complete', to: 'payment#temporary_complete'
+      get 'pay_complete', to: 'payment#pay_complete'
+      get 'cancel', to: 'payment#cancel'
+    end
+    collection do
+      get 'complete', to: 'payment#complete'
+    end
+  end
 
 end

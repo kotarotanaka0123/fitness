@@ -5,6 +5,8 @@ class User < ApplicationRecord
     has_many :ingredients
     has_many :totals
     has_many :achievements
+    has_many :products
+    has_many :payments
 
     has_many :messages
     has_many :group_users, dependent: :destroy

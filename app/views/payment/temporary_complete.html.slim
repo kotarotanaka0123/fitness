@@ -1,0 +1,9 @@
+h1 本決済画面
+
+= button_to '本決済する', pay_complete_payment_path(@payment.id), method: :get
+= link_to 'キャンセル', cancel_payment_path(@payment.id)
+
+div
+    | 仮払いのまま他の商品を見る。
+    = button_to '戻る', payment_index_path, method: :get
+

@@ -83,3 +83,10 @@ gem 'font-awesome-sass'
 gem 'ransack'
 
 gem 'simple_calendar', '~> 2.0'
+
+# 決済機能
+gem 'stripe'
+
+gem 'dotenv-rails'
+
+gem 'active_hash'

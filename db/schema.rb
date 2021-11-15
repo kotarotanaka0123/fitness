@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_093105) do
+ActiveRecord::Schema.define(version: 2021_11_06_054013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,26 @@ ActiveRecord::Schema.define(version: 2021_10_15_093105) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_messages_on_group_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "email"
+    t.text "description"
+    t.string "currency"
+    t.string "customer_id"
+    t.date "payment_date"
+    t.string "payment_status"
+    t.string "uuid"
+    t.string "charge_id"
+    t.float "stripe_commission"
+    t.float "amount_after_subtract_commission"
+    t.string "receipt_url"
+    t.string "product_id"
+    t.string "product_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

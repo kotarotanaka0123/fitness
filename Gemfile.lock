@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_hash (3.1.0)
+      activesupport (>= 5.0.0)
     activejob (5.2.6)
       activesupport (= 5.2.6)
       globalid (>= 0.3.6)
@@ -90,6 +92,10 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.1)
@@ -227,6 +233,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
+    stripe (5.39.0)
     temple (0.8.2)
     thor (1.1.0)
     thread_safe (0.3.6)
@@ -256,6 +263,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_hash
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   bootstrap
@@ -264,6 +272,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  dotenv-rails
   font-awesome-rails
   font-awesome-sass
   html2slim
@@ -282,6 +291,7 @@ DEPENDENCIES
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
+  stripe
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
