@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  root 'top#index'
 
-  get 'top', to: 'top#index'
+  root to: 'sessions#new'
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
+  post '/', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   namespace :admin do
     resources :users do
@@ -28,7 +26,6 @@ Rails.application.routes.draw do
   
   # ホーム画面
   get 'fitness', to: 'fitness#index'
-  root to: 'fitness#index'
 
   resources :goals do
     collection do

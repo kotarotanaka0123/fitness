@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :login_required
+
   def new
+    redirect_to fitness_url and return if current_user
+    render :layout => 'sessions_new'
   end
 
   def create
@@ -8,7 +11,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id 
-      redirect_to root_url, notice: "ログインしました。"
+      redirect_to fitness_url, notice: "ログインしました。"
     else
       render :new
     end

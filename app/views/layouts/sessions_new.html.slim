@@ -1,0 +1,34 @@
+doctype html
+html
+head
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = yield :css
+body#login
+    div.header-wrap.clear-fix
+        div#logo
+            a href="/fitness" カロリーカウンター   
+        ul#navTop.nav.guest
+            li.first
+                a.loginlink href="/" ログイン
+            li.last 
+                a.signup-link href="/admin/users/new" 登録
+    div#header
+        div#nav-bg
+            ul#nav.nav.clearfix
+                li 
+                    a.nav_button href="/fitness" ホーム
+                li 
+                    a.nav_button href="/goals" 目標
+                li 
+                    a.nav_button href="/meals" 食事
+                li 
+                    a.nav_button href="/achievement" レポート
+    .container
+        - if flash.notice.present? 
+            .alert.alert-success= flash.notice
+        - elsif flash.now[:error].present?
+            .alert.alert-success= flash.now[:error]
+        = yield

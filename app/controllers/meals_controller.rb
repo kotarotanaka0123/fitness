@@ -23,6 +23,11 @@ class MealsController < ApplicationController
         end
 
         @user = current_user
+
+        # javascript用
+        gon.total = @total
+        gon.user = @user
+        gon.bmr = BMR.new(gon.user).calc_bmr
     end
 
     def new

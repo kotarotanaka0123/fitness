@@ -1,3 +1,4 @@
+p#name
 div.row 
     div.col-sm
       h2 食事一覧
@@ -55,78 +56,4 @@ div.row
         h2 栄養成分表
         div style="width:70%;"
             canvas#prc width="250" height="260" 
-            javascript:
-              $(document).on('turbolinks:load', function() {
-                const ctx = document.getElementById('prc').getContext("2d");
-                const chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                  labels: ['タンパク質', '脂質', '炭水化物'],
-                  datasets: [{
-                    label: '摂取量',
-                    data: [#{@total.protein}, #{@total.fat}, #{@total.carbon}],
-                    backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)'
-                    ],
-                    borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                  }, {
-                    label: '目標量',
-                    data: [#{@user.weight*2}, #{@user.weight*0.7}, #{(BMR.new(@user).calc_bmr*1.1-@user.weight*2*4-@user.weight*0.7*9)/4}],
-                    backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)'
-                    ],
-                    borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 3
-                  }]
-                },
-                options: {
-                  title: {
-                    display: true,
-                    text: '摂取量/目標量'
-                  },
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        suggestedMax: 100,
-                        suggestedMin: 0,
-                        stepSize: 10,
-                        callback: function(value, index, values){
-                          return  value +  'g'
-                        }
-                      }
-                    }]
-                  }                  
-                }
-                });
-              });
-
-button#sampleButtonToggle.btn.btn-primary.btn-lg type="button" 
-  | toggle
-button#sampleButtonShow.btn.btn-primary.btn-lg type="button" 
-  | show
-/! モーダル・ダイアログ
-#sampleModal.modal.fade tabindex="-1" 
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close data-dismiss="modal" type="button" 
-          span ×
-        h4.modal-title タイトル
-      .modal-body
-        | 本文
-      .modal-footer
-        button#sampleButtonToggle2.btn.btn-default type="button"  toggle
-        button#sampleButtonHide.btn.btn-default type="button"  hide
+            = javascript_include_tag "graph.js"

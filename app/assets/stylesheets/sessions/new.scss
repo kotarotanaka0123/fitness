@@ -1,0 +1,217 @@
+body {
+    display: block;
+    height: 100%;
+    background: #fff;
+    color: #222;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5em;
+    text-align: center;
+    margin: 8px;
+}
+
+* {
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+div {
+    display: block;
+}
+
+.header-wrap {
+    width: 940px;
+    margin: auto;
+    position: relative;
+    margin-top: 10px;
+}
+
+.header-wrap #logo {
+    -ms-flex: 1;
+    flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+#navTop li > a {
+    display: block;
+    float: left;
+    text-decoration: none;
+}
+
+#navTop li.first {
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: auto;
+    white-space: nowrap;
+}
+
+#navTop li {
+    border-right: 1px solid #e6e6e6;
+    float: left;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 10px;
+}
+
+ul {
+    list-style: none;
+    list-style-position: outside;
+}
+
+body { 
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#navTop.guest {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+li {
+    text-align: -webkit-match-parent;
+}
+
+#header #nav-bg {
+    width: 100%;
+    background-color: #0072BF;
+    margin-top: 15px;
+    min-height: 45px;
+}
+
+#header #nav .nav_button {
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 45px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFFFFF !important;
+    padding: 0 21px;
+    display: block;
+}
+
+#header #nav {
+    position: relative;
+    width: 940px;
+    margin: 0px auto;
+    text-align: left;
+}
+
+#header #nav li {
+    display: inline-block;
+    margin-right: -2px;
+    float: left;
+}
+
+#header #nav-bg a:hover {
+    background-color: #0a5282;
+}
+
+
+
+// 登録部分
+body#login #content {
+    text-align: left;
+}
+
+#content {
+    padding: 20px 0 4em;
+}
+
+#content {
+    clear: both;
+    float: left;
+    display: inline;
+    position: relative;
+    width: 100%;
+}
+
+form.login div.member-login {
+    background: none;
+    padding: 20px 40px;
+    border: 3px solid #f3f1f1;
+    border-radius: 1em;
+    width: 234px;
+    margin-top: 30px;
+}
+
+form.login div.member-login h2 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    line-height: normal;
+}
+
+form.login div.member-login input.text {
+    background: none;
+    width: 216px;
+    margin-bottom: 5px;
+    background-color: #f2f2f2;
+    height: 30px;
+    font-size: 100%;
+    border-top: 1px solid #b2b2b2;
+    border-right: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9;
+    border-bottom: 1px solid #f2f2f2;
+    -moz-border-radius: .3em;
+    outline: none;
+    box-shadow: inset;
+    box-shadow: inset 1px 0 1px #d9d9d9, inset -1px 0 1px #d9d9d9, inset 0 1px 1px #b2b2b2;
+}
+
+input.text, select.select, textarea.textarea {
+    border: none;
+    border-bottom: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+    color: #555;
+    margin: 3px 0;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 90px;
+}
+
+label {
+    cursor: default;
+}
+
+form.login div.member-login ul li {
+    margin-top: 6px;
+    clear: both;
+}
+
+form.login div.member-login input[type="submit"] {
+    width: 220px;
+    text-align: center;
+    border-radius: .3em;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding: .5em 14px;
+    border: 1px solid #999999;
+    background-image: -moz-linear-gradient(#f0f0f0, #CCCCCC);
+    background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#CCCCCC), to(#f0f0f0));
+    background-color: #CCCCCC;
+    color: #666;
+    cursor: pointer;
+}

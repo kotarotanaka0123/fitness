@@ -1,0 +1,64 @@
+header .content {
+    width: 970px !important;
+    margin: auto;
+    display: flex;
+}
+
+.mygoal-number {
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 40px;
+    color: #00b7c4;
+    letter-spacing: -1px;
+    margin: 0 0 0px -4px;
+}
+
+string.unit {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    color: #534e4e;
+    margin: 0 0 0px 4px;
+}
+
+.mygoal {
+    display: flex;
+    font-size: 15px;
+}
+
+.mygoal .goal-exp {
+    margin: 13px 0 0 0;
+}
+
+header {
+    background-color: #0a5282;
+    display: table;
+    min-height: 36px;
+    width: 100%;
+    height: 36px;
+}
+
+.contents > div {
+    display: table-cell;
+    padding-left: 15px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+header h2 {
+    color: #FFFFFF;
+    margin: 0;
+    font-weight: normal;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.content body {
+    background-color: #f6f6f6;
+    padding: 1.2em;
+}

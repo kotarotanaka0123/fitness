@@ -90,3 +90,5 @@ gem 'stripe'
 gem 'dotenv-rails'
 
 gem 'active_hash'
+
+gem 'gon'

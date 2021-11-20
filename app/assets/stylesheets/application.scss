@@ -14,8 +14,10 @@
   *
   *= require simple_calendar
   *= require_self
-  *= require_tree .
+  * require_tree .
   */
+  // @import "./sessions/new.scss";
+
   @import "font-awesome-sprockets";  
   @import "font-awesome";
   @import "simple_calendar";
@@ -24,4 +26,108 @@
 .mealNameError {
     visibility: hidden;
     color: red;
+}
+
+.header-wrap {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header-wrap {
+  margin: 0 auto;
+  padding-top: 25px;
+  width: 940px;
+}
+
+.header-wrap #logo {
+  -ms-flex: 1;
+  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+.header-wrap #logo a {
+  display: block;
+  background: url(/assets/images/fitness.svg) no-repeat;
+  height: 30px;
+  width: 229px;
+  top: 15px;
+  margin-bottom: 20px;
+  text-indent: -10000px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  color: #222;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+#nav-bg ul {
+  width: 970px !important;
+  margin: auto;
+  padding: 0;
+}
+
+.header-wrap ul li {
+  border-right: 1px solid #e6e6e6;
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  padding: 0 10px;
+}
+
+.header-wrap ul li > a.user {
+  margin-right: 5px;
+}
+
+.header-wrap ul li > a.mail {
+  padding-left: 23px;
+}
+
+.header-wrap ul li > a.notif {
+  padding: 0 0 0 25px;
+  height: 14px;
+}
+
+#header #nav-bg {
+  width: 100%;
+  background-color: #0072BF;
+  margin-top: 15px;
+  min-height: 45px;
+}
+
+#header #nav-bg a {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 45px;
+  padding: 0 18px;
+  width: 100%;
+  height: 100%;
+}
+
+#header #nav-bg a:hover {
+  background-color: #0a5282;
 }
