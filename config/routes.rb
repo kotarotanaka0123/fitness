@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
 
-  root to: 'sessions#new'
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
+    :passwords => 'users/passwords',
+    :confirmations => 'users/confirmations'
+  } 
+  
+  # ホーム画面
+  get 'fitness', to: 'fitness#index'
+  root to: 'fitness#index'
 
-  post '/', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
-  namespace :admin do
-    resources :users do
-      # フォロー・フォロワーに関して
-      resource :relationships, only: [:create, :destroy]
-      get 'followings', to: 'relationships#followings', as: 'followings'
-      get 'followers', to: 'relationships#followers'
-    end
+
+  resources :users do
+    # フォロー・フォロワーに関して
+    resource :relationships, only: [:create, :destroy]
+    get 'followings', to: 'relationships#followings', as: 'followings'
+    get 'followers', to: 'relationships#followers'
   end
+
 
   # メッセージ機能
   resources :groups, only: [:index, :new, :create, :edit, :update] do
@@ -23,9 +30,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  
-  # ホーム画面
-  get 'fitness', to: 'fitness#index'
 
   resources :goals do
     collection do

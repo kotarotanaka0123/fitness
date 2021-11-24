@@ -8,4 +8,4 @@
 
 
 #rake db:seed
-User.create(name: "田中康太郎", email: "s1511030@icloud.com", password: "mother426")
+User.create(name: "田中康太郎", email: "s1511030@icloud.com", password: "mother426", password_confirmation: "mother426")

@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
     before_action :current_user
-    before_action :set_q, only: [:index, :search]
+    before_action :set_q, only: [:search]
 
     def index
         @meals = current_user.meals.where(meal_type: nil)

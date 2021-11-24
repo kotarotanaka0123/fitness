@@ -1,5 +1,6 @@
 class FitnessController < ApplicationController
   def index
+    binding.pry
     @goal = current_user.goal
     @bmr = BMR.new(current_user).calc_bmr
     @during = (@goal.deadline - @goal.startday).to_i

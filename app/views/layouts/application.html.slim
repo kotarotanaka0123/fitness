@@ -4,9 +4,9 @@ html
     = include_gon
     = csrf_meta_tags
     = csp_meta_tag
+    script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
     = yield :css
   body#login
     div.header-wrap.clear-fix
@@ -28,7 +28,7 @@ html
                 i.fa.fa-envelope area-hidden="true"
                   span.count 
             li 
-              = link_to 'ログアウト', logout_path, method: :delete
+              = link_to 'ログアウト', destroy_user_session_path, method: :delete
     div#header
       div#nav-bg
           ul#nav.nav.clearfix

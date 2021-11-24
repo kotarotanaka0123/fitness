@@ -92,3 +92,5 @@ gem 'dotenv-rails'
 gem 'active_hash'
 
 gem 'gon'
+
+gem 'devise'
