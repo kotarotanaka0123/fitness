@@ -7,4 +7,3 @@ $(document).on('input', 'input#food_entry_quantity', function(e) {
     });
 });
 
-//changeイベントが効かない
