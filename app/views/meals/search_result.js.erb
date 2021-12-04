@@ -1,0 +1,8 @@
+$("li.matched-food").remove()
+
+if (<%= @results %> != nil ) {
+    $match = $('<%= j(render 'search_result', results: @results) %>');
+    $("ul#matching").append($match);
+}
+
+# rubyの埋め込みのところでうまくいかない。

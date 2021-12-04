@@ -94,3 +94,6 @@ gem 'active_hash'
 gem 'gon'
 
 gem 'devise'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'

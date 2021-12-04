@@ -4,13 +4,11 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
     :passwords => 'users/passwords',
-    :confirmations => 'users/confirmations'
+    # :confirmations => 'users/confirmations'
   } 
   
   # ホーム画面
-  get 'fitness', to: 'fitness#index'
   root to: 'fitness#index'
-
 
   resources :users do
     # フォロー・フォロワーに関して
@@ -52,6 +50,8 @@ Rails.application.routes.draw do
       post :time
       get :error
       get :search
+      post :search_result
+      get :show_info
     end
   end
 

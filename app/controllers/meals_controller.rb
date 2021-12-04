@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
-    before_action :current_user
-    before_action :set_q, only: [:search]
+    before_action :authenticate_user!
+    before_action :set_q, only: [:search, :search_result]
 
     def index
         @meals = current_user.meals.where(meal_type: nil)
@@ -107,6 +107,23 @@ class MealsController < ApplicationController
 
     def search
         @results = @q.result.where(meal_type: nil)
+    end
+
+    def search_result
+        return @results = [] if params[:q][:name_cont].blank?
+        @results = @q.result.where(meal_type: nil)
+    end
+
+    def show_info
+        @meal = Meal.find(params[:data].to_i)
+        @columns = [@meal.calc_calorie, @meal.Na, @meal.fat,
+                    @meal.K, @meal.carbon, @meal.fiber,
+                    @meal.protein, @meal.niacin, @meal.panto,
+                    @meal.biotin, @meal.yosan, @meal.Ca,
+                    @meal.Mg, @meal.Fe, @meal.P,
+                    @meal.Zn, @meal.Cu, @meal.Mn,
+                    @meal.vA, @meal.vE, @meal.vB1,
+                    @meal.vB6, @meal.vB2]
     end
 
     # def create  

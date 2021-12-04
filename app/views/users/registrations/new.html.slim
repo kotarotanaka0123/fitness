@@ -1,6 +1,6 @@
 h2 Sign up
-= form_with(model: @user, url: user_registration_path) do |f|
-  = render "users/shared/error_messages", resource: @user
+= form_for(resource, as: resource_name, url: user_registration_path) do |f|
+  = render "users/shared/error_messages", resource: resource
   .field
     = f.label :email
     br/

@@ -7,5 +7,8 @@ class Meal < ApplicationRecord
     belongs_to :user
 
     validates :name, presence: true
-    
+
+    def calc_calorie
+        self.protein*4 + self.fat*9 + self.carbon*4
+    end
 end

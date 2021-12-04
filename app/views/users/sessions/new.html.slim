@@ -2,7 +2,7 @@
   = stylesheet_link_tag 'sessions/new'
 
 h2 Log in
-= form_with(class: "form login LoginForm") do |f|
+= form_for(resource, as: resource_name, url: user_session_path, class: "form login LoginForm") do |f|
   .field
     = f.label :email
     br/

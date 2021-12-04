@@ -1,10 +1,14 @@
 class GoalsController < ApplicationController
   def index
-    @goal = current_user.goal
-    @bmr = BMR.new(current_user).calc_bmr
-    @during = (@goal.deadline - @goal.startday).to_i
-    # 1日あたりの摂取目標
-    @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during
+    if current_user.goal
+      @goal = current_user.goal
+      @bmr = BMR.new(current_user).calc_bmr
+      @during = (@goal.deadline - @goal.startday).to_i
+      # 1日あたりの摂取目標
+      @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during
+    else
+      redirect_to configBody_goals_path
+    end
   end
 
   def body     
@@ -15,7 +19,7 @@ class GoalsController < ApplicationController
     body = user_params   #require(:user)を入れるとエラーになる。
 
     if current_user.update(body)
-      redirect_to configCalorie_goals_path, notice: "更新しました。"
+      redirect_to configCalorie_goals_path
     else
       render :body
     end 

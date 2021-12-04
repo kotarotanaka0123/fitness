@@ -45,14 +45,6 @@ div.row
                         td= dinner.name
                         td= link_to "削除", meal_path(id: dinner.id), method: :delete, remote: true
     div.col-sm
-        h3 食事検索
-        = search_form_for @q, url: search_meals_path, remote: true do |f|
-          = f.label :name_cont, '食事名'
-          = f.search_field :name_cont
-          br/
-          = f.submit '検索'
-        div#search_results
-
         h2 栄養成分表
         div style="width:70%;"
             canvas#prc width="250" height="260" 

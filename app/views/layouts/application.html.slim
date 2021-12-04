@@ -8,11 +8,13 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = yield :css
+    = yield :javascript_includes
   body#login
     div.header-wrap.clear-fix
         div#logo
             a href="/fitness" カロリーカウンター   
         ul#navTop.nav.guest
+          - if current_user
             li.first
               | こんにちは。
               strong
@@ -28,7 +30,15 @@ html
                 i.fa.fa-envelope area-hidden="true"
                   span.count 
             li 
+              a href="/config"
+                i.fa-regular.fa-gear area-hidden="true"
+            li 
               = link_to 'ログアウト', destroy_user_session_path, method: :delete
+          - else 
+            li.first
+                a.loginlink href="/users/sign_in" ログイン
+            li.last 
+                a.signup-link href="/users/sign_up" 登録
     div#header
       div#nav-bg
           ul#nav.nav.clearfix
@@ -51,4 +61,4 @@ html
               
 
       
-      
+
