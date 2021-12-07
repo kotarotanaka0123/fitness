@@ -3,6 +3,8 @@ h1 食事登録画面
   = link_to "検索", search_meals_path
 = render 'form', meal: @meal
 
+= button_to "材料から選択する", select_ingredients_path, method: :get, remote: true
+
 div#modalArea
   div.modal.fade tabindex='-1'
     div.modal-dialog

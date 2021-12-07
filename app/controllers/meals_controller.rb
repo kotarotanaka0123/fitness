@@ -32,7 +32,7 @@ class MealsController < ApplicationController
 
     def new
         @meal = current_user.meals.new
-        @ingredients = Ingredient.all
+        @ingredients = current_user.ingredients.all
     end
 
     def create
@@ -64,6 +64,7 @@ class MealsController < ApplicationController
     end
 
     def update
+        binding.pry
         @meal = current_user.meals.find(params[:id])
         if params[:meal][:ingredient_ids].present?
             @ingredients = Ingredient.where(id: params[:meal][:ingredient_ids])
@@ -124,6 +125,14 @@ class MealsController < ApplicationController
                     @meal.Zn, @meal.Cu, @meal.Mn,
                     @meal.vA, @meal.vE, @meal.vB1,
                     @meal.vB6, @meal.vB2]
+        gon.columns = [@meal.calc_calorie, @meal.Na, @meal.fat,
+                        @meal.K, @meal.carbon, @meal.fiber,
+                        @meal.protein, @meal.niacin, @meal.panto,   
+                        @meal.biotin, @meal.yosan, @meal.Ca,
+                        @meal.Mg, @meal.Fe, @meal.P,
+                        @meal.Zn, @meal.Cu, @meal.Mn,
+                        @meal.vA, @meal.vE, @meal.vB1,
+                        @meal.vB6, @meal.vB2]
     end
 
     # def create  

@@ -2,21 +2,25 @@ class IngredientsController < ApplicationController
     before_action :current_user
     before_action :set_q, only: [:search]
     
+    def index
+        @ingredients = current_user.ingredients.all
+    end
+
     def select
         if params[:format]
             @meal = current_user.meals.find(params[:format])
         else
             @meal = current_user.meals.new
         end
-        @ingredients = Ingredient.all
+        @ingredients = current_user.ingredients.all
     end
 
     def addToMeal
-        @meal = current_user.meal.new
+        @meal = current_user.meals.new
         @ingredient = Ingredient.find(params[:id])
         @meal.save
         @meal.update(food_id: params[:id])
-        # フードレコードにミールを紐付ける。
+        # 材料レコードに食事を紐付ける。
         @ingredient.update(meal_id: @meal.id)
         @meal.protein = @ingredient.protein
     end

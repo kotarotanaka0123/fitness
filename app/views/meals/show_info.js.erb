@@ -1,5 +1,5 @@
 var columns = <%= @columns %>;
-
 $.each($("table#nutrition-facts tbody tr td.col-2"), function(i, val) {
-    $(this).text(columns[i])
+    $(val).text().replace(/[0-9]|\./g, "");
+    $(val).prepend(columns[i]);
 });
