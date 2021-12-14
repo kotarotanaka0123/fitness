@@ -42,6 +42,8 @@ Rails.application.routes.draw do
       post :addToMeal
       get :select
       get :search
+      post :search_result
+      get :show_info
     end
   end
 
@@ -52,6 +54,7 @@ Rails.application.routes.draw do
       get :search
       post :search_result
       get :show_info
+      get :update_nutrition_score
     end
   end
 

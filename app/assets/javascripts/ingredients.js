@@ -38,3 +38,4 @@ function addIngredients() {
 
 window.addEventListener("load", selectIngredients);
 window.addEventListener("load", addIngredients);
+

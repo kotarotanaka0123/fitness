@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_112801) do
+ActiveRecord::Schema.define(version: 2021_12_07_150501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_112801) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
     t.index ["user_id"], name: "index_ingredients_on_user_id"
   end
 
@@ -242,7 +243,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_112801) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "confirmation_token" 
+    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"

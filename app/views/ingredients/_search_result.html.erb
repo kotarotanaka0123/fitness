@@ -1,0 +1,11 @@
+<% results.each do |r| %>
+    <li class="matched-food">
+        <div class="search-title-container">
+            <div>
+                <input type="checkbox" class="checkbox" name="<%=r.name%>" id="<%=r.id%>"/>
+                    <a class="search" index="1" foodtype="0" href="show_info?data=<%=r.id%>" data-remote="true"><%= r.name %></a>
+            </div>
+        </div>
+        <p class="search-nutritional-info"><%= r.description %></p>
+    </li>
+<% end %>

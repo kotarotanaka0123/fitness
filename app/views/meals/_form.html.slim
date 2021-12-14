@@ -54,5 +54,5 @@
         = hidden_field_tag :"meal[ingredient_ids]"
 	= f.submit nil, class: 'btn btn-primary'
 
-
+= button_to "select my ingredients", select_ingredients_path, method: :get, remote: true
 

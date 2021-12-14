@@ -1,17 +1,19 @@
 - content_for :css do
     = stylesheet_link_tag 'meals/search'
 - content_for :javascript_includes do 
-    = javascript_include_tag 'meals/updateNutritionScore'
-    
+    = javascript_include_tag 'ingredients/adding'
+    = javascript_include_tag 'ingredients/search'
+
 #main 
-    h1.main-title-2 フードのカロリーチャート、栄養成分表
+    h1.main-title-2 材料のカロリーチャート、栄養成分表
+    h6 食事に追加したい材料にチェックを入れてください。
     .block-4
         div.col-1 
-            = search_form_for @q, class: "form", url: search_result_meals_path, method: :post, remote: true do |f|
+            = search_form_for @q, class: "form", url: search_result_ingredients_path, method: :post, remote: true do |f|
                 div.block-1
-                    h3.secondary-title 検索 フードデータベース 名前別：
+                    h3.secondary-title 検索 材料データベース 名前別：
                     p.fields
-                        = f.label :name_cont, '食事名'
+                        = f.label :name_cont, '材料名'
                         = f.search_field :name_cont, class: 'text'
                         = f.submit '検索', class: 'button'
                 .block-4 
@@ -19,7 +21,7 @@
                         h4.secondary-title 一致するフード：
                         div.col-2
             ul#matching
-            
+            = button_to '追加', 
         div.col-2
             div#nutrition_facts
                 h2.nutrition-facts 栄養成分表
@@ -28,7 +30,7 @@
                     ol.fieldset 
                         li.field
                             = f.label :分量
-                            = f.text_field :count, id: "meal_entry_quantity" 
+                            = f.text_field :count, id: "ingredient_entry_quantity" 
                 div#nutrition_info
                     table#nutrition-facts
                         colgroup 

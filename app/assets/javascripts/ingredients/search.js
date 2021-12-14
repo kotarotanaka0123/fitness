@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", function(){
-    $("#food_entry_quantity").on('input', function(e) {
+    $("#ingredient_entry_quantity").on('input', function(e) {
         e.preventDefault();
         var count = $(this).val();
         var $nutri = $("table#nutrition-facts tr td.col-2");
