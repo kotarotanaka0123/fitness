@@ -137,6 +137,12 @@ class MealsController < ApplicationController
                     @meal.Zn, @meal.Cu, @meal.Mn,
                     @meal.vA, @meal.vE, @meal.vB1,
                     @meal.vB6, @meal.vB2]
+        respond_to do |format|
+            format.json { render json: { 
+                columns: @columns,
+                count: @count
+            }}
+        end
     end
 
     # def create  

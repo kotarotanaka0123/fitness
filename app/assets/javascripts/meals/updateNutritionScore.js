@@ -10,6 +10,12 @@ document.addEventListener("turbolinks:load", function(){
                         count: count
                     },
                 dataType: 'json'
+            }).done(function(data) {
+                $.each($("table#nutrition-facts tbody tr td.col-2"), function(i, val) {
+                    var removedNutritionScore = $(val).text().replace(/[0-9]|\./g, "");
+                    $(val).text(removedNutritionScore);
+                    $(val).prepend(data.columns[i]*data.count);
+                });
             })
         }
     });
