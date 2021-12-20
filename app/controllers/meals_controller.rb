@@ -3,7 +3,8 @@ class MealsController < ApplicationController
     before_action :set_q, only: [:search, :search_result]
 
     def index
-        @meals = current_user.meals.where(meal_type: nil)
+        @meals = current_user.meals.where(meal_type: nil).page(params[:page]).per(2)
+
 
         @breakfast = current_user.meals.where(meal_type: 'breakfast')
         @lunch = current_user.meals.where(meal_type: 'lunch')

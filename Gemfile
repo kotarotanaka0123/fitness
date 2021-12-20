@@ -101,3 +101,5 @@ gem 'devise-i18n-views'
 gem 'rspec-rails'
 
 gem 'factory_bot_rails'
+
+gem 'kaminari'

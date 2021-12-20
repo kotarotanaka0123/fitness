@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings', to: 'relationships#followings', as: 'followings'
     get 'followers', to: 'relationships#followers'
+    get 'config', to: 'config#index'
   end
 
 
@@ -57,8 +58,6 @@ Rails.application.routes.draw do
       get :update_nutrition_score
     end
   end
-
-  get 'exercises', to: 'exercises#index'
 
   get 'achievement', to: 'achievement#index'
 

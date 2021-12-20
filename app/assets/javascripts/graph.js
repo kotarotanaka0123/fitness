@@ -55,4 +55,4 @@ function createGraph() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', createGraph);
+document.addEventListener('turbolinks:load', createGraph);
