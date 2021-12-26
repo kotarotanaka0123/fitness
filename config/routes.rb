@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'username', to: 'users/registrations#username', as: :username_registration
-    post 'username', to: 'users/registrations#addingUsername'
+    post 'add_username', to: 'users/registrations#addingUsername', as: :add_username
     put 'change_username', to: 'users/registrations#changeUsername', as: :change_username
   end
   
