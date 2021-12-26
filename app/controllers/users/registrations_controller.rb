@@ -11,7 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    super do                                             # 他はdeviseの機能をそのまま流用する
+      resource.update(confirmed_at: Time.now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+    end
   end
 
   # GET /resource/edit
@@ -30,12 +32,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def username
-    binding.pry
     @user = User.find(params[:format].to_i)
   end
 
   def addingUsername
-    binding.pry
+  end
+
+  def changeUsername
   end
 
   # GET /resource/cancel

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     path: '',
     path_names: {
       sign_up: '',
-      sign_in: 'login',
+      sign_in: 'signin',
       sign_out: 'logout',
       registration: "signup",
     },
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'username', to: 'users/registrations#username', as: :username_registration
     post 'username', to: 'users/registrations#addingUsername'
+    put 'change_username', to: 'users/registrations#changeUsername', as: :change_username
   end
   
   # ホーム画面
@@ -84,5 +85,8 @@ Rails.application.routes.draw do
       get 'complete', to: 'payment#complete'
     end
   end
+
+  # メール確認用
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
 end
