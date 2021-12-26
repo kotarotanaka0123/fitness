@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions',
-    :passwords => 'users/passwords',
-    # :confirmations => 'users/confirmations'
+  devise_for :users, 
+    path: '',
+    path_names: {
+      sign_up: '',
+      sign_in: 'login',
+      sign_out: 'logout',
+      registration: "signup",
+    },
+    :controllers => {
+      :registrations => 'users/registrations',
+      :sessions => 'users/sessions',
+      :passwords => 'users/passwords',
+      :confirmations => 'users/confirmations'
   } 
+
+  devise_scope :user do
+    get 'username', to: 'users/registrations#username', as: :username_registration
+    post 'username', to: 'users/registrations#addingUsername'
+  end
   
   # ホーム画面
   root to: 'fitness#index'

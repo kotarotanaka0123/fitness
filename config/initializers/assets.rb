@@ -16,6 +16,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( 
     sessions/new
     fitness/index
-    meals/search.scss
+    meals/search
+    users/registration
     *.js     
+    *.scss
 )
