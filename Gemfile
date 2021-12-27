@@ -105,3 +105,5 @@ gem 'factory_bot_rails'
 gem 'kaminari'
 
 gem 'letter_opener_web', '~> 1.0'
+
+gem 'config'

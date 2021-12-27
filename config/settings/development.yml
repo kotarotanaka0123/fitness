@@ -1,0 +1,4 @@
+action_mailer:
+  smtp_setting:
+    user_name: "p.04d.tk@gmail.com"
+    password: "mjjfnpxozfqrlrvw"
