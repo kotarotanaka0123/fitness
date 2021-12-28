@@ -2,10 +2,10 @@
     = stylesheet_link_tag 'users/registration'
     
 h2 ユーザ名を登録してください。
-= form_for(@user, as: :username, url: add_username_path) do |f|
+= form_for(@user, url: add_username_path(id: @user.id)) do |f|
     .field
         = f.label :name
         br/
         = f.text_field :name, autofocus: true
     .actions
-        = f.submit "次へ"
+        = f.submit "登録する"
