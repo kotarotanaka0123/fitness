@@ -11,7 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super 
+    super do
+      resource.update(confirmed_at: Time.now.utc) 
+    end
   end
 
   # GET /resource/edit
@@ -36,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def addingUsername
     binding.pry
     @user = User.find(params[:id])
-    redirect_to root_url if @user.update(name: params[:user][:name])
+    redirect_to root_url and return if @user.update(name: params[:user][:name])
   end
 
   def changeUsername
@@ -64,9 +66,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   username_registration_path(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    username_registration_path(resource)
+  end
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
