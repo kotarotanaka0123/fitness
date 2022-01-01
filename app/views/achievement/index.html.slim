@@ -1,18 +1,37 @@
-h2　過去の実績
+- content_for :css do
+    = stylesheet_link_tag 'achievement'
 
-= month_calendar events: @achievements do |date, achievements|
-    = date.day
-    - achievements.each do |achievement|
-        div 
-            - if achievement.calorie < @absorbCalorie
-                | ◯
-                br
-                = (achievement.calorie-@absorbCalorie).round
-                | kcal
-            - else 
-                | ×
-                = (achievement.calorie-@absorbCalorie).round
-                | kcal
+#main.reports
+    h1.main-title Charts and Reports
+    #reports-menu
+        label.report-label for="report" Choose a report: 
+        select#report name="report" class="chzn-done"
+            option value=""  --Please choose an option--
+            option value="calories" calories
+            option value="weight" weight
+        label.period_label Reporting period:
+        .report-periods
+            a.period href="javascript:createGraph(7);" data-period="7" Last 7 days 
+            a.period href="javascript:createGraph(30);" data-period="30" Last 30 days 
+            a.period href="javascript:createGraph(90);" data-period="90" Last 90 days 
+    canvas#highchart width="250" height="260" 
+        = javascript_include_tag "achievement.js"
+        
+
+/ = month_calendar events: @achievements do |date, achievements|
+/     = date.day
+
+/     - achievements.each do |achievement|
+/         div 
+/             - if achievement.calorie < @absorbCalorie
+/                 | ◯
+/                 br
+/                 = (achievement.calorie-@absorbCalorie).round
+/                 | kcal
+/             - else 
+/                 | ×
+/                 = (achievement.calorie-@absorbCalorie).round
+/                 | kcal
     / - if date.to_s == Date.current.strftime("%Y-%m-%d")
     /     div ok
 
