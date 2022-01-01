@@ -9,8 +9,8 @@ class User < ApplicationRecord
     has_one :goal, dependent: :destroy
     has_many :meals
     has_many :ingredients
-    has_many :totals
-    has_many :achievements
+    has_many :totals, dependent: :destroy
+    has_many :achievements, dependent: :destroy
     has_many :products
     has_many :payments
 

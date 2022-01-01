@@ -23,6 +23,9 @@ class MealsController < ApplicationController
             current_user.totals.order(created_at: "ASC").limit(1).destroy_all
         end
 
+        if current_user
+        end
+
         @user = current_user
 
         # javascript用

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_150501) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start_time"
+    t.string "start_time"
     t.index ["user_id"], name: "index_achievements_on_user_id"
   end
 
