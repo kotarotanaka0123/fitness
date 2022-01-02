@@ -11,9 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do
-      resource.update(confirmed_at: Time.now.utc) 
-    end
+    super
   end
 
   # GET /resource/edit
@@ -36,7 +34,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def addingUsername
-    binding.pry
     @user = User.find(params[:id])
     redirect_to root_url and return if @user.update(name: params[:user][:name])
   end

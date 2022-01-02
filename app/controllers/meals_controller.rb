@@ -165,6 +165,9 @@ class MealsController < ApplicationController
 
     private
     
+    def back_to_configBody
+    end
+    
     def meal_params
         params.require(:meal).permit!
     end
