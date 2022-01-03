@@ -1,4 +1,5 @@
 class AchievementController < ApplicationController
+    #下記のような記述だと、二重にアクセスされるため、本当はよくないだろうが、とりあえずこのまま。
     def index
         @achievements = current_user.achievements.all
         # goals/indexで行っている処理と同じ。
@@ -6,9 +7,14 @@ class AchievementController < ApplicationController
         bmr = BMR.new(current_user).calc_bmr
         during = (goal.deadline - goal.startday).to_i
         gon.absorbCalorie = bmr*1.1 - 7200*goal.slim/during
-
-        gon.achievements_by_day = @achievements.group_by_day(:created_at).sum(:calorie)
-        gon.achievementsLabels = gon.achievements_by_day.map(&:first).to_json.html_safe
-        gon.achievementScore = gon.achievements_by_day.map(&:second)
+    
+        respond_to do |format|
+            format.html
+            format.json {
+                span = params[:span].to_i
+                oldAchievements = @achievements.group_by_day(:created_at, last: span+1).sum(:calorie).map(&:second)
+                render json: { achievements: oldAchievements }
+            }
+        end
     end
 end

@@ -3,24 +3,35 @@ function createGraph(sp) {
     let span_days = [];
     let today = new Date();
     let span = sp;
+    let achievementScores = 0;
+    const CalorieGoal = new Array(span+1).fill(gon.absorbCalorie);
+    $.ajax({
+      url: '/achievement',
+      data: { span: span },
+      dataType: 'json',
+      async: false
+    }).done(function(data) {
+      achievementScores = data.achievements;
+    })
     while(span >= 0){
       today = new Date();
       today.setDate(today.getDate()-span);
       span_days.push(today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate());
       span--;
     }
+
     const chart = new Chart(ctx, {
     type: 'line',
     data: {
           labels: span_days,
           datasets: [{
             label: '総摂取カロリー',
-            data: gon.achievementScore,
+            data: achievementScores,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
           }, {
             label: '目標カロリー',
-            data: gon.absorbCalorie,
+            data: CalorieGoal,
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
           }]

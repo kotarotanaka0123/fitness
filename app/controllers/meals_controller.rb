@@ -23,14 +23,23 @@ class MealsController < ApplicationController
             current_user.totals.order(created_at: "ASC").limit(1).destroy_all
         end
 
-        if current_user
+        createdtime = @total.created_at.year.to_s+"-"+@total.created_at.month.to_s+"-"+@total.created_at.day.to_s
+        calorie = @total.protein*4+@total.fat*9+@total.carbon*4
+        today_achievement = current_user.achievements.where(latest_time: createdtime)
+        # カレントユーザにおける、本日分の実績が既にある場合
+        if today_achievement.present?
+            today_achievement.update(calorie: calorie)
+        else
+            today_achievement = current_user.achievements.new(calorie: calorie, latest_time: createdtime)
+            if !today_achievement.save
+                flash.now[:error] = "実績に反映できません" 
+                render :index
+            end
         end
-
-        @user = current_user
 
         # javascript用
         gon.total = @total
-        gon.user = @user
+        gon.user = current_user
         gon.bmr = BMR.new(gon.user).calc_bmr
     end
 
@@ -166,8 +175,9 @@ class MealsController < ApplicationController
     private
     
     def back_to_configBody
+        redirect_to configBody_goals_url if current_user.weight
     end
-    
+
     def meal_params
         params.require(:meal).permit!
     end
