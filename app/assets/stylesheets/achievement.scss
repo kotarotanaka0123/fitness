@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#main {
+    width: 750px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .main-title {
     padding-bottom: 5px;
     font-size: 20px;
@@ -19,7 +25,7 @@
     margin-right: 10px;
 }
 
-select .chzn_done {
+select .chzn-done {
     font-size: 13px;
     position: relative;
     display: inline-block;
@@ -44,4 +50,26 @@ select .chzn_done {
 #reports-menu .period-label {
     display: block;
     margin-top: 15px;
+}
+
+#reports-menu .report-periods {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#reports-menu a.period:hover {
+    color: #f7941e;
+}
+#reports-menu .report-periods a {
+    display: inline-block;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+#highchart {
+    height: 400px;
 }
