@@ -6,14 +6,14 @@
     #reports-menu
         label.report-label for="report" Choose a report: 
         select#report name="report" class="chzn-done"
-            option value=""  --Please choose an option--
-            option value="calories" calories
-            option value="weight" weight
+            #report_chzn.chzn-container.chzn-container-single style="width: 210px;"
+                a href="javascript"
+                    span Calories
         label.period-label Reporting period:
         .report-periods
-            a.period href="javascript:createGraph(7);" data-period="7" Last 7 days 
-            a.period href="javascript:createGraph(30);" data-period="30" Last 30 days 
-            a.period href="javascript:createGraph(90);" data-period="90" Last 90 days 
+            a.period data-period="7" href="javascript:createGraph(7);" Last 7 days 
+            a.period data-period="30" href="javascript:createGraph(30);" Last 30 days 
+            a.period data-period="90" href="javascript:createGraph(90);" Last 90 days
     canvas#highchart width="250" height="260" 
         = javascript_include_tag "achievement.js"
         

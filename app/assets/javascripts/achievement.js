@@ -1,10 +1,18 @@
 function createGraph(sp) { 
     const ctx = document.getElementById('highchart').getContext("2d");
+    
     let span_days = [];
     let today = new Date();
     let span = sp;
     let achievementScores = 0;
     const CalorieGoal = new Array(span+1).fill(gon.absorbCalorie);
+
+    //　クリックしたperiodだけactiveにする。
+    if(document.querySelector("a.period.active") != null){
+      document.querySelector("a.period.active").classList.remove('active');
+    }
+    document.querySelector(`a.period[data-period="${span}"]`).classList.add('active');
+
     $.ajax({
       url: '/achievement',
       data: { span: span },
@@ -58,3 +66,7 @@ function createGraph(sp) {
 }
 
 document.addEventListener('turbolinks:load', createGraph(7));
+
+$(option[value="calories"]).addEventListener('click', function(){
+
+})

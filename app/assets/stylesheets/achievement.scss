@@ -63,6 +63,11 @@ select .chzn-done {
 #reports-menu a.period:hover {
     color: #f7941e;
 }
+
+#reports-menu a.period.active {
+    color: #f7941e;
+}
+
 #reports-menu .report-periods a {
     display: inline-block;
     padding: 5px;
