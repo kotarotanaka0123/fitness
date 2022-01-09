@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     :controllers => {
       :registrations => 'users/registrations',
       :sessions => 'users/sessions',
-      :passwords => 'users/passwords',
+      :passwords => 'uses/passwords',
       :confirmations => 'users/confirmations'
   } 
 
@@ -30,18 +30,6 @@ Rails.application.routes.draw do
     get 'followings', to: 'relationships#followings', as: 'followings'
     get 'followers', to: 'relationships#followers'
     get 'config', to: 'config#index'
-  end
-
-
-  # メッセージ機能
-  resources :groups, only: [:index, :new, :create, :edit, :update] do
-    resources :messages, only: [:index, :show, :create] do
-      # resources :likes, only: [:create, :destroy]
-      member do
-        delete :likes, to: "likes#destroy"
-        post :likes, to: "likes#create"
-      end
-    end
   end
 
   resources :goals do
@@ -83,6 +71,21 @@ Rails.application.routes.draw do
     end
     collection do
       get 'complete', to: 'payment#complete'
+    end
+  end
+
+  # コミュニティ
+  get 'community', to: 'community#index'
+  namespace :community do
+    get 'groups/search', to: 'groups#search'
+    resources :groups do
+      resources :messages, only: [:index, :show, :create] do
+        # resources :likes, only: [:create, :destroy]
+        member do
+          delete :likes, to: "likes#destroy"
+          post :likes, to: "likes#create"
+        end
+      end
     end
   end
 

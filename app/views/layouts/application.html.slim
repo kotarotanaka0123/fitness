@@ -52,6 +52,9 @@ html
                 a.nav_button href="/meals" 食事
               li 
                 a.nav_button href="/achievement" レポート
+              - if current_user
+                li 
+                  a.nav_button href="/community" コミュニティ
     .container
         - if flash.notice.present? 
             .alert.alert-success= flash.notice

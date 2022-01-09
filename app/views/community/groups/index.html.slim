@@ -1,0 +1,16 @@
+= search_form_for @q, url: community_groups_search_url, method: :get do |f|
+    .input-group
+        .form-outline
+            = f.search_field :name_cont, id: "form1", class: "form-control", placeholder: "検索グループ"
+        button.btn.btn-primary type="button" 
+            i.fas.fa-search
+.groupToolbar 
+    a.groupToolbar-newGroup href="./groups/new" 新しいグループ
+.Group-Box
+    .pageHeadingBox 
+        h2.pageHeadingBoxTitle 新しいグループ
+    ul.DataList
+        - @groups.each do |group|
+            = @group.name
+            = @group.describe
+                                    

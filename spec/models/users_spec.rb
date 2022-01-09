@@ -28,11 +28,14 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
     describe '#already_liked?' do
         context 'いいねがある場合' do
-            user1 = User.create(email: "example1@example.com", password: "password1", name: "user1")
-            user2 = User.create(email: "example2@example.com", password: "password2", name: "user2")
-            message = Message.create(user: user1, content: "user1")
-            user2.likes.create(message: message)
+            let(:user1) { FactoryBot.create(:user, name: 'user1', confirmed_at: Time.now)}
+            let(:user2) { FactoryBot.create(:user, name: 'user2', confirmed_at: Time.now)}
+            let(:message) {FactoryBot.create(:message, user: user2)}
+            before do
+                user1.likes.create(message: message)
+            end
             it 'いいね済みである' do
+                expect(user1.already_liked?(message)).to eq true
             end
         end
         context 'いいねがない場合' do
