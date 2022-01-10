@@ -57,12 +57,10 @@ ActiveRecord::Schema.define(version: 2022_01_05_140423) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "describe"
     t.index ["name"], name: "index_groups_on_name", unique: true
-    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|

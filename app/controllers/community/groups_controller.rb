@@ -14,7 +14,8 @@ class Community::GroupsController < CommunityController
     end
 
     def create
-        @group = current_user.groups.new(name: params[:group][:name], describe: params[:group][:describe])
+        @group = current_user.groups.new(group_params)
+        binding.pry
         if @group.save!
             redirect_to community_group_url(@group.id), notice: 'グループ「#{@group.name}」を作成しました'
         else
@@ -23,7 +24,7 @@ class Community::GroupsController < CommunityController
     end
 
     def show
-        binding.pry
+        @group = current_user.groups.find(params[:id])
     end
 
     def edit

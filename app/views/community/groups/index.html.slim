@@ -1,16 +1,29 @@
-= search_form_for @q, url: community_groups_search_url, method: :get do |f|
-    .input-group
-        .form-outline
-            = f.search_field :name_cont, id: "form1", class: "form-control", placeholder: "検索グループ"
-        button.btn.btn-primary type="button" 
-            i.fas.fa-search
-.groupToolbar 
-    a.groupToolbar-newGroup href="./groups/new" 新しいグループ
+- content_for :css do 
+    = stylesheet_link_tag "community/groups/index"
+
+.flex_group
+    .flex_container1 
+    = search_form_for @q, url: community_groups_search_url, method: :get do |f|
+        .input-group
+            .form-outline
+                = f.search_field :name_cont, id: "form1", class: "form-control", placeholder: "検索グループ"
+            button.btn.btn-primary type="button" 
+                i.fas.fa-search
+.groupToolbar
+    .flex_toolbar
+    a.newGroupButton.btn.btn-primary href="./groups/new" 新しいグループ
 .Group-Box
-    .pageHeadingBox 
-        h2.pageHeadingBoxTitle 新しいグループ
+    h2.pageHeadingBoxTitle.border-bottom.fw-bold 自分のグループ
+    - current_user.groups.each do |group|
+        = group.name 
+        = group.describe 
+        div 
+            メンバー数：#{group.users.count}
+    h2.pageHeadingBoxTitle.border-bottom.fw-bold 新しいグループ
     ul.DataList
         - @groups.each do |group|
-            = @group.name
-            = @group.describe
+            = group.name
+            = group.describe
+            div 
+                メンバー数：#{group.users.count}
                                     

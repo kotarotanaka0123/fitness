@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w(
     fitness/index
     meals/search
     users/registration
-    community/groups/*.scss
+    community/groups/index
+    community/groups/new
     *.js
 )
