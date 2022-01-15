@@ -1,5 +1,6 @@
 .flex_group{
     display: flex;
+    margin-top: 20px;
 } 
 
 .flex_container1 {
@@ -24,5 +25,47 @@ a.newGroupButton {
 
 .pageHeadingBoxTitle {
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+.myGroupList {
+    display: flex;
+}
+
+.flex-mygroup {
+    flex-grow: 1;
+}
+
+.mygroupDetails {
+
+}
+
+ul.DataList {
+    display: block;
+}
+
+ul.DataList .EachData {
+    display: flex;
+    border-color: black;
+    margin-top: 20px;
+}
+
+.EachData * {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.EachDataDetails {
+    flex-grow: 1;
+}
+
+.joinGroup {
+    margin-bottom: 10px;
+    height: 44px;
+}
+
+.groupName, .groupDescription, .numberOfGroups {
+    margin: 10px 0;
+    line-height: 1;
 }

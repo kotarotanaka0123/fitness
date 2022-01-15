@@ -17,3 +17,22 @@ nav.navbar {
     margin: 0 auto;
     padding-top: 30px;
 }
+
+.flexCards .card {
+    margin: 30px 35px;
+    height: 380px;
+}
+
+.flexCards {
+    display: flex;
+}
+
+.card-body {
+    position: relative;
+}
+
+.card-body a.btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}

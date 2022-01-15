@@ -5,11 +5,28 @@ div.column-table-cell
     div.content 
         header 
             .contents 
-                div
-                    h2  あなたのダイアリ概要
         body 
-            .mygoal 
-                string.goal-exp あなたの1日のカロリー摂取目標は、
-                .mygoal-number 
-                    = @absorbCalorie.round 
-                string.unit kcal
+            .flex-box
+                .block-box
+                    .mygoal
+                        string.goal-exp あなたの1日のカロリー摂取目標は、
+                        .mygoal-number
+                            = @absorbCalorie.round
+                        string.unit kcal
+                    .card
+                        .card-header
+                            | あなたのダイアリ概要
+                        .card-body
+                            h5.card-title　本日の必要摂取カロリー：#{@residueCalorie.round(3)} kcal
+                            .diary-card
+                                img.img-thumbnail src="assets/profile.jpg" alt=""                                 
+                                a.btn.btn-light href="/meals/new" フードを追加                                    
+                            .goal-bar
+                                .progress
+                                    .progress-bar.bg-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="#{@goalPercentage}" role="progressbar" style="width:#{@goalPercentage}%;"
+                                    span.ms-1 #{@goalPercentage.round(2)}%
+                div.col-sm
+                    div style="width:70%;"
+                        h2.today-seika 本日の実績
+                        canvas#prc width="250" height="260" 
+                        = javascript_include_tag "graph.js"

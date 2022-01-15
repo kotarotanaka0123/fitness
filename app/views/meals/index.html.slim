@@ -25,23 +25,23 @@ div.row
         table.table.table-hover.table-sm
             tbody 
                 tr#breakfast
-                    td= "朝"
+                    th scope="row" breakfast
                     - @breakfast.each do |breakfast|
                         td= breakfast.name              
                         / endが使えない
                         td= link_to "削除", meal_path(id: breakfast.id), method: :delete, remote: true
                 tr#lunch
-                    td= "昼"
+                    th scope="row" lunch
                     - @lunch.each do |lunch|
                         td= lunch.name
                         td= link_to "削除", meal_path(id: lunch.id), method: :delete, remote: true
                 tr#between
-                    td= "夕方"
+                    th scope="row" afternoon
                     - @between.each do |between|
                         td= between.name
                         td= link_to "削除", meal_path(id: between.id), method: :delete, remote: true
                 tr#dinner
-                    td= "夜"
+                    th scope="row" supper
                     - @dinner.each do |dinner|
                         td= dinner.name
                         td= link_to "削除", meal_path(id: dinner.id), method: :delete, remote: true

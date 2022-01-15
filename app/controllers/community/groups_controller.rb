@@ -3,6 +3,7 @@ class Community::GroupsController < CommunityController
     before_action :set_q, only: [:index, :search]
 
     def index
+        # groupsを自分の属している物以外表示させる。
         @groups = Group.all.order(updated_at: "DESC")
     end
 
@@ -38,7 +39,18 @@ class Community::GroupsController < CommunityController
             render :edit
         end
     end
-    
+
+    def addUsers
+    end
+
+    def join
+        binding.pry
+        respond_to do |format|
+            format.json {}
+            format.html {}
+        end
+    end
+
     private
 
     def group_params

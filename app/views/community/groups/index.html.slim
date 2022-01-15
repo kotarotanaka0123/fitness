@@ -3,7 +3,7 @@
 
 .flex_group
     .flex_container1 
-    = search_form_for @q, url: community_groups_search_url, method: :get do |f|
+    = search_form_for @q, url: search_community_groups_url, method: :get do |f|
         .input-group
             .form-outline
                 = f.search_field :name_cont, id: "form1", class: "form-control", placeholder: "検索グループ"
@@ -15,15 +15,48 @@
 .Group-Box
     h2.pageHeadingBoxTitle.border-bottom.fw-bold 自分のグループ
     - current_user.groups.each do |group|
-        = group.name 
-        = group.describe 
-        div 
-            メンバー数：#{group.users.count}
+        div.myGroupList 
+            .flex-mygroup
+                .groupName
+                    = group.name
+                .groupDescription
+                    = group.describe
+                .numberOfGroups
+                    メンバー数：#{group.users.count}
+            .inviteGroup
+                = link_to "ユーザを招待", invite_users_community_group_url, class: "btn btn-primary"
+            .dropdown
+                button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" type="button" 
+                    | オプション
+                ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
+                    li
+                        a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
+                    li
+                        = link_to "グループを削除する", community_group(group.id), method: :delete, class: "dropdown-item"
+
     h2.pageHeadingBoxTitle.border-bottom.fw-bold 新しいグループ
     ul.DataList
         - @groups.each do |group|
-            = group.name
-            = group.describe
-            div 
-                メンバー数：#{group.users.count}
-                                    
+            .EachData.border-bottom
+                .EachDataDetails
+                    .groupName
+                        = group.name
+                    .groupDescription
+                        = group.describe
+                    .numberOfGroups
+                        メンバー数：#{group.users.count}
+                .joinGroup
+                    = link_to "参加", join_community_group_url(id: group.id), class: "btn btn-primary rounded-pill", remote: true
+
+.modal role="dialog" tabindex="-1" 
+    .modal-dialog role="document" 
+        .modal-content
+            .modal-header
+                h5.modal-title Modal title
+                button.close aria-label="Close" data-dismiss="modal" type="button" 
+                    span aria-hidden="true"  ×
+            .modal-body
+                p Modal body text goes here.
+            .modal-footer
+                button.btn.btn-secondary data-dismiss="modal" type="button"  Close
+                button.btn.btn-primary type="button"  Save changes

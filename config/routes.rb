@@ -77,7 +77,6 @@ Rails.application.routes.draw do
   # コミュニティ
   get 'community', to: 'community#index'
   namespace :community do
-    get 'groups/search', to: 'groups#search'
     resources :groups do
       resources :messages, only: [:index, :show, :create] do
         # resources :likes, only: [:create, :destroy]
@@ -85,6 +84,13 @@ Rails.application.routes.draw do
           delete :likes, to: "likes#destroy"
           post :likes, to: "likes#create"
         end
+      end
+      member do
+        post :join, to: 'groups#join'
+        get :invite_users, to: 'groups#inviteUsers'
+      end
+      collection do
+        get :search, to: 'groups#search'
       end
     end
   end
