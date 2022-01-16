@@ -86,7 +86,7 @@ Rails.application.routes.draw do
         end
       end
       member do
-        post :join, to: 'groups#join'
+        get :join, to: 'groups#join'
         get :invite_users, to: 'groups#inviteUsers'
       end
       collection do

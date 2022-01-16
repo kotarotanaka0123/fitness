@@ -1,3 +1,9 @@
+var groupname = <%=group.name%>;
+
 $('.modal').on('shown.bs.modal', function () {
-    $('.modal').trigger('focus')
+    $('.modal').focus();
 })
+
+$('.modal').modal("show");
+
+$('.modal-header h5').html(`${groupname}`);

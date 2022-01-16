@@ -11,25 +11,25 @@ class Community::GroupsController < CommunityController
     end
 
     def new
-        @group = current_user.groups.new
+        @group = Group.new
     end
 
     def create
-        @group = current_user.groups.new(group_params)
+        @group = Group.new(group_params.merge(user_ids: [current_user.id], owner_id: current_user.id))
         binding.pry
         if @group.save!
-            redirect_to community_group_url(@group.id), notice: 'グループ「#{@group.name}」を作成しました'
+            redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」を作成しました"
         else
             render :new
         end
     end
 
     def show
-        @group = current_user.groups.find(params[:id])
+        @group = Group.find(params[:id])
     end
 
     def edit
-        redirect_to groups_path, notice: "作成者でないと編集できません。" unless @group.user == current_user
+        redirect_to groups_path, notice: "作成者でないと編集できません。" unless @group.owner_id == current_user.id
     end
 
     def update 
@@ -40,14 +40,16 @@ class Community::GroupsController < CommunityController
         end
     end
 
-    def addUsers
+    def inviteUsers
     end
 
     def join
-        binding.pry
+        @group = Group.find(params[:id])
         respond_to do |format|
-            format.json {}
-            format.html {}
+            format.html
+            format.js {
+                group = @group
+            }
         end
     end
 

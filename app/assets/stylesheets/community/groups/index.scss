@@ -27,6 +27,7 @@ a.newGroupButton {
     text-align: center;
     padding-bottom: 5px;
     margin-top: 30px;
+    margin-bottom: 0;
 }
 
 .myGroupList {
@@ -38,17 +39,16 @@ a.newGroupButton {
 }
 
 .mygroupDetails {
-
 }
 
 ul.DataList {
     display: block;
+    margin-top: 0;
 }
 
 ul.DataList .EachData {
     display: flex;
     border-color: black;
-    margin-top: 20px;
 }
 
 .EachData * {
@@ -58,14 +58,15 @@ ul.DataList .EachData {
 
 .EachDataDetails {
     flex-grow: 1;
+    margin-top: 20px;
 }
 
 .joinGroup {
-    margin-bottom: 10px;
-    height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 .groupName, .groupDescription, .numberOfGroups {
     margin: 10px 0;
-    line-height: 1;
+    min-height: 15px;
 }

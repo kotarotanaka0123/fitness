@@ -24,7 +24,7 @@
                 .numberOfGroups
                     メンバー数：#{group.users.count}
             .inviteGroup
-                = link_to "ユーザを招待", invite_users_community_group_url, class: "btn btn-primary"
+                = link_to "ユーザを招待", invite_users_community_group_url(group.id), class: "btn btn-primary"
             .dropdown
                 button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" type="button" 
                     | オプション
@@ -32,7 +32,7 @@
                     li
                         a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
                     li
-                        = link_to "グループを削除する", community_group(group.id), method: :delete, class: "dropdown-item"
+                        = link_to "グループを削除する", community_group_url(group.id), method: :delete, class: "dropdown-item"
 
     h2.pageHeadingBoxTitle.border-bottom.fw-bold 新しいグループ
     ul.DataList
@@ -48,15 +48,14 @@
                 .joinGroup
                     = link_to "参加", join_community_group_url(id: group.id), class: "btn btn-primary rounded-pill", remote: true
 
-.modal role="dialog" tabindex="-1" 
-    .modal-dialog role="document" 
+#exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1" 
+    .modal-dialog
         .modal-content
             .modal-header
-                h5.modal-title Modal title
-                button.close aria-label="Close" data-dismiss="modal" type="button" 
-                    span aria-hidden="true"  ×
+                h5#exampleModalLabel.modal-title Modal title
+                button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
             .modal-body
-                p Modal body text goes here.
+                | \...
             .modal-footer
-                button.btn.btn-secondary data-dismiss="modal" type="button"  Close
+                button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
                 button.btn.btn-primary type="button"  Save changes
