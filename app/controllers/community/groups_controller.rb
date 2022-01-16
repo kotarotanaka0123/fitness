@@ -17,7 +17,7 @@ class Community::GroupsController < CommunityController
     def create
         @group = Group.new(group_params.merge(user_ids: [current_user.id], owner_id: current_user.id))
         binding.pry
-        if @group.save!
+        if @group.save
             redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」を作成しました"
         else
             render :new

@@ -19,7 +19,7 @@ class PaymentController < ApplicationController
 
             # ActiveRecord::Base.transaction do
             #     @product.reserve = "仮購入"
-            #     @product.save!
+            #     @product.save
 
             #     raise "Already paid" if @product.payment.present?
             #     raise "parameter error" unless params[:amount].present? && params[:stripeEmail].present? && params[:stripeToken].present?
