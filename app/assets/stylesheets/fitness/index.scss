@@ -24,6 +24,10 @@ string.unit {
 .mygoal {
     display: flex;
     font-size: 15px;
+    padding-top: 20px;
+    padding-left: 30px;
+    background-image: url("https://mdbootstrap.com/img/Photos/Others/images/76.jpg");
+    background-size: cover;
 }
 
 .mygoal .goal-exp {
@@ -61,4 +65,63 @@ header h2 {
 .content body {
     background-color: #f6f6f6;
     padding: 1.2em;
+}
+
+.flex-box {
+    display: flex;
+}
+
+.block-box {
+    display: block;
+}
+
+.col-sm {
+    padding-left: 200px;
+    margin-top: 20px;
+}
+
+h2.today-seika {
+    text-align: center;
+    font-weight: bold;
+}
+
+.card {
+    margin-top: 40px;
+    height: 300px;
+    width: 500px;
+}
+
+.card-header {
+    background-color: #0a5282;
+    color: #f6f6f6;
+}
+
+.card-body {
+    background-color: rgb(247, 239, 239);
+}
+
+.diary-card {
+    padding-bottom: 20px;
+    border-bottom: solid;
+    border-bottom-color: rgba(133, 124, 124, 0.3);
+}
+
+.img-thumbnail {
+    width: 100px;
+    height: 100px;
+}
+
+a.btn-light {
+    margin-left: 100px;
+}
+
+.goal-bar {
+    margin-top: 10px;
+    padding: 5px 0;
+    border-right-style: dotted; 
+}
+
+.progress {
+    height: 20px;
+    background-color: white;
 }

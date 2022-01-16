@@ -1,0 +1,57 @@
+.group-frame {
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.FormWrapper {
+    padding: 0;
+    border-radius: 6px;
+    background: 0 0;
+}
+
+.P {
+    margin: 5px 0;
+}
+
+label {
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+#Form_Name {
+    font-size: 16px;
+    width: 100%;
+    min-height: 36px;
+    padding: 5px 11.3333px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(34, 38, 40);
+    border-color: rgb(170, 179, 188);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+    font-weight: 400;
+    outline: 0px;
+}
+
+#Form_Description {
+    font-size: 16px;
+    width: 100%;
+    padding: 5px 11.3333px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(34, 38, 40);
+    border-color: rgb(170, 179, 188);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+    font-weight: 400;
+    outline: 0px;
+    height: 100px;
+}

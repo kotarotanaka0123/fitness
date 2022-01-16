@@ -97,3 +97,15 @@ gem 'devise'
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'rspec-rails'
+
+gem 'factory_bot_rails'
+
+gem 'kaminari'
+
+gem 'letter_opener_web', '~> 1.0'
+
+gem 'config'
+
+gem 'groupdate'

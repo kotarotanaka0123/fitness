@@ -18,29 +18,30 @@ div.row
                         = f.submit "追加", class: 'btn btn-primary'
                   td.table-primary style="text-align: right;"= link_to "編集", edit_meal_path(id: meal.id)
                   td.table-danger style="text-align: right;"= link_to "削除", meal_path(id: meal.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }
+          = paginate @meals
           = link_to '新規作成', new_meal_path
         div 
         h3 本日の食事
         table.table.table-hover.table-sm
             tbody 
                 tr#breakfast
-                    td= "朝"
+                    th scope="row" breakfast
                     - @breakfast.each do |breakfast|
                         td= breakfast.name              
                         / endが使えない
                         td= link_to "削除", meal_path(id: breakfast.id), method: :delete, remote: true
                 tr#lunch
-                    td= "昼"
+                    th scope="row" lunch
                     - @lunch.each do |lunch|
                         td= lunch.name
                         td= link_to "削除", meal_path(id: lunch.id), method: :delete, remote: true
                 tr#between
-                    td= "夕方"
+                    th scope="row" afternoon
                     - @between.each do |between|
                         td= between.name
                         td= link_to "削除", meal_path(id: between.id), method: :delete, remote: true
                 tr#dinner
-                    td= "夜"
+                    th scope="row" supper
                     - @dinner.each do |dinner|
                         td= dinner.name
                         td= link_to "削除", meal_path(id: dinner.id), method: :delete, remote: true

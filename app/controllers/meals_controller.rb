@@ -3,7 +3,8 @@ class MealsController < ApplicationController
     before_action :set_q, only: [:search, :search_result]
 
     def index
-        @meals = current_user.meals.where(meal_type: nil)
+        @meals = current_user.meals.where(meal_type: nil).page(params[:page]).per(2)
+
 
         @breakfast = current_user.meals.where(meal_type: 'breakfast')
         @lunch = current_user.meals.where(meal_type: 'lunch')
@@ -22,11 +23,23 @@ class MealsController < ApplicationController
             current_user.totals.order(created_at: "ASC").limit(1).destroy_all
         end
 
-        @user = current_user
+        createdtime = @total.created_at.year.to_s+"-"+@total.created_at.month.to_s+"-"+@total.created_at.day.to_s
+        calorie = @total.protein*4+@total.fat*9+@total.carbon*4
+        today_achievement = current_user.achievements.where(latest_time: createdtime)
+        # カレントユーザにおける、本日分の実績が既にある場合
+        if today_achievement.present?
+            today_achievement.update(calorie: calorie)
+        else
+            today_achievement = current_user.achievements.new(calorie: calorie, latest_time: createdtime)
+            if !today_achievement.save
+                flash.now[:error] = "実績に反映できません" 
+                render :index
+            end
+        end
 
         # javascript用
         gon.total = @total
-        gon.user = @user
+        gon.user = current_user
         gon.bmr = BMR.new(gon.user).calc_bmr
     end
 
@@ -64,7 +77,6 @@ class MealsController < ApplicationController
     end
 
     def update
-        binding.pry
         @meal = current_user.meals.find(params[:id])
         if params[:meal][:ingredient_ids].present?
             @ingredients = Ingredient.where(id: params[:meal][:ingredient_ids])
@@ -125,14 +137,25 @@ class MealsController < ApplicationController
                     @meal.Zn, @meal.Cu, @meal.Mn,
                     @meal.vA, @meal.vE, @meal.vB1,
                     @meal.vB6, @meal.vB2]
-        gon.columns = [@meal.calc_calorie, @meal.Na, @meal.fat,
-                        @meal.K, @meal.carbon, @meal.fiber,
-                        @meal.protein, @meal.niacin, @meal.panto,   
-                        @meal.biotin, @meal.yosan, @meal.Ca,
-                        @meal.Mg, @meal.Fe, @meal.P,
-                        @meal.Zn, @meal.Cu, @meal.Mn,
-                        @meal.vA, @meal.vE, @meal.vB1,
-                        @meal.vB6, @meal.vB2]
+    end
+
+    def update_nutrition_score
+        @meal = Meal.find(params[:meal_id].to_i)
+        @count = params[:count].to_i
+        @columns = [@meal.calc_calorie, @meal.Na, @meal.fat,
+                    @meal.K, @meal.carbon, @meal.fiber,
+                    @meal.protein, @meal.niacin, @meal.panto,     
+                    @meal.biotin, @meal.yosan, @meal.Ca,
+                    @meal.Mg, @meal.Fe, @meal.P,
+                    @meal.Zn, @meal.Cu, @meal.Mn,
+                    @meal.vA, @meal.vE, @meal.vB1,
+                    @meal.vB6, @meal.vB2]
+        respond_to do |format|
+            format.json { render json: { 
+                columns: @columns,
+                count: @count
+            }}
+        end
     end
 
     # def create  
@@ -151,6 +174,10 @@ class MealsController < ApplicationController
 
     private
     
+    def back_to_configBody
+        redirect_to configBody_goals_url if current_user.weight
+    end
+
     def meal_params
         params.require(:meal).permit!
     end

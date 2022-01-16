@@ -9,6 +9,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = yield :css
     = yield :javascript_includes
+    link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"
+
   body#login
     div.header-wrap.clear-fix
         div#logo
@@ -30,26 +32,29 @@ html
                 i.fa.fa-envelope area-hidden="true"
                   span.count 
             li 
-              a href="/config"
-                i.fa-regular.fa-gear area-hidden="true"
+              a href="/users/#{current_user.id}/config"
+                i.fas.fa-cog area-hidden="true"
             li 
               = link_to 'ログアウト', destroy_user_session_path, method: :delete
           - else 
             li.first
-                a.loginlink href="/users/sign_in" ログイン
+                a.loginlink href="/signin" ログイン
             li.last 
-                a.signup-link href="/users/sign_up" 登録
+                a.signup-link href="/signup" 登録
     div#header
       div#nav-bg
           ul#nav.nav.clearfix
               li 
-                a.nav_button href="/fitness" ホーム
+                a.nav_button href="/" ホーム  
               li 
                 a.nav_button href="/goals" 目標
               li 
                 a.nav_button href="/meals" 食事
               li 
                 a.nav_button href="/achievement" レポート
+              - if current_user
+                li 
+                  a.nav_button href="/community" コミュニティ
     .container
         - if flash.notice.present? 
             .alert.alert-success= flash.notice

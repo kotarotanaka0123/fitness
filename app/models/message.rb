@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-    belongs_to :group
+    # belongs_to :group
     belongs_to :user
     has_many :likes
     has_many :liked_users, through: :likes, source: :user
@@ -11,5 +11,4 @@ class Message < ApplicationRecord
     def is_image?
         image.present?
     end
-
 end

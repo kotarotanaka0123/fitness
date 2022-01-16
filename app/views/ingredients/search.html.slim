@@ -1,0 +1,101 @@
+- content_for :css do
+    = stylesheet_link_tag 'meals/search'
+- content_for :javascript_includes do 
+    = javascript_include_tag 'ingredients/adding'
+    = javascript_include_tag 'ingredients/search'
+
+#main 
+    h1.main-title-2 材料のカロリーチャート、栄養成分表
+    h6 食事に追加したい材料にチェックを入れてください。
+    .block-4
+        div.col-1 
+            = search_form_for @q, class: "form", url: search_result_ingredients_path, method: :post, remote: true do |f|
+                div.block-1
+                    h3.secondary-title 検索 材料データベース 名前別：
+                    p.fields
+                        = f.label :name_cont, '材料名'
+                        = f.search_field :name_cont, class: 'text'
+                        = f.submit '検索', class: 'button'
+                .block-4 
+                    div.col-1
+                        h4.secondary-title 一致するフード：
+                        div.col-2
+            ul#matching
+            = button_to '追加', 
+        div.col-2
+            div#nutrition_facts
+                h2.nutrition-facts 栄養成分表
+                h2.food-description
+                = form_with id: "nutrition-facts-form", class: "form" do |f|
+                    ol.fieldset 
+                        li.field
+                            = f.label :分量
+                            = f.text_field :count, id: "ingredient_entry_quantity" 
+                div#nutrition_info
+                    table#nutrition-facts
+                        colgroup 
+                            col.col-1
+                            col.col-2
+                            col.col-1
+                            col.col-2
+                        tbody
+                            tr 
+                                td.col-1 カロリー
+                                td.col-2 
+                                td.col-1 ナトリウム
+                                td.col-2 mg
+                            tr 
+                                td.col-1 脂肪合計
+                                td.col-2 g
+                                td.col-1 カリウム
+                                td.col-2 mg
+                            tr 
+                                td.col-1 炭水化物合計
+                                td.col-2 g
+                                td.col-1 食物繊維
+                                td.col-2 g
+                            tr 
+                                td.col-1 タンパク質
+                                td.col-2 g
+                                td.col-1 ナイアシン
+                                td.col-2 mg
+                            tr 
+                                td.col-1 パントテン酸
+                                td.col-2 mg
+                                td.col-1 ビオチン
+                                td.col-2 mg
+                            tr 
+                                td.col-1 葉酸
+                                td.col-2 mg
+                                td.col-1 カルシウム
+                                td.col-2 mg
+                            tr 
+                                td.col-1 マグネシウム
+                                td.col-2 mg
+                                td.col-1 鉄
+                                td.col-2 mg
+                            tr 
+                                td.col-1 リン
+                                td.col-2 mg
+                                td.col-1 亜鉛
+                                td.col-2 mg 
+                            tr 
+                                td.col-1 銅
+                                td.col-2 mg
+                                td.col-1 マンガン
+                                td.col-2 mg
+                            tr 
+                                td.col-1 ビタミンA 
+                                td.col-2 mg
+                                td.col-1 ビタミンE
+                                td.col-2 mg
+                            tr 
+                                td.col-1 ビタミンB1 
+                                td.col-2 mg
+                                td.col-1 ビタミンB6
+                                td.col-2 mg
+                            tr 
+                                td.col-1 ビタミンB2
+                                td.col-2 mg
+                                td.col-1 &nbsp;
+                                td.col-2 &nbsp;

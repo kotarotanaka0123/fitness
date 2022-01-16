@@ -1,3 +1,80 @@
 // Place all the styles related to the achievement controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#main {
+    width: 750px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main-title {
+    padding-bottom: 5px;
+    font-size: 20px;
+    color: #0a5282;
+    font-weight: bolder;
+    margin: 17px 0 20px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+#reports-menu label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0b5680;
+    margin-right: 10px;
+}
+
+select .chzn-done {
+    font-size: 13px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    width: 210px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    background-clip: padding-box;
+    border: 1px solid #aaaaaa;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 23px;
+    line-height: 24px;
+    padding: 0 0 0 8px;
+    color: #444444;
+    text-decoration: none;
+}
+
+#reports-menu .period-label {
+    display: block;
+    margin-top: 15px;
+}
+
+#reports-menu .report-periods {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#reports-menu a.period:hover {
+    color: #f7941e;
+}
+
+#reports-menu a.period.active {
+    color: #f7941e;
+}
+
+#reports-menu .report-periods a {
+    display: inline-block;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+#highchart {
+    height: 400px;
+}

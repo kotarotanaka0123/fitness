@@ -37,7 +37,7 @@ function createGraph() {
         options: {
           title: {
             display: true,
-            text: '摂取量/目標量'
+            text: '栄養成分表'
           },
           scales: {
             yAxes: [{
@@ -55,4 +55,4 @@ function createGraph() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', createGraph);
+document.addEventListener('turbolinks:load', createGraph);

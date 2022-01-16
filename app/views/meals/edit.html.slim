@@ -5,20 +5,4 @@ h1 食事編集画面
 
 = render 'form', meal: @meal
 
-= button_to "材料から選択する", select_ingredients_path(@meal.id), method: :get, remote: true
-
-div#modalArea
-  div.modal.fade tabindex='-1'
-    div.modal-dialog
-      div.modal-content
-        div.modal-header
-        div.modal-body
-          = form_with model: @meal, id: "meal_modal_form" do |f|
-            - @ingredients.each_with_index do |ingredient, idx|
-              div id="ingredient#{idx + 1}"
-                label
-                  = ingredient.name
-                  = f.check_box :ingredient_ids, {multiple: true}, ingredient.id, false
-          button#sendIngredients type="button"　追加
-
-        .modal-footer 
+= render 'modal', meal: @meal, ingredients: @ingredients

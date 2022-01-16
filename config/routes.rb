@@ -1,11 +1,25 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions',
-    :passwords => 'users/passwords',
-    # :confirmations => 'users/confirmations'
+  devise_for :users, 
+    path: '',
+    path_names: {
+      sign_up: '',
+      sign_in: 'signin',
+      sign_out: 'logout',
+      registration: "signup",
+    },
+    :controllers => {
+      :registrations => 'users/registrations',
+      :sessions => 'users/sessions',
+      :passwords => 'uses/passwords',
+      :confirmations => 'users/confirmations'
   } 
+
+  devise_scope :user do
+    get 'username', to: 'users/registrations#username', as: :username_registration
+    patch 'add_username', to: 'users/registrations#addingUsername', as: :add_username
+    put 'change_username', to: 'users/registrations#changeUsername', as: :change_username
+  end
   
   # ホーム画面
   root to: 'fitness#index'
@@ -15,18 +29,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings', to: 'relationships#followings', as: 'followings'
     get 'followers', to: 'relationships#followers'
-  end
-
-
-  # メッセージ機能
-  resources :groups, only: [:index, :new, :create, :edit, :update] do
-    resources :messages, only: [:index, :show, :create] do
-      # resources :likes, only: [:create, :destroy]
-      member do
-        delete :likes, to: "likes#destroy"
-        post :likes, to: "likes#create"
-      end
-    end
+    get 'config', to: 'config#index'
   end
 
   resources :goals do
@@ -42,6 +45,8 @@ Rails.application.routes.draw do
       post :addToMeal
       get :select
       get :search
+      post :search_result
+      get :show_info
     end
   end
 
@@ -52,10 +57,9 @@ Rails.application.routes.draw do
       get :search
       post :search_result
       get :show_info
+      get :update_nutrition_score
     end
   end
-
-  get 'exercises', to: 'exercises#index'
 
   get 'achievement', to: 'achievement#index'
 
@@ -69,5 +73,29 @@ Rails.application.routes.draw do
       get 'complete', to: 'payment#complete'
     end
   end
+
+  # コミュニティ
+  get 'community', to: 'community#index'
+  namespace :community do
+    resources :groups do
+      resources :messages, only: [:index, :show, :create] do
+        # resources :likes, only: [:create, :destroy]
+        member do
+          delete :likes, to: "likes#destroy"
+          post :likes, to: "likes#create"
+        end
+      end
+      member do
+        get :join, to: 'groups#join'
+        get :invite_users, to: 'groups#inviteUsers'
+      end
+      collection do
+        get :search, to: 'groups#search'
+      end
+    end
+  end
+
+  # メール確認用
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
 end

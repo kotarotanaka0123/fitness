@@ -29,6 +29,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def username
+    @user = User.find(params[:format].to_i)
+  end
+
+  def addingUsername
+    @user = User.find(params[:id])
+    redirect_to root_url and return if @user.update(name: params[:user][:name])
+  end
+
+  def changeUsername
+  end
+
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
@@ -52,11 +64,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    root_path
+    username_registration_path(resource)
   end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    username_registration_path(resource)
+  end
 end

@@ -1,5 +1,9 @@
 var columns = <%= @columns %>;
+
+$("input#meal_entry_quantity").removeAttr('data-id');
+$("input#meal_entry_quantity").attr('data-id', <%=@meal.id%>);
 $.each($("table#nutrition-facts tbody tr td.col-2"), function(i, val) {
-    $(val).text().replace(/[0-9]|\./g, "");
+    var removedNutritionScore = $(val).text().replace(/[0-9]|\./g, "");
+    $(val).text(removedNutritionScore);
     $(val).prepend(columns[i]);
 });

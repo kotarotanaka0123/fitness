@@ -1,25 +1,10 @@
 h1 食事登録画面
 .search-meals 
   = link_to "検索", search_meals_path
+  
 = render 'form', meal: @meal
 
-= button_to "材料から選択する", select_ingredients_path, method: :get, remote: true
-
-div#modalArea
-  div.modal.fade tabindex='-1'
-    div.modal-dialog
-      div.modal-content
-        div.modal-header
-        div.modal-body
-          = form_with model: @meal, id: "meal_modal_form" do |f|
-            - @ingredients.each_with_index do |ingredient, idx|
-              div id=("ingredient#{idx + 1}") 
-                label
-                  = ingredient.name
-                  = f.check_box :ingredient_ids, {multiple: true}, ingredient.id, false
-          button#sendIngredients type="button"　追加
-
-        .modal-footer 
+= render 'modal', meal: @meal, ingredients: @ingredients
 
 - if @meal.errors.any?
   #error_explanation

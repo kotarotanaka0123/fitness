@@ -1,0 +1,16 @@
+- content_for :css do
+    = stylesheet_link_tag 'community/groups/new'
+
+.group-frame
+    h1.H 新規グループ
+    .FormWrapper.GroupForm 
+        = form_with model: [:community, @group] do |f|
+            .P
+                = f.label "名前", class: "Form_GroupName"
+            = f.text_field :name, id: "Form_Name"
+            .P
+                = f.label "説明"
+            .TextBoxWrapper
+                .editor
+                = f.text_area :describe, id: "Form_Description"
+            = f.submit "保存", class: "btn btn-primary rounded-pill"

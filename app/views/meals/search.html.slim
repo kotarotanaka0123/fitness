@@ -1,7 +1,7 @@
 - content_for :css do
     = stylesheet_link_tag 'meals/search'
 - content_for :javascript_includes do 
-    = javascript_include_tag 'meals/search'
+    = javascript_include_tag 'meals/updateNutritionScore'
     
 #main 
     h1.main-title-2 フードのカロリーチャート、栄養成分表
@@ -28,7 +28,7 @@
                     ol.fieldset 
                         li.field
                             = f.label :分量
-                            = f.text_field :count, id: "food_entry_quantity" 
+                            = f.text_field :count, id: "meal_entry_quantity" 
                 div#nutrition_info
                     table#nutrition-facts
                         colgroup 

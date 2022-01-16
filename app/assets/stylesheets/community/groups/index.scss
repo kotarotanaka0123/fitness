@@ -1,0 +1,72 @@
+.flex_group{
+    display: flex;
+    margin-top: 20px;
+} 
+
+.flex_container1 {
+    flex-grow: 1;
+}
+
+.groupToolbar {
+    display: flex;
+}
+
+.flex_toolbar {
+    flex-grow: 1;
+}
+
+a.newGroupButton {
+    margin-top: 20px;
+}
+
+.Group-Box {
+    margin-top: 20px;
+}
+
+.pageHeadingBoxTitle {
+    text-align: center;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.myGroupList {
+    display: flex;
+}
+
+.flex-mygroup {
+    flex-grow: 1;
+}
+
+.mygroupDetails {
+}
+
+ul.DataList {
+    display: block;
+    margin-top: 0;
+}
+
+ul.DataList .EachData {
+    display: flex;
+    border-color: black;
+}
+
+.EachData * {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.EachDataDetails {
+    flex-grow: 1;
+    margin-top: 20px;
+}
+
+.joinGroup {
+    display: flex;
+    align-items: center;
+}
+
+.groupName, .groupDescription, .numberOfGroups {
+    margin: 10px 0;
+    min-height: 15px;
+}

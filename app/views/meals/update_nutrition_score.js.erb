@@ -1,0 +1,10 @@
+var columns = <%= @columns %>;
+var count = <%= @count %>;
+
+console.log(count);
+
+$.each($("table#nutrition-facts tbody tr td.col-2"), function(i, val) {
+    var removedNutritionScore = $(val).text().replace(/[0-9]|\./g, "");
+    $(val).text(removedNutritionScore);
+    $(val).prepend(columns[i]*count);
+});

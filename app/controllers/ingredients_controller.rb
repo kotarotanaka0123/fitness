@@ -1,9 +1,21 @@
 class IngredientsController < ApplicationController
-    before_action :current_user
-    before_action :set_q, only: [:search]
+    # before_action :current_user
+    before_action :set_q, only: [:search, :search_result]
     
     def index
         @ingredients = current_user.ingredients.all
+    end
+
+    def show
+    end
+
+    def search
+        @results = @q.result
+    end
+
+    def search_result
+        return @results = [] if params[:q][:name_cont].blank?
+        @results = @q.result
     end
 
     def select
@@ -13,6 +25,28 @@ class IngredientsController < ApplicationController
             @meal = current_user.meals.new
         end
         @ingredients = current_user.ingredients.all
+    end
+
+    def show_info
+        @ingredient = Ingredient.find(params[:data].to_i)
+        @columns = [@ingredient.calc_calorie, @ingredient.Na, @ingredient.fat,
+                    @ingredient.K, @ingredient.carbon, @ingredient.fiber,
+                    @ingredient.protein, @ingredient.niacin, @ingredient.panto,
+                    @ingredient.biotin, @ingredient.yosan, @ingredient.Ca,
+                    @ingredient.Mg, @ingredient.Fe, @ingredient.P,
+                    @ingredient.Zn, @ingredient.Cu, @ingredient.Mn,
+                    @ingredient.vA, @ingredient.vE, @ingredient.vB1,
+                    @ingredient.vB6, @ingredient.vB2
+                    ]               
+        gon.columns = [@ingredient.calc_calorie, @ingredient.Na, @ingredient.fat,
+                        @ingredient.K, @ingredient.carbon, @ingredient.fiber,
+                        @ingredient.protein, @ingredient.niacin, @ingredient.panto,
+                        @ingredient.biotin, @ingredient.yosan, @ingredient.Ca,
+                        @ingredient.Mg, @ingredient.Fe, @ingredient.P,
+                        @ingredient.Zn, @ingredient.Cu, @ingredient.Mn,
+                        @ingredient.vA, @ingredient.vE, @ingredient.vB1,
+                        @ingredient.vB6, @ingredient.vB2
+                    ] 
     end
 
     def addToMeal

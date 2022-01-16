@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     if current_user.goal
       @goal = current_user.goal
