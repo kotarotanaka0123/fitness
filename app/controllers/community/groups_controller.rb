@@ -3,8 +3,7 @@ class Community::GroupsController < CommunityController
     before_action :set_q, only: [:index, :search]
 
     def index
-        # groupsを自分の属している物以外表示させる。
-        @groups = Group.all.order(updated_at: "DESC")
+        @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
     end
 
     def search 
@@ -45,12 +44,16 @@ class Community::GroupsController < CommunityController
 
     def join
         @group = Group.find(params[:id])
-        respond_to do |format|
-            format.html
-            format.js {
-                group = @group
-            }
-        end
+        @group.users << current_user
+
+        redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」に参加しました！"
+        # TODO: グループ参加の前にモーダルを表示
+        # respond_to do |format|
+        #     format.html
+        #     format.js {
+        #         group = @group
+        #     }
+        # end
     end
 
     private
@@ -65,6 +68,10 @@ class Community::GroupsController < CommunityController
 
     def set_q
         @q = Group.ransack(params[:q])
+    end
+
+    def not_joining_groups
+        Group.all.order(updated_at: "DESC") - User.find(current_user.id).groups
     end
 end
 
