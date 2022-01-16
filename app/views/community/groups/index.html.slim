@@ -14,28 +14,29 @@
     a.newGroupButton.btn.btn-primary href="./groups/new" 新しいグループ
 .Group-Box
     h2.pageHeadingBoxTitle.border-bottom.fw-bold 自分のグループ
-    - current_user.groups.each do |group|
-        div.myGroupList 
-            .flex-mygroup
-                .groupName
-                    = group.name
-                .groupDescription
-                    = group.describe
-                .numberOfGroups
-                    メンバー数：#{group.users.count}
-            .inviteGroup
-                = link_to "ユーザを招待", invite_users_community_group_url(group.id), class: "btn btn-primary"
-            .dropdown
-                button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" type="button" 
-                    | オプション
-                ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
-                    li
-                        a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
-                    li
-                        = link_to "グループを削除する", community_group_url(group.id), method: :delete, class: "dropdown-item"
+    .DataList
+        - current_user.groups.each do |group|
+            .EachData.border-bottom
+                .EachDataDetails
+                    .groupName
+                        = group.name
+                    .groupDescription
+                        = group.describe
+                    .numberOfGroups
+                        メンバー数：#{group.users.count}
+                .inviteGroup
+                    = link_to "ユーザを招待", invite_users_community_group_url(group.id), class: "btn btn-primary"
+                .dropdown
+                    #dropdownMenuButton1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
+                        i.fas.fa-ellipsis-v
+                    ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
+                        li
+                            a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
+                        li
+                            = link_to "グループを削除する", community_group_url(group.id), method: :delete, class: "dropdown-item"
 
     h2.pageHeadingBoxTitle.border-bottom.fw-bold 新しいグループ
-    ul.DataList
+    .DataList
         - @groups.each do |group|
             .EachData.border-bottom
                 .EachDataDetails

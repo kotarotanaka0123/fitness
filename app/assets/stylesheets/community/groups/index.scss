@@ -41,12 +41,12 @@ a.newGroupButton {
 .mygroupDetails {
 }
 
-ul.DataList {
+.DataList {
     display: block;
     margin-top: 0;
 }
 
-ul.DataList .EachData {
+.DataList .EachData {
     display: flex;
     border-color: black;
 }
@@ -61,9 +61,13 @@ ul.DataList .EachData {
     margin-top: 20px;
 }
 
-.joinGroup {
+.joinGroup, .inviteGroup, .dropdown {
     display: flex;
     align-items: center;
+}
+
+.dropdown {
+    margin-left: 20px;
 }
 
 .groupName, .groupDescription, .numberOfGroups {
