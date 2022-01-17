@@ -56,9 +56,16 @@ a.newGroupButton {
     font-size: 15px;
 }
 
+.EachData img {
+    margin: 15px;
+    width: 84px;
+    height: 84px;
+}
+
 .EachDataDetails {
+    display: flex;
+    flex-flow: column;
     flex-grow: 1;
-    margin-top: 20px;
 }
 
 .joinGroup, .inviteGroup, .dropdown {

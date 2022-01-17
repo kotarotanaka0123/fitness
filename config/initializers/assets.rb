@@ -20,5 +20,6 @@ Rails.application.config.assets.precompile += %w(
     users/registration
     community/groups/index
     community/groups/new
+    community/groups/show
     *.js
 )

@@ -59,7 +59,7 @@ class Community::GroupsController < CommunityController
     private
 
     def group_params
-        params.require(:group).permit(:name, :describe)
+        params.require(:group).permit(:name, :describe, :image)
     end
 
     def set_group

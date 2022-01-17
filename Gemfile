@@ -75,6 +75,7 @@ gem 'whenever', require: false
 
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
+gem 'rmagick'
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'

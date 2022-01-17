@@ -17,6 +17,11 @@
     .DataList
         - current_user.groups.each do |group|
             .EachData.border-bottom
+                - if !group.image?
+                    = image_tag "no_image.png", class: "default-image rounded-circle border border-2"
+                - else
+                    a href="community/groups/#{group.id}"
+                        img.img-thumbnail alt="..." src="#{group.image.thumb.url}" class="rounded-circle"
                 .EachDataDetails
                     .groupName
                         = group.name
@@ -35,10 +40,15 @@
                         li
                             = link_to "グループを削除する", community_group_url(group.id), method: :delete, class: "dropdown-item"
 
-    h2.pageHeadingBoxTitle.border-bottom.fw-bold 新しいグループ
+    h2.pageHeadingBoxTitle.border-bottom.fw-bold 他のグループ
     .DataList
         - @groups.each do |group|
             .EachData.border-bottom
+                - if !group.image?
+                    = image_tag "no_image.png"
+                - else 
+                    a href="community/groups/#{group.id}"
+                        img.img-thumbnail alt="..." src="#{group.image.thumb.url}" 
                 .EachDataDetails
                     .groupName
                         = group.name
