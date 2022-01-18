@@ -15,7 +15,6 @@ class Community::GroupsController < CommunityController
 
     def create
         @group = Group.new(group_params.merge(user_ids: [current_user.id], owner_id: current_user.id))
-        binding.pry
         if @group.save
             redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」を作成しました"
         else
@@ -25,6 +24,7 @@ class Community::GroupsController < CommunityController
 
     def show
         @group = Group.find(params[:id])
+        @owner = User.find(@group.owner_id)
     end
 
     def edit
@@ -37,6 +37,12 @@ class Community::GroupsController < CommunityController
         else
             render :edit
         end
+    end
+
+    def destroy
+        group = Group.find(params[:id])
+        group.destroy
+        redirect_to community_groups_url
     end
 
     def inviteUsers

@@ -7,3 +7,6 @@
             h2 = @group.name
             .group-description
                 = @group.describe
+            .group-members
+                | オーナー名：#{@owner.name} メンバー数：#{@group.users.count}
+            
