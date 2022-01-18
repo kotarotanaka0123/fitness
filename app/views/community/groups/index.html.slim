@@ -48,10 +48,10 @@
         - @groups.each do |group|
             .EachData.border-bottom
                 - if !group.image?
-                    = image_tag "no_image.png"
+                    = image_tag "no_image.png", class: "default-image rounded-circle border border-2"
                 - else 
                     a href="groups/#{group.id}"
-                        img.img-thumbnail alt="..." src="#{group.image.thumb.url}" 
+                        img.img-thumbnail alt="..." src="#{group.image.thumb.url}" class="rounded-circle"
                 .EachDataDetails
                     .groupName
                         = group.name
