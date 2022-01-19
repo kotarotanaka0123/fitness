@@ -50,16 +50,15 @@ class Community::GroupsController < CommunityController
 
     def join
         @group = Group.find(params[:id])
-        @group.users << current_user
 
-        redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」に参加しました！"
         # TODO: グループ参加の前にモーダルを表示
-        # respond_to do |format|
-        #     format.html
-        #     format.js {
-        #         group = @group
-        #     }
-        # end
+        respond_to do |format|
+            format.html{ 
+                @group.users << current_user
+                redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」に参加しました！" 
+            }
+            format.js
+        end
     end
 
     private

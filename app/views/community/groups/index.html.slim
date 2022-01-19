@@ -60,7 +60,8 @@
                     .numberOfGroups
                         | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
                 .joinGroup
-                    = link_to "参加", join_community_group_url(id: group.id), class: "btn btn-primary rounded-pill"
+                    = link_to "参加", join_community_group_url(id: group.id), class: "btn btn-primary rounded-pill", remote: true
+                = render "joinModal", group: group
 
 #exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1" 
     .modal-dialog
