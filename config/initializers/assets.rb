@@ -21,6 +21,7 @@ Rails.application.config.assets.precompile += %w(
     community/groups/index
     community/groups/new
     community/groups/show
+    community/messages
     *.js
     community/groups.js
 )

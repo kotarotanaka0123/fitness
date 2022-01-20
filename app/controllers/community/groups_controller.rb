@@ -1,6 +1,6 @@
 class Community::GroupsController < CommunityController
     before_action :set_group, only: [:edit, :update]
-    before_action :set_q, only: [:index, :search]
+    before_action :set_q, only: [:index, :search] #TODO: グループ検索機能
 
     def index
         @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
@@ -51,7 +51,6 @@ class Community::GroupsController < CommunityController
     def join
         @group = Group.find(params[:id])
 
-        # TODO: グループ参加の前にモーダルを表示
         respond_to do |format|
             format.html{ 
                 @group.users << current_user
@@ -76,7 +75,7 @@ class Community::GroupsController < CommunityController
     end
 
     def not_joining_groups
-        Group.all.order(updated_at: "DESC") - User.find(current_user.id).groups
+        Group.all.order(updated_at: "DESC") - User.find(current_user.id).groups # HACK: 全ユーザから自分のユーザを引く以外の方法があるか。
     end
 end
 

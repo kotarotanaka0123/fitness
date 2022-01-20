@@ -1,0 +1,14 @@
+- content_for :css do
+    = stylesheet_link_tag 'community/messages'
+
+.message-frame
+    h2.fw-bolder メッセージ投稿
+    .messageForm
+        = form_with url: community_group_messages_path do |f|
+            .mb-3
+                = f.label "内容", class: "form-label"
+            = f.text_area :content, class: "form-control"
+            .mb-3
+                = f.label "画像", class: "form-label" 
+                = f.file_field :image, class: "form-control form-control-sm"
+            = f.submit "保存", class: "btn btn-primary rounded-pill"

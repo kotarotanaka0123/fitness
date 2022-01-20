@@ -9,4 +9,25 @@
                 = @group.describe
             .group-members
                 | オーナー名：#{@owner.name} メンバー数：#{@group.users.count}
-            
+        .group-options
+            .dropdown
+                button#dropdownMenuButton1.btn.btn-primary.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" type="button" 
+                    | オプション
+                ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
+                    li
+                        a.dropdown-item href="./#{@group.id}/edit"  グループを編集する
+                    li
+                        a.dropdown-item href="#"  グループに招待する
+                    li
+                        a.dropdown-item href="./#{@group.id}" data-method="delete"  グループを削除する
+
+    .groupEachContents 
+        h5 招待中
+        .EachData 
+        h5 メッセージ
+        .discussion-start 
+            a.btn.btn-primary href="./#{@group.id}/messages/new" + メッセージを投稿する
+        .EachMessage
+
+
+                    

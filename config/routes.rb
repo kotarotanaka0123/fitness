@@ -78,7 +78,7 @@ Rails.application.routes.draw do
   get 'community', to: 'community#index'
   namespace :community do
     resources :groups do
-      resources :messages, only: [:index, :show, :create] do
+      resources :messages, only: [:index, :new, :show, :create] do
         # resources :likes, only: [:create, :destroy]
         member do
           delete :likes, to: "likes#destroy"
