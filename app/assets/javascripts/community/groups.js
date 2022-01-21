@@ -5,3 +5,11 @@ function delete_modal() {
 
     $("#deleteModal").modal("show");
 }
+
+function invite_modal() {
+    $("#inviteModal").on("shown.bs.modal", function() {
+        $("inviteModal").find("input").focus();
+    });
+
+    $("#inviteModal").modal("show");
+}

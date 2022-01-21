@@ -6,7 +6,7 @@ class Community::GroupsController < CommunityController
         @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
     end
 
-    def search 
+    def search
     end
 
     def new
@@ -46,6 +46,14 @@ class Community::GroupsController < CommunityController
     end
 
     def inviteUsers
+        @q = User.ransack(params[:q])
+        @users = User.where.not(id: current_user.id)
+        unless params[:q].blank?
+            render json: @users.select("id").map { |e| e.id  }.to_json
+        end
+    end
+
+    def create_inviteUsers
     end
 
     def join

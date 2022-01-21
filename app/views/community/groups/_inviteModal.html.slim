@@ -1,0 +1,13 @@
+#inviteModal.modal.fade aria-hidden="true" aria-labelledby="inviteModalLabel" tabindex="-1" 
+    .modal-dialog
+        .modal-content
+            .modal-header 
+                h5.modal-title グループへの招待
+            .modal-body
+                h5#inviteModalLabel.modal-title 招待するユーザの選択
+                = search_form_for q, url: invite_users_community_group_url(group), remote: true do |f|
+                    = f.search_field :name_cont, placeholder: "Type to search..."
+                    = f.submit "招待", class: "btn btn-primary rounded-pill"
+                    button.btn.btn-secondary data-bs-dismiss="modal" type="button"  キャンセル
+                    
+                    
