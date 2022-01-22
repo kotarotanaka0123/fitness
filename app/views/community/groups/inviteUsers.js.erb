@@ -1,4 +1,4 @@
-$(".EachData .inviteModal").html('<%= render partial: 'inviteModal', locals: {users: @users, q: @q, group: @group} %>');
+$(".EachData .inviteModal").html('<%= render partial: "inviteModal", locals: {users: @users, q: @q, group: @group} %>');
 
 $("#inviteModal").on("shown.bs.modal", function() {
     $("inviteModal").find("input").focus();
