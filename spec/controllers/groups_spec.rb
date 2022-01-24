@@ -6,10 +6,10 @@ RSpec.describe GroupsController, type: :controller do
 # 3.データが作成されるか
 
     describe "get #join" do
-        let(:group1) { FactoryBot.create(:group) }
+        let!(:group1) { FactoryBot.create(:group) }
         it "success to add current_user into group.users" do
-            get :join
-            expect(response).to be_success 
+            get :join, params: {id: group1.id}
+            expect(response).to be_success
         end
     end
 

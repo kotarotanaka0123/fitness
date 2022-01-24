@@ -1,16 +1,35 @@
-#inviteModal.modal.fade aria-hidden="true" aria-labelledby="inviteModalLabel" tabindex="-1" 
+#inviteModal.modal.fade aria-hidden="true" aria-labelledby="inviteModalLabel" tabindex="-1"
     .modal-dialog
         .modal-content
             .modal-header 
                 h5.modal-title グループへの招待
             .modal-body
                 h5#inviteModalLabel.modal-title 招待するユーザの選択
-                = search_form_for q, url: invite_users_community_group_url(group), remote: true do |f|
-                    = f.search_field :name_cont, placeholder: "Type to search..."
-                    = f.submit "招待", class: "btn btn-primary rounded-pill"
-                    button.btn.btn-secondary data-bs-dismiss="modal" type="button"  キャンセル
+                .input-group.mb-3
+                    #input_name_search.form-control type="text" contenteditable=true
+                #user_check
+                    ul.list-group
+                        - @users.each do |user|
+                            li class="#{user.id} list-group-item"
+                                .inviteUser #{user.name}
+            .modal-footer
+                button.btn.btn-secondary data-bs-dismiss="modal" type="button" キャンセル
+                button.btn.btn-primary.rounded-pill.invite type="button" 招待
 
-                    // TODO: search_fieldの下にuser一覧を表示（デフォルトではhide)
-                    //       search_fieldに何か入力したら、それを:invite_usersにajaxで送る
-                    //       送られてきたデータのidだけ取り出す。（コントローラ）
-                    //       そのidのデータだけhide→show
+/ javascript:
+    
+/     $("#input_name_search").on("keyup", function() {
+/         $.ajax({
+/             url: `/community/groups`,
+/             data: { usernames: $(this).val() },
+/             dataType: 'json',
+/         }).done(function(data) {
+/             console.log(data);
+/         })
+/     });
+    
+
+// TODO: search_fieldの下にuser一覧を表示（デフォルトではhide)
+//       search_fieldに何か入力したら、それを:indexにajaxで送る
+//       送られてきた文字を名前に含むユーザのidだけ取り出す。（コントローラ）
+//       そのidのデータだけhide→show。
