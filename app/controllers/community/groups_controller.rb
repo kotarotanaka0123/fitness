@@ -3,17 +3,7 @@ class Community::GroupsController < CommunityController
     before_action :set_q, only: [:index, :search] #TODO: グループ検索機能
 
     def index
-        respond_to do |format|
-            format.html {
-                @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
-                @users = User.where.not(id: current_user.id)
-            }
-            # format.json {
-            #     @q = User.ransack(params[:usernames])
-            #     @users = @q.result
-            #     render json: @users.select("id").map { |e| e.id  }.to_json
-            # }
-        end
+        @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
     end
 
     def search
@@ -57,7 +47,13 @@ class Community::GroupsController < CommunityController
 
     def inviteUsers
         @q = User.ransack(params[:q])
-        @users = @q.result
+        @users = User.where.not(id: current_user.id)
+        unless params[:q].blank?
+            render json: @users.select("id").map { |e| e.id  }.to_json
+        end
+    end
+
+    def create_inviteUsers
     end
 
     def join
