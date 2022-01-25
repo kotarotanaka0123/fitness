@@ -6,6 +6,8 @@ class User < ApplicationRecord
     
     validates :name, presence: true, uniqueness: true, on: :addingUsername
 
+    mount_uploader :image, ImageUploader
+
     has_one :goal, dependent: :destroy
     has_many :meals
     has_many :ingredients

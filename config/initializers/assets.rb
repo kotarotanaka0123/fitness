@@ -24,4 +24,5 @@ Rails.application.config.assets.precompile += %w(
     community/messages
     *.js
     community/groups.js
+    users
 )
