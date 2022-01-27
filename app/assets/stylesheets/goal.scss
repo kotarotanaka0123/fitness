@@ -1,3 +1,64 @@
 // Place all the styles related to the goal controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.goal-setting {
+    display: flex;
+    justify-content: center;
+}
+.goal-box {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.start {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.calorie-goal {
+    font-weight: bold;
+}
+
+.config-calorie, .config-body {
+    margin-top: 30px;
+}
+
+p {
+    font-weight: bold;
+    font-size: 17px;
+    color: rgb(64, 125, 175);
+}
+
+.form-group {
+    padding-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+select, input {
+    border: skyblue 2px inset;
+}
+
+.body-form {
+    margin: 10px 0;
+}
+
+.calorie-submit, .goal-submit {
+    background-color: skyblue;
+    color: black;
+}
+
+.move_to_configBody, .move_to_configCalorie {
+    margin-left: 100px;
+}
+
+.goal-flex {
+    display: flex;
+    margin-top: 10px;
+}

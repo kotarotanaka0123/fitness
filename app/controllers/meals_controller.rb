@@ -1,6 +1,8 @@
 class MealsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_q, only: [:search, :search_result]
+    before_action :back_to_configBody
+    before_action :back_to_configCalorie
 
     def index
         @meals = current_user.meals.where(meal_type: nil).page(params[:page]).per(2)
@@ -173,10 +175,6 @@ class MealsController < ApplicationController
     # end
 
     private
-    
-    def back_to_configBody
-        redirect_to configBody_goals_url if current_user.weight
-    end
 
     def meal_params
         params.require(:meal).permit!

@@ -1,13 +1,19 @@
-p あなたの情報を教えてください
+- content_for :css do
+    = stylesheet_link_tag "goal"
+    
+.config-body
+    p あなたの情報を教えてください
 
-= form_with url: configBody_goals_path, local: true do |f|   #modelがなくても大丈夫なのはなぜ
-    = f.label :weight
-    = f.number_field :weight, step: "0.1"
-    = f.label :height
-    = f.number_field :height, step: "0.1"
-    = f.label :age
-    = f.number_field :age
-    = f.submit "登録する", class: 'btn btn-primary'
-
-div
-    = link_to "目標を入力", configCalorie_goals_path
+    = form_with url: configBody_goals_path, local: true do |f|   #modelがなくても大丈夫なのはなぜ
+        .body-form 
+            = f.label :weight
+            = f.number_field :weight, step: "0.1"
+        .body-form 
+            = f.label :height
+            = f.number_field :height, step: "0.1"
+        .body-form 
+            = f.label :age
+            = f.number_field :age
+        .goal-flex
+            = f.submit "登録する", class: 'btn btn-primary goal-submit'
+            = link_to "目標を入力", configCalorie_goals_path, class: "btn btn-primary move_to_configCalorie"

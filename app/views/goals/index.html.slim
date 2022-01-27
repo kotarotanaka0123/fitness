@@ -1,13 +1,19 @@
-p あなたの目標
-= @goal.deadline
-| までに
-= @goal.slim
-| kg痩せる。　
+- content_for :css do
+    = stylesheet_link_tag "goal"
 
-p 目標摂取カロリーは、
-puts
-    = sprintf("%.3f", @absorbCalorie)
-p
-    = link_to 'あなたの情報を再入力', configBody_goals_path
-p
-    = link_to '目標を再入力', configCalorie_goals_path
+.goal-setting 
+    .goal-box
+        .start あなたの目標
+        = @goal.deadline
+        div までに
+        = @goal.slim
+        div  kg
+        div 痩せる。　
+
+        .calorie-goal 目標摂取カロリーは、
+        puts
+            = sprintf("%.3f", @absorbCalorie)
+        p
+            = link_to 'あなたの情報を再入力', configBody_goals_path
+        p
+            = link_to '目標を再入力', configCalorie_goals_path

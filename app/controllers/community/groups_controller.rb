@@ -1,6 +1,8 @@
 class Community::GroupsController < CommunityController
     before_action :set_group, only: [:edit, :update]
     before_action :set_q, only: [:index, :search] #TODO: グループ検索機能
+    before_action :back_to_configBody
+    before_action :back_to_configCalorie
 
     def index
         @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
