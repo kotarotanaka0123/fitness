@@ -1,5 +1,7 @@
-- content_for :css do 
+- content_for :css do
     = stylesheet_link_tag "community/groups/index"
+- content_for :javascript_includes do
+    = javascript_include_tag "community/groups"
 
 .flex_group
     .flex_container1 
@@ -14,39 +16,58 @@
     a.newGroupButton.btn.btn-primary href="./groups/new" 新しいグループ
 .Group-Box
     h2.pageHeadingBoxTitle.border-bottom.fw-bold 自分のグループ
-    - current_user.groups.each do |group|
-        div.myGroupList 
-            .flex-mygroup
-                .groupName
-                    = group.name
-                .groupDescription
-                    = group.describe
-                .numberOfGroups
-                    メンバー数：#{group.users.count}
-            .inviteGroup
-                = link_to "ユーザを招待", invite_users_community_group_url(group.id), class: "btn btn-primary"
-            .dropdown
-                button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" type="button" 
-                    | オプション
-                ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
-                    li
-                        a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
-                    li
-                        = link_to "グループを削除する", community_group_url(group.id), method: :delete, class: "dropdown-item"
-
-    h2.pageHeadingBoxTitle.border-bottom.fw-bold 新しいグループ
-    ul.DataList
-        - @groups.each do |group|
+    .DataList
+        - current_user.groups.each do |group|
             .EachData.border-bottom
+                - if !group.image?
+                    a href="groups/#{group.id}"
+                        = image_tag "no_image.png", class: "default-image rounded-circle border border-2"
+                - else
+                    a href="groups/#{group.id}"
+                        img.img-thumbnail alt="..." src="#{group.image.thumb.url}" class="rounded-circle"
                 .EachDataDetails
                     .groupName
-                        = group.name
+                        a href="groups/#{group.id}"
+                            = group.name
                     .groupDescription
                         = group.describe
                     .numberOfGroups
-                        メンバー数：#{group.users.count}
+                        | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
+                .inviteGroup
+                    = link_to "ユーザを招待", invite_users_community_group_url(group), class: "btn btn-primary rounded-pill", remote: true
+                .inviteModal
+                / = render "inviteModal"
+                .dropdown
+                    #dropdownMenuButton1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
+                        i.fas.fa-ellipsis-v
+                    ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
+                        li
+                            a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
+                        li
+                            a.dropdown-item.group-delete href="javascript:delete_modal();" グループを削除する
+                = render "deleteModal", group: group
+
+    h2.pageHeadingBoxTitle.border-bottom.fw-bold 他のグループ
+    .DataList
+        - @groups.each do |group|
+            .EachData.border-bottom
+                - if !group.image?
+                    a href="groups/#{group.id}"
+                        = image_tag "no_image.png", class: "default-image rounded-circle border border-2"
+                - else 
+                    a href="groups/#{group.id}"
+                        img.img-thumbnail alt="..." src="#{group.image.thumb.url}" class="rounded-circle"
+                .EachDataDetails
+                    .groupName
+                        a href="groups/#{group.id}"
+                            = group.name
+                    .groupDescription
+                        = group.describe
+                    .numberOfGroups
+                        | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
                 .joinGroup
                     = link_to "参加", join_community_group_url(id: group.id), class: "btn btn-primary rounded-pill", remote: true
+                = render "joinModal", group: group
 
 #exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1" 
     .modal-dialog

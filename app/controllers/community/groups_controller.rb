@@ -1,13 +1,12 @@
 class Community::GroupsController < CommunityController
     before_action :set_group, only: [:edit, :update]
-    before_action :set_q, only: [:index, :search]
+    before_action :set_q, only: [:index, :search] #TODO: グループ検索機能
 
     def index
-        # groupsを自分の属している物以外表示させる。
-        @groups = Group.all.order(updated_at: "DESC")
+        @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
     end
 
-    def search 
+    def search
     end
 
     def new
@@ -16,8 +15,7 @@ class Community::GroupsController < CommunityController
 
     def create
         @group = Group.new(group_params.merge(user_ids: [current_user.id], owner_id: current_user.id))
-        binding.pry
-        if @group.save!
+        if @group.save
             redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」を作成しました"
         else
             render :new
@@ -26,6 +24,7 @@ class Community::GroupsController < CommunityController
 
     def show
         @group = Group.find(params[:id])
+        @owner = User.find(@group.owner_id)
     end
 
     def edit
@@ -40,23 +39,39 @@ class Community::GroupsController < CommunityController
         end
     end
 
+    def destroy
+        group = Group.find(params[:id])
+        group.destroy
+        redirect_to community_groups_url
+    end
+
     def inviteUsers
+        @q = User.ransack(params[:q])
+        @users = User.where.not(id: current_user.id)
+        unless params[:q].blank?
+            render json: @users.select("id").map { |e| e.id  }.to_json
+        end
+    end
+
+    def create_inviteUsers
     end
 
     def join
         @group = Group.find(params[:id])
+
         respond_to do |format|
-            format.html
-            format.js {
-                group = @group
+            format.html{ 
+                @group.users << current_user
+                redirect_to community_group_url(@group.id), notice: "グループ「#{@group.name}」に参加しました！" 
             }
+            format.js
         end
     end
 
     private
 
     def group_params
-        params.require(:group).permit(:name, :describe)
+        params.require(:group).permit(:name, :describe, :image)
     end
 
     def set_group
@@ -65,6 +80,10 @@ class Community::GroupsController < CommunityController
 
     def set_q
         @q = Group.ransack(params[:q])
+    end
+
+    def not_joining_groups
+        Group.all.order(updated_at: "DESC") - User.find(current_user.id).groups # HACK: 全ユーザから自分のユーザを引く以外の方法があるか。
     end
 end
 

@@ -1,0 +1,8 @@
+#joinModal.modal.fade aria-hidden="true" aria-labelledby="joinModalLabel" tabindex="-1" 
+    .modal-dialog
+        .modal-content
+            .modal-body
+                h5#joinModalLabel.modal-title グループ「#{group.name}」に参加しますか？
+            .modal-footer
+                button.btn.btn-secondary data-bs-dismiss="modal" type="button"  閉じる
+                a.btn.btn-primary.rounded-pill href="./groups/#{group.id}/join" data-method="get"  参加

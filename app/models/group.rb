@@ -5,6 +5,8 @@ class Group < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     accepts_nested_attributes_for :group_users
 
+    mount_uploader :image, ImageUploader
+    
     def show_last_message
         if (last_message = messages.last).present?
             last_message.content? ? last_message.content : '画像が投稿されています' 
