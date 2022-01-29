@@ -11,7 +11,9 @@ class GoalsController < ApplicationController
     @during = (@goal.deadline - @goal.startday).to_i
     # NOTE: 1日あたりの摂取目標を算出
     @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during  
-    redirect_to configCalorie_goals_path, notice: "正しい値を入力してください"
+    if @absorbCalorie < 0
+      redirect_to configCalorie_goals_path, notice: "適切な目標を入力してください"
+    end
   end
 
   def body     
@@ -24,7 +26,7 @@ class GoalsController < ApplicationController
     if current_user.update(body)
       redirect_to configCalorie_goals_path
     else
-      render :body
+      render :configBody
     end 
   end
 

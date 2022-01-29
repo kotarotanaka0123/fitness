@@ -1,6 +1,10 @@
 - content_for :css do
     = stylesheet_link_tag "goal"
 
+- @goal.errors.full_messages.each do |msg|
+    .alert.alert-danger
+        = msg
+
 .config-calorie
     .config-box
         p どのくらいの期間でどれほど痩せたいかを入力してください。

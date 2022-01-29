@@ -1,5 +1,9 @@
 - content_for :css do
     = stylesheet_link_tag "goal"
+
+- current_user.errors.full_messages.each do |msg|
+    .alert.alert-danger
+        = msg
     
 .config-body
     .config-box    

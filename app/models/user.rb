@@ -5,6 +5,11 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable, :confirmable
     
     validates :name, presence: true, uniqueness: true, on: :addingUsername
+    with_options presence: true, numericality: {greater_than: 0} do
+        validates :weight
+        validates :height
+        validates :age
+    end
 
     mount_uploader :image, ImageUploader
 
