@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'username', to: 'users/registrations#username', as: :username_registration
     patch 'add_username', to: 'users/registrations#addingUsername', as: :add_username
     put 'change_username', to: 'users/registrations#changeUsername', as: :change_username
+    get 'confirm_email', to: 'users/registrations#confirm_email'
   end
   
   # ホーム画面

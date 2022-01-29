@@ -2,15 +2,16 @@
     = stylesheet_link_tag "goal"
 
 .config-calorie
-    p どのくらいの期間でどれほど痩せたいかを入力してください。
+    .config-box
+        p どのくらいの期間でどれほど痩せたいかを入力してください。
 
-    = form_with model: @goal, local: true do |f|  
-        .form-group.deadline-select-form
-            = f.label :deadline
-            = f.date_select :deadline, class: "deadline-select"
-        .form-group
-            = f.label :slim
-            = f.number_field :slim, step: "0.1"
-        .goal-flex
-            = f.submit nil, class: 'btn btn-primary rounded-pill calorie-submit'
-            = link_to 'あなたの情報を再入力', configBody_goals_path, class: "btn btn-primary rounded-pill move_to_configBody"
+        = form_with model: @goal, local: true do |f|  
+            .form-group.deadline-select-form
+                = f.label :deadline
+                = f.date_select :deadline, class: "deadline-select"
+            .form-group
+                = f.label :slim
+                = f.number_field :slim, step: "0.1"
+            .goal-flex
+                = f.submit nil, class: 'btn btn-primary rounded-pill calorie-submit'
+                = link_to 'あなたの情報を再入力', configBody_goals_path, class: "btn btn-primary rounded-pill move_to_configBody"

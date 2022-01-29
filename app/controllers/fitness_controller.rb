@@ -15,8 +15,13 @@ class FitnessController < ApplicationController
     gon.bmr = BMR.new(gon.user).calc_bmr
 
     achievement = current_user.achievements.last
-    @residueCalorie = @absorbCalorie - achievement.calorie
-    # 目標を100%とすると現在のカロリーは ↓
-    @goalPercentage = (@absorbCalorie-@residueCalorie)/@absorbCalorie*100
+    if achievement.present?
+      @residueCalorie = @absorbCalorie - achievement.calorie
+      # 目標を100%とすると現在のカロリーは ↓
+      @goalPercentage = (@absorbCalorie-@residueCalorie)/@absorbCalorie*100
+    else
+      @residueCalorie = @absorbCalorie
+      @goalPercentage = 0
+    end
   end
 end

@@ -67,6 +67,18 @@ body {
   line-height: 1.5em;
 }
 
+body .login {
+  border-bottom: dashed rgb(117, 117, 117);
+  display: flex;
+  padding: 20px 10px;
+}
+
+.login .loginlink {
+  font-family: serif;
+  font-size: 20px;
+  margin: 0 0 0 auto;
+}
+
 a:link, a:visited {
   text-decoration: none;
 }

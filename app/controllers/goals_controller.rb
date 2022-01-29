@@ -1,7 +1,9 @@
 class GoalsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action -> {
+  #   set_goal || set_username
+  # }
   
-  layout 'noBar'
+  layout 'noBar', except: :index
   
   def index
     @goal = current_user.goal
@@ -9,6 +11,7 @@ class GoalsController < ApplicationController
     @during = (@goal.deadline - @goal.startday).to_i
     # NOTE: 1日あたりの摂取目標を算出
     @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during  
+    redirect_to configCalorie_goals_path, notice: "正しい値を入力してください"
   end
 
   def body     
