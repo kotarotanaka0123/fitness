@@ -5,7 +5,7 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable, :confirmable
     
     validates :name, presence: true, uniqueness: true, on: :addingUsername
-    with_options presence: true, numericality: {greater_than: 0} do
+    with_options presence: true, numericality: {greater_than: 0}, if: :user_exists? do
         validates :weight
         validates :height
         validates :age
@@ -48,5 +48,9 @@ class User < ApplicationRecord
 
     def already_liked?(message)
         self.likes.exists?(message_id: message.id)
+    end
+
+    def user_exists?
+        self.persisted?
     end
 end

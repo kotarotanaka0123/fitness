@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  skip_before_action :check_initial_setting
 
   layout 'noBar'
 
@@ -40,8 +41,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def addingUsername
     @user = User.find(params[:id])
-    redirect_to root_url and return if @user.update(name: params[:user][:name])
-  
+    @user.assign_attributes(name: params[:user][:name])
+    #NOTE: 体重身長などのバリデーションはここでは外したい。
+    if @user.save(validate: false) 
+      #NOTE: ユーザ名登録後、すぐにログイン状態にしたい。
+      sign_in(:user, @user)
+      redirect_to body_details_path
+    else
+      render :username
+    end
+  end
+
+  def body_details
+    @user = current_user
+  end
+
+  def add_body_details
+    body = user_params
+
+    if current_user.update(body)
+      redirect_to configCalorie_goals_path
+    else
+      render :body_details
+    end
   end
 
   def changeUsername
@@ -76,5 +98,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     confirm_email_path
+  end
+
+  def user_params
+    params.require(:user).permit(:weight, :height, :age)
   end
 end

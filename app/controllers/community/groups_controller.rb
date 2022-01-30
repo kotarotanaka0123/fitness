@@ -4,6 +4,7 @@ class Community::GroupsController < CommunityController
 
     def index
         @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
+        @users = User.where.not(id: current_user.id)
     end
 
     def search

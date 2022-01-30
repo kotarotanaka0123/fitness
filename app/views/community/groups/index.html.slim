@@ -34,9 +34,9 @@
                     .numberOfGroups
                         | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
                 .inviteGroup
-                    = link_to "ユーザを招待", invite_users_community_group_url(group), class: "btn btn-primary rounded-pill", remote: true
+                    button#invite-user-btn.btn.btn-primary.rounded-pill ユーザを招待
                 .inviteModal
-                / = render "inviteModal"
+                    = render "inviteModal", group: group, users: @users, q: @q
                 .dropdown
                     #dropdownMenuButton1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
                         i.fas.fa-ellipsis-v
@@ -54,7 +54,7 @@
                 - if !group.image?
                     a href="groups/#{group.id}"
                         = image_tag "no_image.png", class: "default-image rounded-circle border border-2"
-                - else 
+                - else
                     a href="groups/#{group.id}"
                         img.img-thumbnail alt="..." src="#{group.image.thumb.url}" class="rounded-circle"
                 .EachDataDetails

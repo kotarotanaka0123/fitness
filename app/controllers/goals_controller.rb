@@ -16,20 +16,6 @@ class GoalsController < ApplicationController
     end
   end
 
-  def body     
-    render "goals/configBody"
-  end
-
-  def configBody
-    body = user_params
-
-    if current_user.update(body)
-      redirect_to configCalorie_goals_path
-    else
-      render :configBody
-    end 
-  end
-
   def configCalorie
     if current_user.goal
       @goal = current_user.goal
@@ -61,10 +47,6 @@ class GoalsController < ApplicationController
   end
   
   private
-
-  def user_params
-    params.permit(:weight, :height, :age)
-  end
 
   def goal_params
     params.require(:goal).permit(:deadline, :slim)

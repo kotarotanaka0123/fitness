@@ -9,7 +9,7 @@
     .config-box    
         p あなたの情報を教えてください
 
-        = form_with url: configBody_goals_path, local: true do |f|   #modelがなくても大丈夫なのはなぜ
+        = form_with model: @user, url: add_body_details_path, local: true do |f|   #modelがなくても大丈夫なのはなぜ
             .body-form 
                 = f.label :weight
                 = f.number_field :weight, step: "0.1"

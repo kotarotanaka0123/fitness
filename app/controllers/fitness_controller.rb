@@ -2,8 +2,9 @@ class FitnessController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    return redirect_to configBody_goals_path if current_user.goal.nil?
-    
+    #HACK: check_initial_settingでリダイレクトされるはずだが、そうならないため一時的に同じ状況を再現。
+    return redirect_to body_details_path if current_user.goal.nil?
+
     @goal = current_user.goal
     @bmr = BMR.new(current_user).calc_bmr
     @during = (@goal.deadline - @goal.startday).to_i      # 1日あたりの摂取目標
