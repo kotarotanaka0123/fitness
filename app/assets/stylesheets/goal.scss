@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// index画面
 .goal-setting {
     display: flex;
     justify-content: center;
@@ -14,13 +15,34 @@
 
 .start {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
+}
+
+small {
+    padding-left: 10px;
+}
+
+em {
+    color: rgb(189, 44, 181);
 }
 
 .calorie-goal {
     font-weight: bold;
+    margin: 10px 0;
 }
 
+.deadline-goal-text, .slim-goal-text {
+    margin-top: 13px;
+    font-size: 20px;
+}
+
+.config-box strong {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+// 設定画面
 .config-body, .config-calorie, .goal-setting {
     margin-top: 4px;
     display: flex;
@@ -36,6 +58,10 @@ p {
     font-weight: bold;
     font-size: 17px;
     color: rgb(52, 70, 24);
+}
+
+.config-box p {
+    margin: 10px 0;
 }
 
 .form-group {
@@ -69,4 +95,20 @@ select, input {
 .goal-flex {
     display: flex;
     margin-top: 10px;
+}
+
+.back_to_home {
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+}
+
+// configCalorie
+
+.deadline-form {
+    display: flex;
+}
+
+.move_to_configBody {
+    font-size: 13px;
 }

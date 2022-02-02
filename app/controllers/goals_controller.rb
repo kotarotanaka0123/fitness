@@ -1,7 +1,5 @@
 class GoalsController < ApplicationController
-  # before_action -> {
-  #   set_goal || set_username
-  # }
+  before_action :authenticate_user!
   
   layout 'noBar', except: :index
   

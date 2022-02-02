@@ -1,3 +1,6 @@
+- content_for :css do
+    = stylesheet_link_tag "meals"
+    
 p#name
 div.row 
     div.col-sm
@@ -22,29 +25,88 @@ div.row
           = link_to '新規作成', new_meal_path
         div 
         h3 本日の食事
-        table.table.table-hover.table-sm
-            tbody 
-                tr#breakfast
-                    th scope="row" breakfast
-                    - @breakfast.each do |breakfast|
-                        td= breakfast.name              
-                        / endが使えない
-                        td= link_to "削除", meal_path(id: breakfast.id), method: :delete, remote: true
-                tr#lunch
-                    th scope="row" lunch
-                    - @lunch.each do |lunch|
+        table.table.table-sm.table-layout
+            tbody
+                tr#meal_header
+                    td.meal_timing width="45%" 朝食
+                    td.subtitle.theme width="15%"
+                        | 炭水化物
+                        .subtitle-unit g 
+                    td.subtitle.theme width="15%"
+                        | タンパク質
+                        .subtitle-unit g 
+                    td.subtitle.theme width="15%"
+                        | 脂質
+                        .subtitle-unit g
+                    td.subtitle width="10%"
+                - @breakfast.each do |breakfast|
+                    tr.table-secondary
+                        td= breakfast.name
+                        td= breakfast.carbon 
+                        td= breakfast.protein 
+                        td= breakfast.fat
+                        td 
+                            a data-remote="true" data-method="delete" href="meals/#{breakfast.id}"
+                                i.fas.fa-minus-circle
+                tr
+                    td= link_to "フードを追加", new_meal_path, class: "meal_to_each"
+                    td 
+                    td 
+                    td 
+                    td
+                tr#meal_header
+                    td.meal_timing 昼食 
+                - @lunch.each do |lunch|
+                    tr.table-secondary
                         td= lunch.name
-                        td= link_to "削除", meal_path(id: lunch.id), method: :delete, remote: true
-                tr#between
-                    th scope="row" afternoon
-                    - @between.each do |between|
+                        td= lunch.carbon 
+                        td= lunch.protein 
+                        td= lunch.fat
+                        td 
+                            a data-remote="true" data-method="delete" href="meals/#{lunch.id}"
+                                i.fas.fa-minus-circle
+                tr
+                    td= link_to "フードを追加", new_meal_path, class: "meal_to_each"
+                    td 
+                    td 
+                    td 
+                    td
+                tr#meal_header
+                    td.meal_timing 間食
+                - @between.each do |between|
+                    tr.table-secondary
                         td= between.name
-                        td= link_to "削除", meal_path(id: between.id), method: :delete, remote: true
-                tr#dinner
-                    th scope="row" supper
-                    - @dinner.each do |dinner|
+                        td= between.carbon 
+                        td= between.protein 
+                        td= between.fat
+                        td 
+                            a data-remote="true" data-method="delete" href="meals/#{between.id}"
+                                i.fas.fa-minus-circle
+                tr
+                    td= link_to "フードを追加", new_meal_path, class: "meal_to_each"
+                    td 
+                    td 
+                    td 
+                    td
+                tr#meal_header
+                    td.meal_timing 夕食
+                - @dinner.each do |dinner|
+                    tr.table-secondary
                         td= dinner.name
-                        td= link_to "削除", meal_path(id: dinner.id), method: :delete, remote: true
+                        td= dinner.carbon
+                        td= dinner.protein 
+                        td= dinner.fat
+                        td 
+                            a data-remote="true" data-method="delete" href="meals/#{dinner.id}"
+                                i.fas.fa-minus-circle
+                tr
+                    td= link_to "フードを追加", new_meal_path, class: "meal_to_each"
+                    td
+                    td 
+                    td 
+                    td 
+                            
+
     div.col-sm
         h2 栄養成分表
         div style="width:70%;"

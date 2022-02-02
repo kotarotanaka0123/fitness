@@ -10,15 +10,17 @@
         p あなたの情報を教えてください
 
         = form_with model: @user, url: add_body_details_path, local: true do |f|   #modelがなくても大丈夫なのはなぜ
-            .body-form 
-                = f.label :weight
-                = f.number_field :weight, step: "0.1"
-            .body-form 
-                = f.label :height
-                = f.number_field :height, step: "0.1"
-            .body-form 
-                = f.label :age
-                = f.number_field :age
+            .mb-3
+                = f.label :weight, class: "form-label"
+                = f.number_field :weight, step: "0.1", class: "form-control"
+            .mb-3
+                = f.label :height, class: "form-label"
+                = f.number_field :height, step: "0.1", class: "form-control"
+            .mb-3
+                = f.label :age, class: "form-label"
+                = f.number_field :age, class: "form-control"
             .goal-flex
                 = f.submit "登録する", class: 'btn btn-primary goal-submit'
                 = link_to "目標を入力", configCalorie_goals_path, class: "btn btn-primary move_to_configCalorie"
+        .back_to_home
+            = link_to 'ホームに戻る', root_path, class: "btn btn-secondary"

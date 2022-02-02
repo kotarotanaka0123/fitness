@@ -1,25 +1,26 @@
 - content_for :css do
     = stylesheet_link_tag 'users/registration'
-section.MuiBox-root
-  div.MuiBox
+
+section.regi-root
+  div.regi-box
     h2 Sign up
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
       = render "users/shared/error_messages", resource: resource
-      .field
-        = f.label :email
+      .mb-3
+        = f.label :email, class: "form-label"
         br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
-      .field
-        = f.label :password
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "name@example.com"
+      .mb-3
+        = f.label :password, class: "form-label"
         - if @minimum_password_length
           em
             | (#{@minimum_password_length} characters minimum)
         br/
-        = f.password_field :password, autocomplete: "new-password"
+        = f.password_field :password, autocomplete: "new-password", class: "form-control"
       .field
-        = f.label :password_confirmation
+        = f.label :password_confirmation, class: "form-label"
         br/
-        = f.password_field :password_confirmation, autocomplete: "new-password"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
       .actions
-        = f.submit "Sign up"
+        = f.submit "Sign up", class: "btn btn-primary"
     = render "users/shared/links"

@@ -1,4 +1,6 @@
 class AchievementController < ApplicationController
+    before_action :authenticate_user!
+    
     #下記のような記述だと、二重にアクセスされるため、本当はよくないだろうが、とりあえずこのまま。
     def index
         @achievements = current_user.achievements.all

@@ -17,7 +17,12 @@ class Users::SessionsController < Devise::SessionsController
     #NOTE: おそらくrequire_no_authenticationのせいでユーザが切り替わらないので、ユーザを更新。
     user = User.find_by(email: params[:user][:email])
     set_flash_message!(:notice, :signed_in)
-    sign_in(resource_name, user)
+    if user.present?
+      sign_in(resource_name, user)
+    else
+      sign_in(resource_name, resource)
+    end
+    
     yield resource if block_given?
     respond_with resource, location: after_sign_in_path_for(resource)
   end

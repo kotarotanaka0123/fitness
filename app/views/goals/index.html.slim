@@ -4,15 +4,23 @@
 .goal-setting 
     .config-box
         .start あなたの目標
-        = @goal.deadline
-        div までに
-        = @goal.slim
-        div  kg
-        div 痩せる。　
+        .deadline-goal-text
+            em 
+                = @goal.deadline
+            small 
+                | までに
+        .slim-goal-text
+            em
+                = @goal.slim
+            em
+                | kg
+            small
+                |痩せる。　
 
         .calorie-goal 目標摂取カロリーは、
-        puts
-            = sprintf("%.3f", @absorbCalorie)
+        strong
+            = @absorbCalorie.round(3)
+            | kcal
         p
             = link_to 'あなたの情報を再入力', body_details_path
         p
