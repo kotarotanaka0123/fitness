@@ -1,8 +1,10 @@
 - content_for :javascript_includes do 
     = javascript_include_tag 'ingredients'
+- content_for :css do 
+    = stylesheet_link_tag "meals"
 
-h1 食事編集画面
-
-= render 'form', meal: @meal
+.meal_form 
+    h1 食事を編集
+    = render 'form', meal: @meal
 
 = render 'modal', meal: @meal, ingredients: @ingredients
