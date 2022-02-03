@@ -173,10 +173,6 @@ class MealsController < ApplicationController
     # end
 
     private
-    
-    def back_to_configBody
-        redirect_to configBody_goals_url if current_user.weight
-    end
 
     def meal_params
         params.require(:meal).permit!

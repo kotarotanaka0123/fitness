@@ -1,30 +1,17 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
   
+  layout 'noBar', except: :index
+  
   def index
-    if current_user.goal
-      @goal = current_user.goal
-      @bmr = BMR.new(current_user).calc_bmr
-      @during = (@goal.deadline - @goal.startday).to_i
-      # 1日あたりの摂取目標
-      @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during
-    else
-      redirect_to configBody_goals_path
+    @goal = current_user.goal
+    @bmr = BMR.new(current_user).calc_bmr
+    @during = (@goal.deadline - @goal.startday).to_i
+    # NOTE: 1日あたりの摂取目標を算出
+    @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during  
+    if @absorbCalorie < 0
+      redirect_to configCalorie_goals_path, notice: "適切な目標を入力してください"
     end
-  end
-
-  def body     
-    render "goals/configBody"
-  end
-
-  def configBody
-    body = user_params   #require(:user)を入れるとエラーになる。
-
-    if current_user.update(body)
-      redirect_to configCalorie_goals_path
-    else
-      render :body
-    end 
   end
 
   def configCalorie
@@ -58,10 +45,6 @@ class GoalsController < ApplicationController
   end
   
   private
-
-  def user_params
-    params.permit(:weight, :height, :age)
-  end
 
   def goal_params
     params.require(:goal).permit(:deadline, :slim)

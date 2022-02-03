@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       registration: "signup",
     },
     :controllers => {
-      :registrations => 'users/registrations',
       :sessions => 'users/sessions',
+      :registrations => 'users/registrations',
       :passwords => 'uses/passwords',
       :confirmations => 'users/confirmations'
   } 
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     get 'username', to: 'users/registrations#username', as: :username_registration
     patch 'add_username', to: 'users/registrations#addingUsername', as: :add_username
     put 'change_username', to: 'users/registrations#changeUsername', as: :change_username
+    get 'body_details', to: 'users/registrations#body_details'
+    patch 'add_body_details', to: 'users/registrations#add_body_details'
+    get 'confirm_email', to: 'users/registrations#confirm_email'
   end
   
   # ホーム画面
@@ -34,8 +37,6 @@ Rails.application.routes.draw do
 
   resources :goals do
     collection do
-      get 'configBody', to: 'goals#body'
-      post :configBody
       get :configCalorie
     end 
   end

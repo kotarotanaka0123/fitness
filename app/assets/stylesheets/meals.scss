@@ -6,3 +6,42 @@
     visibility: hidden;
     color: red;
 }
+
+h2 {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.meal_timing {
+    font-size: 20px;
+    color: rgb(101, 132, 153);
+    font-weight: bold;
+    border-bottom: none;
+    vertical-align: middle;
+}
+
+.subtitle {
+    border: none;
+    color: white;
+}
+
+tr#meal_header td.subtitle.theme {
+    background-color: rgb(50, 108, 173);
+    border:medium solid white;
+    text-align: center;
+}
+
+tr.table-secondary :not(td:first-child) {
+    text-align: center;
+}
+
+
+tr.table-secondary td {
+    border-right: medium solid white;
+    border-left: medium solid white;
+}
+
+.meal_to_each {
+    font-weight: bold;
+    color: rgb(88, 172, 9);
+}
