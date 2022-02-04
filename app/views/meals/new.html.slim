@@ -3,8 +3,6 @@
 
 .meal_form
   h1 食事登録画面
-  .search-meals
-    = link_to "検索", search_meals_path, class: "btn btn-primary rounded-pill"
   = render 'form', meal: @meal
 
 = render 'modal', meal: @meal, ingredients: @ingredients

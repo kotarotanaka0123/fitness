@@ -6,6 +6,8 @@ div.row
     div.col-sm
         h2 食事一覧
         div.table-responsive
+            .search-meals
+                = link_to "検索", search_meals_path
             table.table.table-hover.table-sm
                 tbody
                     tr#mymeal_header
@@ -63,7 +65,7 @@ div.row
                         td= breakfast.carbon 
                         td= breakfast.protein 
                         td= breakfast.fat
-                        td 
+                        td
                             a data-remote="true" data-method="delete" href="meals/#{breakfast.id}"
                                 i.fas.fa-minus-circle
                 tr
