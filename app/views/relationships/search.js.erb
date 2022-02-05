@@ -1,0 +1,13 @@
+$(".searched_users_list li").remove()
+
+$(".searched_users_list").find("ul").append(`<% @users.each do |user| %>
+                                                <li class="list-group-item">
+                                                    <div class="searched_username">
+                                                        <%= user.name %>
+                                                    </div>
+                                                    <div>
+                                                        <%= link_to "フォローする", user_relationships_path(current_user, id: user.id), method: :post, class: "btn btn-primary rounded-pill" %>
+                                                    </div>
+                                                </li>
+                                            <% end %>`);
+

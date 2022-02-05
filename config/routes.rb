@@ -29,9 +29,8 @@ Rails.application.routes.draw do
 
   resources :users do
     # フォロー・フォロワーに関して
-    resource :relationships, only: [:create, :destroy]
-    get 'followings', to: 'relationships#followings', as: 'followings'
-    get 'followers', to: 'relationships#followers'
+    resources :relationships, only: [:index, :create, :destroy]
+    get 'relationships/search', to: 'relationships#search'
     get 'config', to: 'config#index'
   end
 

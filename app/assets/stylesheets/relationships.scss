@@ -1,3 +1,44 @@
 // Place all the styles related to the relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search_users {
+    padding-top: 20px;
+    width: 30%;
+}
+.searched_users_list {
+    width: 30%;
+}
+
+.searched_users_list ul li {
+    display: flex;
+    align-items: center;
+}
+
+.searched_username {
+    flex-grow: 1;
+}
+
+li.following_user {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.following_user_name {
+    font-weight: bold;
+    color: rgb(119, 119, 179);
+}
+
+li.following_user {
+    font-weight: bold;
+}
+
+p {
+    font-weight: bold;
+}
+
+.unfollow-btn {
+    font-size: 12px;
+}
