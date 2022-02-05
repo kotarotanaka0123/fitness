@@ -1,8 +1,9 @@
-h1 食事登録画面
-.search-meals 
-  = link_to "検索", search_meals_path
-  
-= render 'form', meal: @meal
+- content_for :css do
+  = stylesheet_link_tag "meals"
+
+.meal_form
+  h1 食事登録画面
+  = render 'form', meal: @meal
 
 = render 'modal', meal: @meal, ingredients: @ingredients
 

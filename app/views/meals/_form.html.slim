@@ -1,58 +1,76 @@
 = form_with model: meal, local: true do |f|
     div#mealNameError.mealNameError 名前を入力してください。
-    .form-group
-		= f.label "食事名"
+    .mb-3
+		= f.label "食事名", class: "form-label"
 		= f.text_field :name, class: 'form-control', id: 'meal_name'
-	.form-group
-		= f.label "説明"
+	.mb-3
+		= f.label "説明", class: "form-label"
 		= f.text_area :description, rows: 5, class: 'form-control', id: 'meal_description'
-    = f.label :protein
-    = f.number_field :protein, STEP: "0.1"
-    = f.label :fat
-    = f.number_field :fat, STEP: "0.1"
-    = f.label :carbon
-    = f.number_field :carbon, STEP: "0.1"
-    = f.label :fiber
-    = f.number_field :fiber, STEP: "0.1"
-    = f.label :vA
-    = f.number_field :vA, STEP: "0.1"
-    = f.label :vE
-    = f.number_field :vE, STEP: "0.1"
-    = f.label :vB1
-    = f.number_field :vB1, STEP: "0.1"
-    = f.label :vB2
-    = f.number_field :vB2, STEP: "0.1"
-    = f.label :vB6
-    = f.number_field :vB6, STEP: "0.1"
-    = f.label :niacin
-    = f.number_field :niacin, STEP: "0.1"
-    = f.label :yosan
-    = f.number_field :yosan, STEP: "0.1"
-    = f.label :panto
-    = f.number_field :panto, STEP: "0.1"
-    = f.label :biotin
-    = f.number_field :biotin, STEP: "0.1"
-    = f.label :Na
-    = f.number_field :Na, STEP: "0.1"
-    = f.label :K
-    = f.number_field :K, STEP: "0.1"
-    = f.label :Ca
-    = f.number_field :Ca, STEP: "0.1"
-    = f.label :Mg
-    = f.number_field :Mg, STEP: "0.1"
-    = f.label :P
-    = f.number_field :P, STEP: "0.1"
-    = f.label :Fe
-    = f.number_field :Fe, STEP: "0.1"
-    = f.label :Zn
-    = f.number_field :Zn, STEP: "0.1"
-    = f.label :Cu
-    = f.number_field :Cu, STEP: "0.1"
-    = f.label :Mn
-    = f.number_field :Mn, STEP: "0.1"
-    div#ingredients
-        = hidden_field_tag :"meal[ingredient_ids]"
-	= f.submit nil, class: 'btn btn-primary'
-
-= button_to "select my ingredients", select_ingredients_path, method: :get, remote: true
+    h6.title 栄養成分表
+    .nutrition-wrap
+        table
+            thead 
+                tr 
+                    th 含有量
+            tbody 
+                tr 
+                    td.col-1 炭水化物
+                    td.col-2 
+                        = f.number_field :carbon, STEP: "0.1", class: ""
+                    td.col-1 タンパク質
+                    td.col-2 
+                        = f.number_field :protein, STEP: "0.1", class: ""
+                tr 
+                    td.col-1 脂質
+                    td.col-2 
+                        = f.number_field :fat, STEP: "0.1", class: ""
+                    td.col-1
+                    td.col-2 
+                tr
+                    td.col-1 
+                    td.col-2 
+                    td.col-1
+                        div#ingredients
+                            = hidden_field_tag :"meal[ingredient_ids]"
+                    td.col-2 
+                        = button_to "材料から選択", select_ingredients_path, method: :get, remote: true
+    = f.submit nil, class: 'meal_btn'
+        / = f.label :fiber
+        / = f.number_field :fiber, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :vA
+        / = f.number_field :vA, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :vE
+        / = f.number_field :vE, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :vB1
+        / = f.number_field :vB1, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :vB2
+        / = f.number_field :vB2, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :vB6
+        / = f.number_field :vB6, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :niacin
+        / = f.number_field :niacin, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :yosan
+        / = f.number_field :yosan, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :panto
+        / = f.number_field :panto, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :biotin
+        / = f.number_field :biotin, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :Na
+        / = f.number_field :Na, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :K
+        / = f.number_field :K, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :Ca
+        / = f.number_field :Ca, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :Mg
+        / = f.number_field :Mg, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :P
+        / = f.number_field :P, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :Fe
+        / = f.number_field :Fe, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :Zn
+        / = f.number_field :Zn, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :Cu
+        / = f.number_field :Cu, STEP: "0.1", class: "form-control form-control-sm"
+        / = f.label :Mn
+        / = f.number_field :Mn, STEP: "0.1", class: "form-control form-control-sm"
 
