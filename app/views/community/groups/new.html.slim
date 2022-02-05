@@ -13,4 +13,7 @@
             .TextBoxWrapper
                 .editor
                 = f.text_area :describe, id: "Form_Description"
+            .mb-3
+                = f.label "グループ画像", class: "form-label" 
+                = f.file_field :image, class: "form-control form-control-sm"
             = f.submit "保存", class: "btn btn-primary rounded-pill"

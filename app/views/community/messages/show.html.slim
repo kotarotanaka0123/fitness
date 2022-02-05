@@ -1,0 +1,16 @@
+- content_for :css do 
+    = stylesheet_link_tag 'community/messages'
+    
+.Flex-Box 
+    .list-group
+        .list-group-item.list-group-item-action aria-current="true" 
+            .d-flex.w-100.justify-content-end
+                small #{@message.created_at.strftime("%Y-%m-%d")}
+            p.mb-1 #{@message.content}
+            small And some small print.
+    .sidemenu 
+        .new-post 
+            a.btn.btn-primary.rounded-pill href="./messages/new" + 新しい投稿
+        = render 'sidebar', group: @group, message: @message
+
+

@@ -1,0 +1,44 @@
+// Place all the styles related to the community/messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message-frame {
+    padding: 10px 300px;
+}
+
+// show view
+.Flex-Box {
+    display: flex;
+    margin-top: 50px;
+}
+
+.Flex-Box > .list-group {
+    min-width: 700px;
+}
+
+.sidemenu {
+    margin-left: 35px;
+}
+
+.quick-link {
+    margin-top: 30px;
+}
+
+// いいね部分
+.unlike {
+    width: 10px;
+    height: 10px;
+    color: #808080; 
+    margin-left: 5px;
+}
+
+.like {
+    width: 10px;
+    height: 10px;
+    color: #e54747;
+    margin-left: 5px;
+}
+
+small {
+    padding-left: 10px;
+}

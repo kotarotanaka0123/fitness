@@ -1,6 +1,45 @@
+- content_for :css do 
+    = stylesheet_link_tag "community/groups/show"
+
 .Group-Header
     .Group-Header-Info
         .Group-Title
             h2 = @group.name
             .group-description
                 = @group.describe
+            .group-members
+                | オーナー名：#{@owner.name} メンバー数：#{@group.users.count}
+        .group-options
+            .dropdown
+                button#dropdownMenuButton1.btn.btn-primary.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" type="button" 
+                    | オプション
+                ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
+                    li
+                        a.dropdown-item href="./#{@group.id}/edit"  グループを編集する
+                    li
+                        a.dropdown-item href="#"  グループに招待する
+                    li
+                        a.dropdown-item href="./#{@group.id}" data-method="delete"  グループを削除する
+
+    .groupEachContents 
+        h5 招待中
+        ul.list-group.list-group-flush
+            // TODO: 招待中のリストと招待キャンセルボタンの作成
+            - User.all.each do |user|
+                li.list-group-item 
+                    = user.name
+        .EachData 
+        h5 メッセージ
+        ol.list-group.all-messages
+            - @group.messages.each do |message|
+                a.list-group-item.list-group-item-action aria-current="true" href="./#{@group.id}/messages/#{message.id}"
+                    .d-flex.w-100.justify-content-end
+                        small #{message.created_at.strftime("%Y-%m-%d")}
+                    p.mb-1 #{message.content}
+                    small And some small print.
+        .discussion-start 
+            a.btn.btn-primary href="./#{@group.id}/messages/new" + メッセージを投稿する
+        .EachMessage
+
+
+                    

@@ -11,6 +11,13 @@ html
         = yield :javascript_includes
         link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"
     
-    body 
-        .container 
+    body
+        .login
+            a.loginlink href="/signin" ログイン
+        .container
+            - if flash.notice.present? 
+                .alert.alert-success= flash.notice
+            - elsif flash.now[:error].present?
+                .alert.alert-success= flash.now[:error]
+            
             = yield

@@ -3,7 +3,7 @@ class MealsController < ApplicationController
     before_action :set_q, only: [:search, :search_result]
 
     def index
-        @meals = current_user.meals.where(meal_type: nil).page(params[:page]).per(2)
+        @meals = current_user.meals.where(meal_type: nil).order(updated_at: :DESC).page(params[:page]).per(5)
 
 
         @breakfast = current_user.meals.where(meal_type: 'breakfast')
@@ -95,10 +95,18 @@ class MealsController < ApplicationController
     end
 
     def time
-        origin = current_user.meals.find(params[:id])
-        @meal = origin.dup
-        @meal.save
-        @meal.update(meal_type: params[:meal_type])
+        # NOTE: 他の人が作成した食事を摂取
+        if params[:others]
+            origin = Meal.find(params[:id])
+            @meal = origin.dup
+            @meal.save
+            @meal.update(meal_type: params[:meal_type], user_id: current_user.id)
+        else
+            origin = current_user.meals.find(params[:id])
+            @meal = origin.dup
+            @meal.save
+            @meal.update(meal_type: params[:meal_type])
+        end
 
         redirect_to meals_path
     end
@@ -173,10 +181,6 @@ class MealsController < ApplicationController
     # end
 
     private
-    
-    def back_to_configBody
-        redirect_to configBody_goals_url if current_user.weight
-    end
 
     def meal_params
         params.require(:meal).permit!

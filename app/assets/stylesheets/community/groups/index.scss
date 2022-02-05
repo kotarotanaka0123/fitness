@@ -41,12 +41,12 @@ a.newGroupButton {
 .mygroupDetails {
 }
 
-ul.DataList {
+.DataList {
     display: block;
     margin-top: 0;
 }
 
-ul.DataList .EachData {
+.DataList .EachData {
     display: flex;
     border-color: black;
 }
@@ -56,14 +56,25 @@ ul.DataList .EachData {
     font-size: 15px;
 }
 
-.EachDataDetails {
-    flex-grow: 1;
-    margin-top: 20px;
+.EachData img {
+    margin: 15px;
+    width: 84px;
+    height: 84px;
 }
 
-.joinGroup {
+.EachDataDetails {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+}
+
+.joinGroup, .inviteGroup, .dropdown {
     display: flex;
     align-items: center;
+}
+
+.dropdown {
+    margin-left: 20px;
 }
 
 .groupName, .groupDescription, .numberOfGroups {

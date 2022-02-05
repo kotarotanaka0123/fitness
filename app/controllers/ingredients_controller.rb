@@ -1,6 +1,8 @@
 class IngredientsController < ApplicationController
     # before_action :current_user
     before_action :set_q, only: [:search, :search_result]
+    before_action :back_to_configBody
+    before_action :back_to_configCalorie
     
     def index
         @ingredients = current_user.ingredients.all

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_092945) do
+ActiveRecord::Schema.define(version: 2022_01_29_062359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2022_01_16_092945) do
     t.datetime "updated_at", null: false
     t.string "latest_time"
     t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
+
+  create_table "add_user_to_groups", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.boolean "activation", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -61,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_01_16_092945) do
     t.datetime "updated_at", null: false
     t.text "describe"
     t.integer "owner_id", default: 0
+    t.string "image"
     t.index ["name"], name: "index_groups_on_name", unique: true
   end
 
@@ -247,6 +256,7 @@ ActiveRecord::Schema.define(version: 2022_01_16_092945) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

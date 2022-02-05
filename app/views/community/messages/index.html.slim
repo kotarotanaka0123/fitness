@@ -1,0 +1,25 @@
+- content_for :css do 
+    = stylesheet_link_tag 'community/messages'
+
+.Flex-Box
+    ul.list-group.list-group-flush
+        - @messages.each do |message|
+            a href="groups/#{@group.id}/messages/#{message.id}"
+                li.list-group-item aria-current="true" 
+                    .d-flex.w-100.justify-content-end
+                        small #{message.created_at.strftime("%Y-%m-%d")}
+                    p.mb-1 #{message.content}
+                    small 
+                        |いいね
+                        - if !message.liked_users.include?(current_user)
+                            = link_to likes_community_group_message_path(@group, message), method: :post
+                                i.far.fa-heart.unlike
+                        - else
+                            = link_to likes_community_group_message_path(@group, message), method: :delete
+                                i.far.fa-heart.like
+                    small
+                        | いいね数：#{current_user.likes.count}
+    .sidemenu 
+        .new-post
+            a.btn.btn-primary.rounded-pill href="./messages/new" + 新しい投稿        
+        = render 'sidebar', group: @group

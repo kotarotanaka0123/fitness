@@ -1,9 +1,7 @@
-var groupname = <%=group.name%>;
+var groupname = "<%=@group.name%>";
 
-$('.modal').on('shown.bs.modal', function () {
-    $('.modal').focus();
+$('#joinModal').on('shown.bs.modal', function () {
+    $('#joinModal').focus();
 })
 
-$('.modal').modal("show");
-
-$('.modal-header h5').html(`${groupname}`);
+$('#joinModal').modal("show");

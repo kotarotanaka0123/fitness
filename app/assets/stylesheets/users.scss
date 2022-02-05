@@ -1,0 +1,75 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.block {
+    display: block;
+    margin: 20px 200px;
+}
+
+.no_name_profile {
+    width: 200px;
+    height: 200px;
+}
+
+.image-thumbnail {
+    width: 200px;
+    height: 200px;
+}
+
+.profile {
+    display: flex;
+    background-color: rgba(189, 189, 189, 0.3);
+    padding: 30px;
+    margin: 20px 300px;
+    width: 670px;
+}
+
+.profile-edit {
+    display: flex;
+    background-color: rgba(189, 189, 189, 0.3);
+    padding: 30px;
+    width: max;
+}
+
+.profile-detail {
+    display: block;
+}
+
+.profile-detail * {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.user_name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.user_age {
+    font-size: 15px;
+}
+
+.user_created_time {
+    font-size: 20px;
+}
+
+.edit-profile {
+    margin-top: 30px;
+    margin-left: 65px;
+}
+
+.image-upload-area {
+    padding-left: 30px;
+}
+
+.image-upload-area p {
+    font-size: 18px;
+    color:rgb(74, 132, 187);
+    font-weight:bold;
+}
+
+.image-select-field, .submit-image {
+    margin-top: 15px;
+}
+

@@ -1,0 +1,23 @@
+- content_for :css do 
+    = stylesheet_link_tag "users"
+
+.profile 
+    .profile-image
+        - if @user.image?
+            img.img-thumbnail src="#{@user.image.url}" class="image-thumbnail"
+        - else
+            = image_tag "noName_profile.jpeg", class: "img-thumbnail no_name_profile"
+    .profile-detail
+        .user_name 
+            = @user.name? ? @user.name : "-"
+        .user_age 
+            = @user.age? ? @user.age.to_s+"歳" : "-"
+        .user_created_time 
+            | member since  
+            = @user.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        .edit-profile
+            = link_to "画像を編集", edit_user_path(@user), class: "btn btn-success"
+            
+        
+            
+
