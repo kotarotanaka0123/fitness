@@ -1,11 +1,14 @@
+- content_for :css do 
+    = stylesheet_link_tag "application"
+
 .flex 
     .flex-1 
         h1.setting-title アカウント設定
         .itemWrapper 
-            ol  
-                li 
+            ol.list-group.list-group-numbered
+                li.list-group-item
                     = link_to :パスワード変更, edit_user_password_url(@resource, reset_password_token: @token)
-                li 
+                li.list-group-item
                     = link_to "メールアドレス/環境設定を変更", edit_user_registration_url 
-                li 
+                li.list-group-item 
                     = link_to "ユーザ名を変更", change_username_url

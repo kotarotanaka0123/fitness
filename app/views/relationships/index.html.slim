@@ -8,20 +8,36 @@
 .searched_users_list 
     ul.list-group
 
-h4 Following Users
-- if @followingUsers.exists?
-    ul.list-group
-        - @followingUsers.each do |user|
-            li.following_user.list-group-item
-                .following_user_name 
-                    = user.name
-                .follow_around
-                    | フォロー数: #{user.followings.count}
-                    | &ensp;
-                    | フォロワー数: #{user.followers.count}
-                    | &emsp;
-                    = link_to "フォローをやめる", user_relationship_path(current_user, user.id), method: :delete, class: "btn btn-secondary unfollow-btn"
-- else
-    p フォローしているユーザーはいません
-
+.follow_area
+    .following_area
+        h4 Following Users
+        - if @followingUsers.exists?
+            ul.list-group
+                - @followingUsers.each do |user|
+                    li.following_user.list-group-item
+                        .following_user_name 
+                            = user.name
+                        .follow_around
+                            | フォロー数: #{user.followings.count}
+                            | &ensp;
+                            | フォロワー数: #{user.followers.count}
+                            | &emsp;
+                            = link_to "フォローをやめる", user_relationship_path(current_user, user.id), method: :delete, class: "btn btn-secondary unfollow-btn"
+        - else
+            p あなたがフォローしているユーザーはいません
+    
+    .follower_area
+        h4 Follower Users
+        - if @followerUsers.exists?
+            ul.list-group
+                - @followerUsers.each do |user|
+                    li.follower_user.list-group-item
+                        .follower_user_name 
+                            = user.name
+                        .follow_around
+                            | フォロー数: #{user.followings.count}
+                            | &ensp;
+                            | フォロワー数: #{user.followers.count}
+        - else
+            p あなたをフォローしているユーザーはいません
 
