@@ -1,0 +1,27 @@
+- content_for :css do 
+    = stylesheet_link_tag "relationships"
+
+.search_users
+    = search_form_for @q, url: user_relationships_search_path(current_user.id), method: :get, remote: true do |f|
+        = f.search_field :name_cont, placeholder: "ユーザ検索", class: "form-control"
+        = f.submit "検索"
+.searched_users_list 
+    ul.list-group
+
+h4 Following Users
+- if @followingUsers.exists?
+    ul.list-group
+        - @followingUsers.each do |user|
+            li.following_user.list-group-item
+                .following_user_name 
+                    = user.name
+                .follow_around
+                    | フォロー数: #{user.followings.count}
+                    | &ensp;
+                    | フォロワー数: #{user.followers.count}
+                    | &emsp;
+                    = link_to "フォローをやめる", user_relationship_path(current_user, user.id), method: :delete, class: "btn btn-secondary unfollow-btn"
+- else
+    p フォローしているユーザーはいません
+
+

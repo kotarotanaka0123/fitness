@@ -24,7 +24,7 @@ html
                   = current_user.name
                 | さん
             li
-              a.notif.user href="/groups" 
+              a.notif.user href="/users/#{current_user.id}/relationships" 
                 i.fa.fa-address-book area-hidden="true"
                   span.count 
             li
