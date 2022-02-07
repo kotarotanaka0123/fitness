@@ -81,3 +81,19 @@ a.newGroupButton {
     margin: 10px 0;
     min-height: 15px;
 }
+
+div[id^="checked_users"] {
+    display: flex;
+}
+
+.checked_user {
+    margin: 0 5px;
+}
+
+.checked_user button {
+    display: flex;
+}
+
+.delete_checked_user {
+    margin-left: 5px;
+}

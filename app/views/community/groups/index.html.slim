@@ -34,13 +34,15 @@
                     .numberOfGroups
                         | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
                 .inviteGroup
-                    button#invite-user-btn.btn.btn-primary.rounded-pill ユーザを招待
-                .inviteModal
-                    = render "inviteModal", group: group, users: @users, q: @q
+                    button.invite-user-btn.btn.btn-primary.rounded-pill data-bs-toggle="modal" data-bs-target="#inviteModal#{group.id}"
+                        | ユーザを招待
+            // NOTE: ユーザ招待のモーダル
+            = render "inviteModal", group: group
+
                 .dropdown
                     #dropdownMenuButton1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
                         i.fas.fa-ellipsis-v
-                    ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
+                    ul.dropdown-menu aria-labelledby="dropdownMenuButton1"
                         li
                             a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
                         li
@@ -68,15 +70,3 @@
                 .joinGroup
                     = link_to "参加", join_community_group_url(id: group.id), class: "btn btn-primary rounded-pill", remote: true
                 = render "joinModal", group: group
-
-#exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1" 
-    .modal-dialog
-        .modal-content
-            .modal-header
-                h5#exampleModalLabel.modal-title Modal title
-                button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
-            .modal-body
-                | \...
-            .modal-footer
-                button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
-                button.btn.btn-primary type="button"  Save changes
