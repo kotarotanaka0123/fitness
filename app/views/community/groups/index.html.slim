@@ -61,7 +61,7 @@
                             i.fas.fa-ellipsis-v
                         ul.dropdown-menu aria-labelledby="dropdownMenuButton1"
                             li
-                                a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
+                                a.dropdown-item href="./groups/#{group.id}/edit"  グループを編集
                             li
                                 a.dropdown-item.group-delete href="javascript:delete_modal(#{group.id});" グループを削除する
                 = render "deleteModal", group: group

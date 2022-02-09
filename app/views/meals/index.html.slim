@@ -7,10 +7,11 @@ div.row
         h2 食事一覧
         div.table-responsive
             .search-meals
-                = link_to "検索", search_meals_path
+                = link_to "外部検索", search_meals_path
             table.table.table-hover.table-sm
                 tbody
                     tr#mymeal_header
+                        td
                         td
                         td.subtitle.theme width="12%"
                             | 炭水化物
@@ -27,6 +28,7 @@ div.row
                     - @meals.each do |meal|
                         tr
                             td= meal.name
+                            td= meal.description
                             td= meal.carbon
                             td= meal.protein 
                             td= meal.fat 

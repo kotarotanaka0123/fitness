@@ -19,7 +19,8 @@ div.column-table-cell
                         .card-body
                             h5.card-title　本日の必要摂取カロリー：#{@residueCalorie.round(3)} kcal
                             .diary-card
-                                img.img-thumbnail src="assets/profile.jpg" alt=""                                 
+                                a href="users/#{current_user.id}"
+                                    img.img-thumbnail src="#{current_user.image.url}" alt=""
                                 a.btn.btn-light href="/meals/new" フードを追加                                    
                             .goal-bar
                                 .progress
