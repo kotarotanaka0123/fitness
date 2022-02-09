@@ -5,13 +5,15 @@ class GoalsController < ApplicationController
   
   def index
     @goal = current_user.goal
-    @bmr = BMR.new(current_user).calc_bmr
-    @during = (@goal.deadline - @goal.startday).to_i
+    @bmr = BMR.new(current_user)
+    @during = @bmr.calc_span
     # NOTE: 1日あたりの摂取目標を算出
-    @absorbCalorie = @bmr*1.1 - 7200*@goal.slim/@during  
+      @absorbCalorie = @bmr.calc_absorb_calorie
     if @absorbCalorie < 0
       redirect_to configCalorie_goals_path, notice: "適切な目標を入力してください"
     end
+
+    @calc_predicted_result = @bmr.calc_predicted_result
   end
 
   def configCalorie
