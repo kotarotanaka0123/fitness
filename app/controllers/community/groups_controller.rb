@@ -6,6 +6,7 @@ class Community::GroupsController < CommunityController
     def index
         @groups = not_joining_groups # HACK: @groupに配列で入れているが、Group::ActiveRecord_Relationの形で入れたほうが良いかも。
         @users = User.where.not(id: current_user.id)
+        @invited_groups = current_user.invited_groups
     end
 
     def search
@@ -91,6 +92,17 @@ class Community::GroupsController < CommunityController
         }
         format.js
         end
+    end
+
+    def join_invited_group
+        group = Group.find(params[:id])
+        if !group.users.ids.include?(current_user.id)
+            group.users << current_user
+        end
+        # NOTE: 招待を消す
+        current_user.add_user_to_group.find_by(group_id: group.id).destroy
+
+        render :index
     end
 
     private

@@ -1,9 +1,17 @@
-function delete_modal() {
-    $("#deleteModal").on("shown.bs.modal", function() {
-        $("deleteMOdal").find(".modal-footer a").focus();
+function delete_modal(group_id) {
+    $(`#deleteModal${group_id}`).on("shown.bs.modal", function() {
+        $(`#deleteModal${group_id}`).find(".modal-footer a").focus();
     });
 
-    $("#deleteModal").modal("show");
+    $(`#deleteModal${group_id}`).modal("show");
+}
+
+function join_modal(group_id) {
+    $(`#joinModal${group_id}`).on("shown.bs.modal", function() {
+        $(`#joinModal${group_id}`).find(".modal-footer a").focus();
+    });
+
+    $(`#joinModal${group_id}`).modal("show");
 }
 
 //NOTE: 検索したユーザの一覧を表示する機能

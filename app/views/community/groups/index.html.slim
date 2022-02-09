@@ -3,6 +3,22 @@
 - content_for :javascript_includes do
     = javascript_include_tag "community/groups"
 
+.group_invited 
+    ol.list-group.list-group-numbered.invited_groups_list
+        - if @invited_groups.present?
+            h4 招待されているグループがあります
+            - @invited_groups.each do |invited_group|
+                li.list-group-item.d-flex.justify-content-between.align-items-start
+                    .ms-2.me-auto
+                        .fw-bold #{invited_group.name}
+                        | #{invited_group.describe}
+                        | &ensp;
+                        | メンバー数：#{invited_group.users.count}
+                    .join-group
+                        = link_to '参加する', join_invited_group_community_group_path(invited_group.id), class: 'btn btn-primary rounded-pill'
+                    
+
+
 .flex_group
     .flex_container1 
     = search_form_for @q, url: search_community_groups_url, method: :get do |f|
@@ -36,17 +52,18 @@
                 .inviteGroup
                     button.invite-user-btn.btn.btn-primary.rounded-pill data-bs-toggle="modal" data-bs-target="#inviteModal#{group.id}"
                         | ユーザを招待
-            // NOTE: ユーザ招待のモーダル
-            = render "inviteModal", group: group
+                // NOTE: ユーザ招待のモーダル
+                = render "inviteModal", group: group
 
-                .dropdown
-                    #dropdownMenuButton1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
-                        i.fas.fa-ellipsis-v
-                    ul.dropdown-menu aria-labelledby="dropdownMenuButton1"
-                        li
-                            a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
-                        li
-                            a.dropdown-item.group-delete href="javascript:delete_modal();" グループを削除する
+                - if group.owner_id == current_user.id
+                    .dropdown
+                        div id="dropdownMenuButton1_#{group.id}" aria-expanded="false" data-bs-toggle="dropdown" type="button"
+                            i.fas.fa-ellipsis-v
+                        ul.dropdown-menu aria-labelledby="dropdownMenuButton1"
+                            li
+                                a.dropdown-item href="community/groups/#{group.id}/edit"  グループを編集
+                            li
+                                a.dropdown-item.group-delete href="javascript:delete_modal(#{group.id});" グループを削除する
                 = render "deleteModal", group: group
 
     h2.pageHeadingBoxTitle.border-bottom.fw-bold 他のグループ
@@ -68,5 +85,5 @@
                     .numberOfGroups
                         | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
                 .joinGroup
-                    = link_to "参加", join_community_group_url(id: group.id), class: "btn btn-primary rounded-pill", remote: true
+                    a.btn.btn-primary.rounded-pill href="javascript:join_modal(#{group.id});" 参加
                 = render "joinModal", group: group
