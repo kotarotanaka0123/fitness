@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
     @user.assign_attributes(name: params[:user][:name])
     #NOTE: 体重身長などのバリデーションはここでは外したい。
-    if @user.save(validate: false) 
+    if @user.save(validate: false)
       #NOTE: ユーザ名登録後、すぐにログイン状態にしたい。
       sign_in(:user, @user)
       redirect_to body_details_path

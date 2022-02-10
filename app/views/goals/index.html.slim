@@ -3,25 +3,48 @@
 
 .goal-setting 
     .config-box
-        .start あなたの目標
-        .deadline-goal-text
-            em 
-                = @goal.deadline
-            small 
-                | までに
-        .slim-goal-text
-            em
-                = @goal.slim
-            em
-                | kg
-            small
-                |痩せる。　
+        div
+            .start あなたの目標
 
-        .calorie-goal 目標摂取カロリーは、
-        strong
-            = @absorbCalorie.round(3)
-            | kcal
-        p
-            = link_to 'あなたの情報を再入力', body_details_path
-        p
-            = link_to '目標を再入力', configCalorie_goals_path
+            br/
+
+            .deadline-goal-text
+                em 
+                    = @goal.deadline
+                small 
+                    | までに
+            .slim-goal-text
+                em
+                    = @goal.slim
+                em
+                    | kg
+                small
+                    |痩せる。　
+
+            br/
+            br/
+
+            .calorie-goal 目標摂取カロリーは、
+            strong
+                = @absorbCalorie.round(3)
+                | kcal
+    .goal_warning 
+        div
+            .goal_warning_start 
+                | 今後摂取目標を守った場合
+            .deadline_goal_text 
+                em
+                    = @goal.deadline
+                small 
+                    | までに
+            .slim-goal-text 
+                em
+                    = @calc_predicted_result.round(1)
+                em 
+                    | kg
+                small 
+                    | 痩せることが可能
+            div 
+                = link_to 'あなたの情報を再入力', body_details_path, class: "btn btn-primary rounded-pill"
+            div 
+                = link_to '目標を再入力', configCalorie_goals_path, class: "btn btn-primary rounded-pill"

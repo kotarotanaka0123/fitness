@@ -19,14 +19,22 @@
     flex-grow: 1;
 }
 
-li.following_user {
+.follow_area {
+    display: flex;
+}
+
+.following_area, .follower_area {
     width: 40%;
+}
+
+li.following_user {
+    margin: 0 20px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.following_user_name {
+.following_user_name, .follower_user_name {
     font-weight: bold;
     color: rgb(119, 119, 179);
 }

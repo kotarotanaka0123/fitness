@@ -1,8 +1,8 @@
-#deleteModal.modal.fade aria-hidden="true" aria-labelledby="deleteModalLabel" tabindex="-1" 
+div.modal.fade id="deleteModal#{group.id}" aria-hidden="true" aria-labelledby="deleteModalLabel" tabindex="-1" 
     .modal-dialog
         .modal-content
             .modal-body
-                h5#deleteModalLabel.modal-title 本当に削除しますか？
+                h5.modal-title id="deleteModalLabel#{group.id}" 本当に削除しますか？
             .modal-footer
                 button.btn.btn-secondary data-bs-dismiss="modal" type="button"  閉じる
                 a.btn.btn-primary.rounded-pill href="./groups/#{group.id}" data-method="delete"  削除

@@ -87,11 +87,13 @@ Rails.application.routes.draw do
       end
       member do
         get :join, to: 'groups#join'
-        get :invite_users, to: 'groups#inviteUsers'
-        post :invite_users, to: 'groups#create_inviteUsers'
+        get :join_invited_group, to: 'groups#join_invited_group'
       end
       collection do
         get :search, to: 'groups#search'
+        get :userlist, to: 'groups#userlist'
+        get :invite_users, to: 'groups#inviteUsers'
+        post :invite_users, to: 'groups#create_inviteUsers'
       end
     end
   end

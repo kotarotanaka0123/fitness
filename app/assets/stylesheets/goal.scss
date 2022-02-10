@@ -6,6 +6,7 @@
 .goal-setting {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .goal-box {
@@ -42,16 +43,28 @@ em {
     font-size: 30px;
 }
 
-// 設定画面
-.config-body, .config-calorie, .goal-setting {
-    margin-top: 4px;
-    display: flex;
-    background-image: image-url("background.jpg");
+.goal_warning_start {
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.config-box {
+.goal_warning div div {
+    margin: 15px 0;
+}
+
+// 設定画面
+.config-body, .config-calorie, .goal-setting {
+    display: flex;
+    justify-content: center;
+    background-image: image-url("background.jpg");
+    height: 400px;
+    align-items: center;
+}
+
+.config-box, .goal_warning {
     width: 300px;
-    margin: 20px auto;
+    display: flex;
+    justify-content: center;
 }
 
 p {
