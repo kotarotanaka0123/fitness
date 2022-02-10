@@ -24,14 +24,14 @@ html
                   = current_user.name
                 | さん
             li
-              a.notif.user href="/groups" 
+              a.notif.user href="/users/#{current_user.id}/relationships" 
                 i.fa.fa-address-book area-hidden="true"
-                  span.count 
+                  span.count #{current_user.followers.count}
             li
-              a.notif.mail href="/groups" 
+              a.notif.mail href="#" 
                 i.fa.fa-envelope area-hidden="true"
-                  span.count 
-            li 
+                  span.count #
+            li
               a href="/users/#{current_user.id}/config"
                 i.fas.fa-cog area-hidden="true"
             li 

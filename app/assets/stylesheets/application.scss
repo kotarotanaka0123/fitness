@@ -102,22 +102,23 @@ ul {
 .header-wrap ul li {
   border-right: 1px solid #e6e6e6;
   display: inline-block;
+  justify-content: center;
   height: 16px;
   line-height: 16px;
   padding: 0 10px;
 }
 
-.header-wrap ul li > a.user {
-  margin-right: 5px;
-}
-
 .header-wrap ul li > a.mail {
-  padding-left: 23px;
+  padding-left: 5px;
 }
 
 .header-wrap ul li > a.notif {
-  padding: 0 0 0 25px;
+  padding: 0;
   height: 14px;
+}
+
+a.notif span {
+  padding-left: 7px;
 }
 
 #header #nav-bg {
@@ -142,4 +143,15 @@ ul {
 
 #header #nav-bg a:hover {
   background-color: #0a5282;
+}
+
+// config
+
+h1.setting-title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.itemWrapper ol {
+  width: 40%;
 }

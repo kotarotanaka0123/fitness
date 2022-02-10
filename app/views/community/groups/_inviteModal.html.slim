@@ -1,22 +1,17 @@
-#inviteModal.modal.fade aria-hidden="true" aria-labelledby="inviteModalLabel" tabindex="-1"
+div id="inviteModal#{group.id}" class="modal fade" aria-hidden="true" aria-labelledby="inviteModalLabel" tabindex="-1"
     .modal-dialog
         .modal-content
             .modal-header 
                 h5.modal-title グループへの招待
             .modal-body
-                h5#inviteModalLabel.modal-title 招待するユーザの選択
+                h5.inviteModalLabel.modal-title 招待するユーザの選択
                 .input-group.mb-3
-                    div class="input_name_search form-control #{group.id}" type="text" contenteditable=true
-                #user_check
-                    ul.list-group
-                        - users.each do |user|
-                            li class="#{user.id} list-group-item"
-                                .inviteUser #{user.name}
+                    input class="input_name_search form-control" type="text" data-id="#{group.id}"
+                //NOTE: ここに選択されたユーザを表示
+                div id="checked_users#{group.id}"
+                
+                .user_check
+                    ul.list-group id="user_list#{group.id}"
             .modal-footer
                 button.btn.btn-secondary.rounded-pill data-bs-dismiss="modal" type="button" キャンセル
-                button.btn.btn-primary.rounded-pill.invite type="button" 招待
-
-// TODO: search_fieldの下にuser一覧を表示（デフォルトではhide)
-//       search_fieldに何か入力したら、それを:indexにajaxで送る
-//       送られてきた文字を名前に含むユーザのidだけ取り出す。（コントローラ）
-//       そのidのデータだけhide→show。
+                button class="btn btn-primary rounded-pill invite" type="button" data-id="#{group.id}" 招待

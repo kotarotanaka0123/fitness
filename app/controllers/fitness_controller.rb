@@ -17,9 +17,14 @@ class FitnessController < ApplicationController
 
     achievement = current_user.achievements.last
     if achievement.present?
-      @residueCalorie = @absorbCalorie - achievement.calorie
-      # 目標を100%とすると現在のカロリーは ↓
-      @goalPercentage = (@absorbCalorie-@residueCalorie)/@absorbCalorie*100
+      if @absorbCalorie <= achievement.calorie
+        @residueCalorie = 0
+        @goalPercentage = 100
+      else
+        @residueCalorie = @absorbCalorie - achievement.calorie
+        # 目標を100%とすると現在のカロリーは ↓
+        @goalPercentage = (@absorbCalorie-@residueCalorie)/@absorbCalorie*100
+      end
     else
       @residueCalorie = @absorbCalorie
       @goalPercentage = 0

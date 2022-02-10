@@ -26,13 +26,16 @@ class User < ApplicationRecord
     has_many :groups, through: :group_users
 
     has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-    has_many :followers, through: :reverseof_relationships, source: :followed
+    has_many :followers, through: :reverse_of_relationships, source: :followed
 
     has_many :relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
     has_many :followings, through: :relationships, source: :follower
 
     has_many :likes, dependent: :destroy
     has_many :liked_messages, through: :likes, source: :message
+
+    has_many :add_user_to_group, dependent: :destroy
+    has_many :invited_groups, through: :add_user_to_group, source: :group
     
     def follow(user_id)
         relationships.create(follower_id: user_id)
