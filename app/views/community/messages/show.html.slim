@@ -7,7 +7,19 @@
             .d-flex.w-100.justify-content-end
                 small #{@message.created_at.strftime("%Y-%m-%d")}
             p.mb-1 #{@message.content}
-            small And some small print.
+            p.mb-1 
+                img src="#{@message.image.url}"
+            small
+                |いいね
+                - if !@message.liked_users.include?(current_user)
+                    = link_to likes_community_group_message_path(@group, @message), method: :post
+                        i.far.fa-heart.unlike
+                - else
+                    = link_to likes_community_group_message_path(@group, @message), method: :delete
+                        i.far.fa-heart.like
+            small
+                | &emsp;
+                | いいね数：#{@message.likes.count}
     .sidemenu 
         .new-post 
             a.btn.btn-primary.rounded-pill href="./messages/new" + 新しい投稿

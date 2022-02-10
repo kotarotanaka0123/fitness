@@ -31,12 +31,12 @@ class Community::GroupsController < CommunityController
     end
 
     def edit
-        redirect_to groups_path, notice: "作成者でないと編集できません。" unless @group.owner_id == current_user.id
+        redirect_to community_groups_path, notice: "作成者でないと編集できません。" unless @group.owner_id == current_user.id
     end
 
     def update
         if @group.update(group_params)
-            redirect_to groups_path, notice: 'グループを更新しました'
+            redirect_to community_group_path(@group.id), notice: 'グループを更新しました'
         else
             render :edit
         end
@@ -102,7 +102,7 @@ class Community::GroupsController < CommunityController
         # NOTE: 招待を消す
         current_user.add_user_to_group.find_by(group_id: group.id).destroy
 
-        render :index
+        redirect_to community_group_url(group.id), notice: "グループ「#{group.name}」に参加しました！" 
     end
 
     private

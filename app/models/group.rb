@@ -5,6 +5,9 @@ class Group < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     accepts_nested_attributes_for :group_users
 
+    has_many :add_user_to_group, dependent: :destroy
+    has_many :inviting_users, through: :add_user_to_group, source: :user
+
     mount_uploader :image, ImageUploader
     
     def show_last_message

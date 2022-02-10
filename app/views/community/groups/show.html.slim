@@ -1,5 +1,8 @@
 - content_for :css do 
     = stylesheet_link_tag "community/groups/show"
+    = stylesheet_link_tag 'community/messages'
+- content_for :javascript_includes do 
+    = javascript_include_tag "community/groups"
 
 .Group-Header
     .Group-Header-Info
@@ -13,31 +16,46 @@
             .dropdown
                 button#dropdownMenuButton1.btn.btn-primary.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" type="button" 
                     | オプション
-                ul.dropdown-menu aria-labelledby="dropdownMenuButton1" 
+                ul.dropdown-menu aria-labelledby="dropdownMenuButton1"
                     li
-                        a.dropdown-item href="./#{@group.id}/edit"  グループを編集する
-                    li
-                        a.dropdown-item href="#"  グループに招待する
-                    li
-                        a.dropdown-item href="./#{@group.id}" data-method="delete"  グループを削除する
+                        button.dropdown-item.invite-user-btn data-bs-toggle="modal" data-bs-target="#inviteModal#{@group.id}" グループに招待する
+                    - if @group.owner_id == current_user.id
+                        li
+                            a.dropdown-item href="./#{@group.id}/edit"  グループを編集する
+                        li
+                            a.dropdown-item href="./#{@group.id}" data-method="delete"  グループを削除する
+                = render "inviteModal", group: @group
 
     .groupEachContents 
         h5 招待中
         ul.list-group.list-group-flush
             // TODO: 招待中のリストと招待キャンセルボタンの作成
-            - User.all.each do |user|
+            - @group.inviting_users.each do |inviting_user|
                 li.list-group-item 
-                    = user.name
+                    = inviting_user.name
         .EachData 
         h5 メッセージ
         ol.list-group.all-messages
             - @group.messages.each do |message|
-                a.list-group-item.list-group-item-action aria-current="true" href="./#{@group.id}/messages/#{message.id}"
-                    .d-flex.w-100.justify-content-end
-                        small #{message.created_at.strftime("%Y-%m-%d")}
-                    p.mb-1 #{message.content}
-                    small And some small print.
-        .discussion-start 
+                a aria-current="true" href="./#{@group.id}/messages/#{message.id}"
+                    li.list-group-item.list-group-item-action
+                        .d-flex.w-100.justify-content-end
+                            small #{message.created_at.strftime("%Y-%m-%d")}
+                        p.mb-1 #{message.content}
+                        p.mb-1
+                            img src="#{message.image.url}"
+                        small
+                            |いいね
+                            - if !message.liked_users.include?(current_user)
+                                = link_to likes_community_group_message_path(@group, message), method: :post
+                                    i.far.fa-heart.unlike
+                            - else
+                                = link_to likes_community_group_message_path(@group, message), method: :delete
+                                    i.far.fa-heart.like
+                        small
+                            | &emsp;
+                            | いいね数：#{message.likes.count}
+        .discussion-start
             a.btn.btn-primary href="./#{@group.id}/messages/new" + メッセージを投稿する
         .EachMessage
 

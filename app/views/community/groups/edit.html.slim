@@ -1,8 +1,8 @@
-- content_for :css do
-    = stylesheet_link_tag 'community/groups'
+- content_for :css do 
+    = stylesheet_link_tag "community/groups"
 
 .group-frame
-    h1.H 新規グループ
+    h1.H グループ編集
     .FormWrapper.GroupForm 
         = form_with model: [:community, @group] do |f|
             .P

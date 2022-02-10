@@ -35,7 +35,6 @@ class User < ApplicationRecord
     has_many :liked_messages, through: :likes, source: :message
 
     has_many :add_user_to_group, dependent: :destroy
-    has_many :inviting_users, through: :add_user_to_group, source: :user
     has_many :invited_groups, through: :add_user_to_group, source: :group
     
     def follow(user_id)
