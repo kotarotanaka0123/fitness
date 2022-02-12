@@ -7,7 +7,7 @@
         .itemWrapper 
             ol.list-group.list-group-numbered
                 li.list-group-item
-                    = link_to :パスワード変更, edit_user_password_url(@resource, reset_password_token: @token)
+                    = link_to "パスワード変更", new_user_password_path(not_forget: true)
                 li.list-group-item
                     = link_to "メールアドレス/環境設定を変更", edit_user_registration_url 
                 li.list-group-item 
