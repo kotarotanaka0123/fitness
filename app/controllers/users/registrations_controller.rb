@@ -36,7 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def username
-    @user = User.find(params[:format].to_i)
+    @user = User.find(params[:id])
   end
 
   def addingUsername

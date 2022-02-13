@@ -25,6 +25,6 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, resource)
-    username_registration_path(resource)
+    username_registration_path(id: resource.id)
   end
 end
