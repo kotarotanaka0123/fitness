@@ -17,4 +17,8 @@ class Group < ApplicationRecord
             'まだメッセージはありません。'
         end
     end
+
+    def get_owner_name
+        User.find(self.owner_id).name
+    end
 end

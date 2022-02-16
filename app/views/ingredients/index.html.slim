@@ -1,102 +1,14 @@
 - content_for :css do
-    = stylesheet_link_tag 'meals/search'
-- content_for :javascript_includes do 
-    = javascript_include_tag 'meals/search'
+    = stylesheet_link_tag 'ingredients'
 
-div.row 
-    div.col-sm
-        h2 マイ材料一覧
-        tbody 
-            - @ingredients.each do |ing|
-                tr 
-                    td= ing.name
-                    td= ing.description 
-                    td= ing.protein 
-                    td= ing.fat 
-                    td= ing.carbon
-                    td.table-primary style="text-align: right;"= link_to "編集", edit_ingredient_path(id: ing.id)
-                    td.table-danger style="text-align: right;"= link_to "削除", ingredient_path(id: ing.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }
-            div
-                = link_to '新規作成', new_ingredient_path
-    
-#main 
-    h1.main-title-2 材料のカロリーチャート、栄養成分表
-    .block-4
-        div.col-2
-            div#nutrition_facts
-                h2.nutrition-facts 栄養成分表
-                h2.food-description
-                = form_with id: "nutrition-facts-form", class: "form" do |f|
-                    ol.fieldset 
-                        li.field
-                            = f.label :分量
-                            = f.text_field :count, id: "ingredient_entry_quantity" 
-                div#nutrition_info
-                    table#nutrition-facts
-                        colgroup 
-                            col.col-1
-                            col.col-2
-                            col.col-1
-                            col.col-2
-                        tbody
-                            tr 
-                                td.col-1 カロリー
-                                td.col-2 
-                                td.col-1 ナトリウム
-                                td.col-2 mg
-                            tr 
-                                td.col-1 脂肪合計
-                                td.col-2 g
-                                td.col-1 カリウム
-                                td.col-2 mg
-                            tr 
-                                td.col-1 炭水化物合計
-                                td.col-2 g
-                                td.col-1 食物繊維
-                                td.col-2 g
-                            tr 
-                                td.col-1 タンパク質
-                                td.col-2 g
-                                td.col-1 ナイアシン
-                                td.col-2 mg
-                            tr 
-                                td.col-1 パントテン酸
-                                td.col-2 mg
-                                td.col-1 ビオチン
-                                td.col-2 mg
-                            tr 
-                                td.col-1 葉酸
-                                td.col-2 mg
-                                td.col-1 カルシウム
-                                td.col-2 mg
-                            tr 
-                                td.col-1 マグネシウム
-                                td.col-2 mg
-                                td.col-1 鉄
-                                td.col-2 mg
-                            tr 
-                                td.col-1 リン
-                                td.col-2 mg
-                                td.col-1 亜鉛
-                                td.col-2 mg 
-                            tr 
-                                td.col-1 銅
-                                td.col-2 mg
-                                td.col-1 マンガン
-                                td.col-2 mg
-                            tr 
-                                td.col-1 ビタミンA 
-                                td.col-2 mg
-                                td.col-1 ビタミンE
-                                td.col-2 mg
-                            tr 
-                                td.col-1 ビタミンB1 
-                                td.col-2 mg
-                                td.col-1 ビタミンB6
-                                td.col-2 mg
-                            tr 
-                                td.col-1 ビタミンB2
-                                td.col-2 mg
-                                td.col-1 &nbsp;
-                                td.col-2 &nbsp;
-        
+.all-ing
+    h2 材料一覧
+    ol.my-all-ing.list-group.list-group-numbered
+        - @ingredients.each do |ing|
+            li.list-group-item
+                .ing-name 
+                    = ing.name 
+                .ing-description
+                    = ing.description
+.go_to_meal 
+    = link_to "食事作成", new_meal_path, class: "btn btn-secondary"

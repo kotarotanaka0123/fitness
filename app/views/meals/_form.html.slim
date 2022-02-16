@@ -16,14 +16,14 @@
                 tr 
                     td.col-1 炭水化物
                     td.col-2 
-                        = f.number_field :carbon, STEP: "0.1", class: ""
+                        input type="number" value="" name="meal[carbon]" id="meal_carbon"
                     td.col-1 タンパク質
                     td.col-2 
-                        = f.number_field :protein, STEP: "0.1", class: ""
+                        input type="number" value="" name="meal[protein]" id="meal_protein"
                 tr 
                     td.col-1 脂質
                     td.col-2 
-                        = f.number_field :fat, STEP: "0.1", class: ""
+                        input type="number" value="" name="meal[fat]" id="meal_fat"
                     td.col-1
                     td.col-2 
                 tr
@@ -32,9 +32,9 @@
                     td.col-1
                         div#ingredients
                             = hidden_field_tag :"meal[ingredient_ids]"
-                    td.col-2 
-                        = button_to "材料から選択", select_ingredients_path, method: :get, remote: true
-    = f.submit nil, class: 'meal_btn'
+                    td.col-2
+                        = link_to "材料から選択", select_ingredients_path, remote: true
+    = f.submit nil, class: 'meal-btn btn btn-primary'
         / = f.label :fiber
         / = f.number_field :fiber, STEP: "0.1", class: "form-control form-control-sm"
         / = f.label :vA

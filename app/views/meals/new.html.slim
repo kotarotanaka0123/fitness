@@ -1,9 +1,15 @@
 - content_for :css do
   = stylesheet_link_tag "meals"
+- content_for :javascript_includes do 
+  = javascript_include_tag "ingredients"
 
 .meal_form
   h1 食事登録画面
+  div
+    = link_to "材料一覧をみる", ingredients_path, class: "btn btn-success"
   = render 'form', meal: @meal
+  .go_to_ing
+    = link_to "材料作成", new_ingredient_path, class: "btn btn-secondary" 
 
 = render 'modal', meal: @meal, ingredients: @ingredients
 

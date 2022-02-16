@@ -13,7 +13,7 @@ html
     
     body
         .login
-            a.loginlink href="/signin" ログイン
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "loginlink"
         .container
             - if flash.notice.present? 
                 .alert.alert-success= flash.notice

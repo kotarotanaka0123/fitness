@@ -19,14 +19,14 @@
                     
 
 
-.flex_group
-    .flex_container1 
-    = search_form_for @q, url: search_community_groups_url, method: :get do |f|
-        .input-group
-            .form-outline
-                = f.search_field :name_cont, id: "form1", class: "form-control", placeholder: "検索グループ"
-            button.btn.btn-primary type="button" 
-                i.fas.fa-search
+/ .flex_group
+/     .flex_container1 
+/     = search_form_for @q, url: search_community_groups_url, method: :get do |f|
+/         .input-group
+/             .form-outline
+/                 = f.search_field :name_cont, id: "form1", class: "form-control", placeholder: "検索グループ"
+/             button.btn.btn-primary type="button" 
+/                 i.fas.fa-search
 .groupToolbar
     .flex_toolbar
     a.newGroupButton.btn.btn-primary href="./groups/new" 新しいグループ
@@ -48,7 +48,7 @@
                     .groupDescription
                         = group.describe
                     .numberOfGroups
-                        | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
+                        | オーナー名：#{group.get_owner_name} メンバー数：#{group.users.count}
                 .inviteGroup
                     button.invite-user-btn.btn.btn-primary.rounded-pill data-bs-toggle="modal" data-bs-target="#inviteModal#{group.id}"
                         | ユーザを招待
@@ -83,7 +83,7 @@
                     .groupDescription
                         = group.describe
                     .numberOfGroups
-                        | オーナー名：#{group.owner_id} メンバー数：#{group.users.count}
+                        | オーナー名：#{group.get_owner_name} メンバー数：#{group.users.count}
                 .joinGroup
                     a.btn.btn-primary.rounded-pill href="javascript:join_modal(#{group.id});" 参加
                 = render "joinModal", group: group

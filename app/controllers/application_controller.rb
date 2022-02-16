@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
     def check_initial_setting
         if current_user
-            return redirect_to username_registration_path(current_user), error: "ユーザ名を入力してください" unless :username?
+            return redirect_to username_registration_path(id: current_user.id), error: "ユーザ名を入力してください" unless :username?
             return redirect_to body_details_path, error: "あなたの身体情報を入力してください" unless :body_details?
         else
             return

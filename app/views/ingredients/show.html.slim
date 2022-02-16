@@ -1,0 +1,16 @@
+- content_for :css do 
+    = stylesheet_link_tag "ingredients"
+    
+.ing-info
+    .ing-name 
+        = @ingredient.name
+
+ol.my-all-ing.list-group.list-group-numbered
+    - @ingredients.each do |ing|
+        li.list-group-item
+            .ing-name 
+                = ing.name 
+            .ing-description
+                = ing.description
+        
+= link_to "食事を登録", new_meal_path, class: "btn btn-primary"

@@ -13,11 +13,11 @@
 
 function selectIngredients() {
     const modal_form = document.getElementById("meal_modal_form");
-    const ingredientDivs = modal_form.querySelectorAll("div");
+    const ingredientLists = modal_form.querySelectorAll("li");
     const ingredients = document.getElementById("ingredients");
     const hiddenInput = document.getElementById("meal_ingredient_ids");
 
-    ingredientDivs.forEach((element) => {
+    ingredientLists.forEach((element) => {
         const ingredientInput = element.querySelector("input");
         ingredientInput.addEventListener("change", e => {
             if(e.target.checked){
@@ -33,9 +33,26 @@ function addIngredients() {
 
     sendIngredients.addEventListener("click", e => {
         $("#modalArea").find(".modal").modal("hide");
+
+        var ing_ids = document.getElementById("meal_ingredient_ids");
+        var ing_ids_lists = ing_ids.value.split(",").map(Number).slice(0, -1);
+
+        $.ajax({
+            url: "/ingredients/addToMeal",
+            data: { ingredients_ids: ing_ids_lists },
+            dataType: 'json',
+        }).done(function(data) {
+            let meal_protein = document.getElementById("meal_protein");
+            let meal_carbon = document.getElementById("meal_carbon");
+            let meal_fat = document.getElementById("meal_fat");
+            meal_protein.value = data.protein;
+            meal_carbon.value = data.carbon;
+            meal_fat.value = data.fat;
+        }).fail(function(data) {
+            // TODO: 失敗した場合
+        })
     });
 }
-
 window.addEventListener("load", selectIngredients);
 window.addEventListener("load", addIngredients);
 

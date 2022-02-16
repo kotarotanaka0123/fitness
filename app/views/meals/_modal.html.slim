@@ -5,11 +5,12 @@ div#modalArea
                 div.modal-header
                 div.modal-body
                     = form_with model: meal, id: "meal_modal_form" do |f|
-                        - ingredients.each_with_index do |ingredient, idx|
-                            div id=("ingredient#{idx + 1}") 
-                                label
+                        ul.list-group
+                            - ingredients.each_with_index do |ingredient, idx|
+                                li.list-group-item id="ingredient#{idx+1}"
+                                    = f.check_box :ingredient_ids, {multiple: true, class: "form-check-input me-1"}, ingredient.id, false
                                     = ingredient.name
-                                    = f.check_box :ingredient_ids, {multiple: true}, ingredient.id, false
-                    button#sendIngredients type="button"　追加
-                    = link_to "他の材料を見る", ingredients_path(meal.id)
-                .modal-footer 
+                                    br
+                                    = ingredient.description
+                .modal-footer
+                    button#sendIngredients type="button" class="btn btn-primary" 追加

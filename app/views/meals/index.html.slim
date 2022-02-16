@@ -8,6 +8,8 @@ div.row
         div.table-responsive
             .search-meals
                 = link_to "外部検索", search_meals_path
+            = link_to '新規作成', new_meal_path, class: "btn btn-primary rounded-pill"
+            = link_to '材料を新規作成', new_ingredient_path, class: "btn btn-secondary rounded-pill new_ing"
             table.table.table-hover.table-sm
                 tbody
                     tr#mymeal_header
@@ -43,8 +45,7 @@ div.row
                             td
                                 a data-remote="true" data-method="delete" href="meals/#{meal.id}" data-confirm='本当に削除しますか?'
                                     i.fas.fa-minus-circle
-                = paginate @meals
-                = link_to '新規作成', new_meal_path, class: "btn btn-primary rounded-pill"
+                    = paginate @meals
         div 
         h3 本日の食事
         table.table.table-sm.table-layout
@@ -127,8 +128,6 @@ div.row
                     td 
                     td 
                     td 
-                            
-
     div.col-sm
         h2 栄養成分表
         div style="width:70%;"

@@ -49,23 +49,9 @@ class MealsController < ApplicationController
     end
 
     def create
-        @meal = current_user.meals.new(params.require(:meal).permit(:name))
+        @meal = current_user.meals.new(meal_params)
         if @meal.save
-            if params[:meal][:ingredient_ids].present?
-                ingredientsId = params[:meal][:ingredient_ids].split(",").map(&:to_i)
-                @ingredients = Ingredient.where(id: ingredientsId)
-                @ingredients.each do |ingredient|
-                    @meal.update({
-                        protein: @meal.protein+ingredient.protein,
-                        fat: @meal.fat+ingredient.fat,
-                        carbon: @meal.carbon+ingredient.carbon
-                    })
-                end
-                redirect_to meal_path(id: @meal.id)
-            else
-                @meal.update(meal_params)
-                redirect_to meals_path
-            end
+            redirect_to meals_path
         else
             redirect_to new_meal_path, notice: "名前を入力してください。"
         end
@@ -95,6 +81,7 @@ class MealsController < ApplicationController
     end
 
     def time
+        return redirect_to meals_path if params[:meal_type].blank?
         # NOTE: 他の人が作成した食事を摂取
         if params[:others]
             origin = Meal.find(params[:id])
@@ -121,9 +108,6 @@ class MealsController < ApplicationController
 
         @meal.destroy
         redirect_to meals_path
-    end
-
-    def error
     end
 
     def search
@@ -165,20 +149,6 @@ class MealsController < ApplicationController
             }}
         end
     end
-
-    # def create  
-    #     # ミールを作成する。
-    #     @meal = current_user.meals.new(meal_type: params[:meal][:meal_type])
-    #     @meal.save
-    #     # フードidsを取得する。
-    #     @food = Food.find(params[:meal][:food_id])
-    #     # フードレコードにミールを紐付ける。
-    #     @food.update(meal_id: @meal.id)
-
-    #     # @food = @meal.foods.find(meal_params[:foods_attributes][:id])
-    #     # if @meal.save
-    #     # end
-    # end
 
     private
 

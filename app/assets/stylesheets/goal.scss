@@ -16,7 +16,8 @@
 
 .start {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 40px;
+    padding: 40px 0;
 }
 
 small {
@@ -24,32 +25,28 @@ small {
 }
 
 em {
-    color: rgb(189, 44, 181);
-}
-
-.calorie-goal {
-    font-weight: bold;
-    margin: 10px 0;
+    color: rgb(253, 0, 0);
 }
 
 .deadline-goal-text, .slim-goal-text {
     margin-top: 13px;
-    font-size: 20px;
+    font-size: 23px;
 }
 
-.config-box strong {
+.calorie-goal-explain {
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.calorie-goal {
+    margin-top: 13px;
     font-family: sans-serif;
     font-weight: bold;
     font-size: 30px;
 }
 
-.goal_warning_start {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.goal_warning div div {
-    margin: 15px 0;
+.goal_warning .link {
+    margin: 30px 0;
 }
 
 // 設定画面
@@ -58,13 +55,18 @@ em {
     justify-content: center;
     background-image: image-url("background.jpg");
     height: 400px;
-    align-items: center;
 }
 
 .config-box, .goal_warning {
-    width: 300px;
+    height: 400px;
+    width: 350px;
     display: flex;
     justify-content: center;
+    background-color: rgba(204, 204, 204, 0.9);
+}
+
+.config-box > div {
+    padding: 0 20px;
 }
 
 p {

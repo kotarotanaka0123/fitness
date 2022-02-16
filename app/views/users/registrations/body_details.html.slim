@@ -12,13 +12,13 @@
 
             = form_with model: @user, url: add_body_details_path, local: true do |f|   #modelがなくても大丈夫なのはなぜ
                 .mb-3
-                    = f.label :weight, class: "form-label"
+                    = f.label :体重, class: "form-label"
                     = f.number_field :weight, step: "0.1", class: "form-control"
                 .mb-3
-                    = f.label :height, class: "form-label"
+                    = f.label :身長, class: "form-label"
                     = f.number_field :height, step: "0.1", class: "form-control"
                 .mb-3
-                    = f.label :age, class: "form-label"
+                    = f.label :年齢, class: "form-label"
                     = f.number_field :age, class: "form-control"
                 .goal-flex
                     = f.submit "登録する", class: 'btn btn-primary goal-submit'

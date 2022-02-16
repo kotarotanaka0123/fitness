@@ -1,15 +1,12 @@
 - content_for :css do
     = stylesheet_link_tag "goal"
 
-.goal-setting 
+.goal-setting
     .config-box
         div
             .start あなたの目標
-
-            br/
-
             .deadline-goal-text
-                em 
+                em
                     = @goal.deadline
                 small 
                     | までに
@@ -19,20 +16,15 @@
                 em
                     | kg
                 small
-                    |痩せる。　
-
-            br/
-            br/
-
-            .calorie-goal 目標摂取カロリーは、
-            strong
+                    |痩せる。
+            .calorie-goal-explain 目標摂取カロリーは、
+            .calorie-goal
                 = @absorbCalorie.round(3)
                 | kcal
     .goal_warning 
         div
-            .goal_warning_start 
-                | 今後摂取目標を守った場合
-            .deadline_goal_text 
+            .start 残りの期間で...
+            .deadline-goal-text 
                 em
                     = @goal.deadline
                 small 
@@ -44,7 +36,7 @@
                     | kg
                 small 
                     | 痩せることが可能
-            div 
+            div.link
                 = link_to 'あなたの情報を再入力', body_details_path, class: "btn btn-primary rounded-pill"
-            div 
+            div.link
                 = link_to '目標を再入力', configCalorie_goals_path, class: "btn btn-primary rounded-pill"

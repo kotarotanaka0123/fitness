@@ -2,18 +2,13 @@
     = stylesheet_link_tag 'achievement'
 
 #main.reports
-    h1.main-title Charts and Reports
+    h1.main-title チャート & レポート
     #reports-menu
-        label.report-label for="report" Choose a report: 
-        select#report name="report" class="chzn-done"
-            #report_chzn.chzn-container.chzn-container-single style="width: 210px;"
-                a href="javascript"
-                    span Calories
-        label.period-label Reporting period:
+        label.period-label レポート期間:
         .report-periods
-            a.period data-period="7" href="javascript:createGraph(7);" Last 7 days 
-            a.period data-period="30" href="javascript:createGraph(30);" Last 30 days 
-            a.period data-period="90" href="javascript:createGraph(90);" Last 90 days
+            a.period data-period="7" href="javascript:createGraph(7);" 過去７日間
+            a.period data-period="30" href="javascript:createGraph(30);" 過去30日間
+            a.period data-period="90" href="javascript:createGraph(90);" 過去90日間
     canvas#highchart width="250" height="260" 
         = javascript_include_tag "achievement.js"
         

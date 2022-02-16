@@ -1,3 +1,49 @@
 // Place all the styles related to the ingredients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ing-box {
+    width: 500px;
+    margin: auto;
+}
+
+h2 {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.nutrition-wrap table {
+    background-color: rgba(187, 176, 156, 0.2);
+    border-top: medium solid black;
+    border-collapse: separate;
+}
+
+h6.title {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.nutrition-wrap table td.col-1 {
+    font-weight: bold;
+}
+
+.nutrition-wrap table thead tr {
+    border-bottom: 1px double black;
+}
+
+.nutrition-wrap table thead th {
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+.ing-btn {
+    margin-top: 20px;
+}
+
+.go_to_meal {
+    margin-top: 15px;
+}
+
+.all-ing {
+    width: 500px;
+}
