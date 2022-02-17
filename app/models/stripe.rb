@@ -1,0 +1,2 @@
+class Stripe
+end

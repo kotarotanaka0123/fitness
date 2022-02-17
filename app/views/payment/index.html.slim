@@ -1,21 +1,16 @@
-script src="https://js.stripe.com/v3" 
-div.row
-    ul.grid.col-sm
-        - @prices.each do |price|
-            li.grid-item
-                img alt="#{Product.find(price[:product])[:id]}" src="#{Stripe::Product.retrieve(price[:product])[:images][0]}" width=70 height=70 
-                h3= Product.find(price[:product])[:name]
-                = button_to '選択', payment_path(price[:id]), method: :get
-    div.col-sm 
-        - @payments.each do |payment|
-            li 
-                = link_to payment.id, temporary_complete_payment_path(payment.id)
+script src="https://js.stripe.com/v3"
+- content_for :css do 
+    = stylesheet_link_tag "payment"
 
-div.jss67  
-    | premium
-    
+.plan-courses
+    - @prices.each do |price|
+        .card style=("width: 18rem;") 
+            .card-body
+                h5.card-title #{Product.find(price[:product]).name}
+                p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+                a.btn.btn-primary href="payment/#{price[:id]}" 選択
 
-
-
-
-
+div.col-sm
+    - @payments.each do |payment|
+        li
+            = link_to payment.id, temporary_complete_payment_path(payment.id)
