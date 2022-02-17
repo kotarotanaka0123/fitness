@@ -21,7 +21,7 @@ div.column-table-cell
                             .diary-card
                                 - if !current_user.image?
                                     a href="users/#{current_user.id}"
-                                        = image_tag "noName_profile.jpeg", class: "img-thumbnail border border-2"
+                                        = image_tag asset_path("noName_profile.jpeg"), class: "img-thumbnail border border-2"
                                 - else
                                     a href="users/#{current_user.id}"
                                         img.img-thumbnail src="#{current_user.image.url}" alt=""

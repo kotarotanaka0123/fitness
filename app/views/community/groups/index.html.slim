@@ -37,7 +37,7 @@
             .EachData.border-bottom
                 - if !group.image?
                     a href="groups/#{group.id}"
-                        = image_tag "no_image.png", class: "default-image rounded-circle border border-2"
+                        = image_tag asset_path("no_image.png"), class: "default-image rounded-circle border border-2"
                 - else
                     a href="groups/#{group.id}"
                         img.img-thumbnail alt="..." src="#{group.image.thumb.url}" class="rounded-circle"
@@ -72,7 +72,7 @@
             .EachData.border-bottom
                 - if !group.image?
                     a href="groups/#{group.id}"
-                        = image_tag "no_image.png", class: "default-image rounded-circle border border-2"
+                        = image_tag asset_path("no_image.png"), class: "default-image rounded-circle border border-2"
                 - else
                     a href="groups/#{group.id}"
                         img.img-thumbnail alt="..." src="#{group.image.thumb.url}" class="rounded-circle"

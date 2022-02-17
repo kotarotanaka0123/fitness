@@ -6,7 +6,7 @@
         - if @user.image?
             img.img-thumbnail src="#{@user.image.url}" class="image-thumbnail"
         - else
-            = image_tag "noName_profile.jpeg", class: "img-thumbnail no_name_profile"
+            = image_tag asset_path("noName_profile.jpeg"), class: "img-thumbnail no_name_profile"
     .profile-detail
         .user_name 
             = @user.name? ? @user.name : "-"
