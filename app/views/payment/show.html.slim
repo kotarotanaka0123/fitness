@@ -13,7 +13,7 @@ div
         / - if @payment.present?
         /     p.btn.btn-error 支払い済み
         / - else
-        button#btn-pay.btn.btn-primary type="button"  仮払いする
+        button#btn-pay.btn.btn-primary type="button" 仮払いする
 
         javascript:
             var handler = StripeCheckout.configure({

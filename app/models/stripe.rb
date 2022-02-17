@@ -1,2 +1,3 @@
-class Stripe
+class STRIPE
+
 end
