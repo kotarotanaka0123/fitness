@@ -45,9 +45,9 @@ function addIngredients() {
             let meal_protein = document.getElementById("meal_protein");
             let meal_carbon = document.getElementById("meal_carbon");
             let meal_fat = document.getElementById("meal_fat");
-            meal_protein.value = data.protein;
-            meal_carbon.value = data.carbon;
-            meal_fat.value = data.fat;
+            meal_protein.value = Number(meal_protein.value) + Number(data.protein);
+            meal_carbon.value = Number(meal_carbon.value) + Number(data.carbon);
+            meal_fat.value = Number(meal_fat.value) + Number(data.fat);
         }).fail(function(data) {
             // TODO: 失敗した場合
         })
