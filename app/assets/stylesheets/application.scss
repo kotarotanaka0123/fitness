@@ -145,6 +145,16 @@ a.notif span {
   background-color: #0a5282;
 }
 
+#header_area {
+  position: sticky;
+  width: 100%;
+}
+
+.container {
+  position: sticky;
+  top: 2;
+}
+
 // config
 
 h1.setting-title {

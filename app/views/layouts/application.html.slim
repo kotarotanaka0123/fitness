@@ -12,49 +12,50 @@ html
     link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"
 
   body#login
-    div.header-wrap.clear-fix
-        div#logo
-            a href="/fitness" カロリーカウンター   
-        ul#navTop.nav.guest
-          - if current_user
-            li.first
-              | こんにちは。
-              strong
-                a title="#{current_user.name}" href="/users/#{current_user.id}" 
-                  = current_user.name
-                | さん
-            li
-              a.notif.user href="/users/#{current_user.id}/relationships" 
-                i.fa.fa-address-book area-hidden="true"
-                  span.count #{current_user.followers.count}
-            li
-              a.notif.mail href="#" 
-                i.fa.fa-envelope area-hidden="true"
-                  span.count #
-            li
-              a href="/users/#{current_user.id}/config"
-                i.fas.fa-cog area-hidden="true"
-            li 
-              = link_to 'ログアウト', destroy_user_session_path, method: :delete
-          - else 
-            li.first
-                a.loginlink href="/signin" ログイン
-            li.last 
-                a.signup-link href="/signup" 登録
-    div#header
-      div#nav-bg
-          ul#nav.nav.clearfix
+    div#header_area
+      div.header-wrap.clear-fix
+          div#logo
+              a href="/fitness" カロリーカウンター   
+          ul#navTop.nav.guest
+            - if current_user
+              li.first
+                | こんにちは。
+                strong
+                  a title="#{current_user.name}" href="/users/#{current_user.id}" 
+                    = current_user.name
+                  | さん
+              li
+                a.notif.user href="/users/#{current_user.id}/relationships" 
+                  i.fa.fa-address-book area-hidden="true"
+                    span.count #{current_user.followers.count}
+              li
+                a.notif.mail href="#" 
+                  i.fa.fa-envelope area-hidden="true"
+                    span.count #
+              li
+                a href="/users/#{current_user.id}/config"
+                  i.fas.fa-cog area-hidden="true"
               li 
-                a.nav_button href="/" ホーム  
-              li 
-                a.nav_button href="/goals" 目標
-              li 
-                a.nav_button href="/meals" 食事
-              li 
-                a.nav_button href="/achievement" レポート
-              - if current_user
+                = link_to 'ログアウト', destroy_user_session_path, method: :delete
+            - else 
+              li.first
+                  a.loginlink href="/signin" ログイン
+              li.last 
+                  a.signup-link href="/signup" 登録
+      div#header
+        div#nav-bg
+            ul#nav.nav.clearfix
                 li 
-                  a.nav_button href="/community" コミュニティ
+                  a.nav_button href="/" ホーム  
+                li 
+                  a.nav_button href="/goals" 目標
+                li 
+                  a.nav_button href="/meals" 食事
+                li 
+                  a.nav_button href="/achievement" レポート
+                - if current_user
+                  li 
+                    a.nav_button href="/community" コミュニティ
     .container
         - if flash.notice.present? 
             .alert.alert-success= flash.notice

@@ -5,7 +5,7 @@
   h2 材料登録画面
   div 
     = link_to "材料一覧をみる", ingredients_path, class: "btn btn-primary"
-
+  br
   = form_with model: @ingredient, local: true do |f|
     .mb-3
       = f.label "材料名", class: "form-label"
