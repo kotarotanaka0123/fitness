@@ -1,9 +1,8 @@
 - content_for :css do
     = stylesheet_link_tag "meals"
-    
-p#name
-div.row 
-    div.col-sm
+
+div.row.meal_area
+    div.meal_data_area
         h2 食事一覧
         div.table-responsive
             .search-meals
@@ -128,8 +127,8 @@ div.row
                     td 
                     td 
                     td 
-    div.col-sm.meal_graph_area
+    div.meal_graph_area
         h2 栄養成分表
-        div.meal_graph style="width:40%;"
+        div.meal_graph style="width:70%;"
             canvas#prc width="250" height="260" 
             = javascript_include_tag "graph.js"

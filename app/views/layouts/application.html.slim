@@ -57,14 +57,14 @@ html
                   li 
                     a.nav_button href="/community" コミュニティ
     .container
-        - if flash.notice.present? 
-            .alert.alert-success= flash.notice
-        - elsif flash.now[:error].present?
-            .alert.alert-success= flash.now[:error]
-        = yield
+      - if flash.notice.present? 
+          .alert.alert-success= flash.notice
+      - elsif flash.now[:error].present?
+          .alert.alert-success= flash.now[:error]
+      = yield
 
 
-              
+          
 
-      
+  
 

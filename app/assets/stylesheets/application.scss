@@ -64,7 +64,6 @@ body {
 body {
   color: #222;
   font-size: 12px;
-  line-height: 1.5em;
 }
 
 body .login {
@@ -124,7 +123,6 @@ a.notif span {
 #header #nav-bg {
   width: 100%;
   background-color: #0072BF;
-  margin-top: 15px;
   min-height: 45px;
 }
 
@@ -146,13 +144,16 @@ a.notif span {
 }
 
 #header_area {
-  position: sticky;
+  position: fixed;
   width: 100%;
+  z-index: 2;
+  background-color: white;
 }
 
 .container {
-  position: sticky;
-  top: 2;
+  padding-top: 120px;
+  position: relative;
+  z-index: 1;
 }
 
 // config

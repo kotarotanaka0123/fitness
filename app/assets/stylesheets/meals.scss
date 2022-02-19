@@ -124,11 +124,19 @@ h6.title {
     margin-top: 15px;
 }
 
-.meal_graph_area {
-    position: relative;
+.meal_area {
+    position: absolute;
+    top: 120px;
+    width: 100%;
 }
 
-.meal_graph {
-    position: absolute;
-    top: 20;
+.meal_data_area {
+    width: 50%;
+}
+
+.meal_graph_area {
+    position: fixed;
+    left: 760px;
+    top: 120px;
+    width: 46%;
 }
