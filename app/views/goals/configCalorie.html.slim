@@ -13,7 +13,7 @@
             p どのくらいの期間でどれほど痩せたいかを入力してください。
 
             = form_with model: @goal, local: true, class: "row g-3" do |f|  
-                .col-sm
+                .col
                     = f.label :〆, class: "form-label"
                     .deadline-form
                         = f.date_select :deadline, {use_month_numbers: true, start_year: Date.today.year}, class: "form-select"
