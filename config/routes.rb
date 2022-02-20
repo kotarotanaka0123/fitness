@@ -43,7 +43,6 @@ Rails.application.routes.draw do
   resources :ingredients do
     collection do
       get :addToMeal
-      get :select
       get :search
       post :search_result
       get :show_info

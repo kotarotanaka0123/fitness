@@ -32,7 +32,7 @@ div.row.meal_area
                             td= meal.description
                             td= meal.carbon
                             td= meal.protein 
-                            td= meal.fat 
+                            td= meal.fat
                             td= form_with url: time_meals_path(id: meal.id), remote: true, class: "row g-3" do |f|
                                 .col-auto
                                     = f.select :meal_type, {"朝食": 'breakfast', "昼食": 'lunch', "間食": 'between', "夕食": 'dinner'}, {include_blank: "本日の食事に追加"}, class: "form-select form-select-sm"

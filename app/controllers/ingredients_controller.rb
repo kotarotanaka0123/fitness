@@ -29,15 +29,6 @@ class IngredientsController < ApplicationController
         @results = @q.result
     end
 
-    def select
-        if params[:format]
-            @meal = current_user.meals.find(params[:format])
-        else
-            @meal = current_user.meals.new
-        end
-        @ingredients = current_user.ingredients.all
-    end
-
     def show_info
         @ingredient = Ingredient.find(params[:data].to_i)
         @columns = [@ingredient.calc_calorie, @ingredient.Na, @ingredient.fat,

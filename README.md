@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+・Ruby 2.6.6
+・Ruby on Rails 5.2.6
+・PostgreSQL
+・heroku
 
-Things you may want to cover:
+###アプリの概要###
 
-* Ruby version
+主に減量期に使用する。
+自分がよく食べる食事を作成できる。
+また、材料から選択して食事を作成できる（料理感覚）。
 
-* System dependencies
+###機能一覧###
 
-* Configuration
+・ユーザ登録、認証、ログイン機能（devise)
+・食事作成機能
+　・食事追加機能
+　・材料作成機能
+　・食事への材料追加機能(ajax)
+・グループ機能
+　・グループ招待機能（ajax)
+　・メッセージ投稿機能
+　・いいね機能
+・フォロー機能
+・実績機能
+・ページネーション機能（kaminari)
+・検索機能(ransack)
 
-* Database creation
 
-* Database initialization
+###実装中###
 
-* How to run the test suite
+・材料を食事に追加する際の個数選択機能
+・ディスカッション機能
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+

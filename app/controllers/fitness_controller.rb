@@ -20,6 +20,8 @@ class FitnessController < ApplicationController
       if @absorbCalorie <= achievement.calorie
         @residueCalorie = 0
         @goalPercentage = 100
+        @overCalorie = achievement.calorie - @absorbCalorie
+        @weightInc = @overCalorie/7200
       else
         @residueCalorie = @absorbCalorie - achievement.calorie
         # 目標を100%とすると現在のカロリーは ↓

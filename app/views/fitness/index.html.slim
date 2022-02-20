@@ -16,8 +16,15 @@ div.column-table-cell
                     .card
                         .card-header
                             | あなたのダイアリ概要
-                        .card-body
-                            h5.card-title　本日の必要摂取カロリー：#{@residueCalorie.round(3)} kcal
+                        .card-body.diary
+                            - if !@overCalorie.present?
+                                h5.card-title
+                                    | 本日の必要摂取カロリー：#{@residueCalorie.round(3)} kcal
+                            - else 
+                                h5.card-title
+                                    | 必要摂取カロリーを、#{@overCalorie.round(0)} kcal オーバーしています。
+                                h6.over_weight
+                                    | ※ 本日 #{@weightInc.round(3)} kg 脂肪が蓄積された模様です。
                             .diary-card
                                 - if !current_user.image?
                                     a href="users/#{current_user.id}"
@@ -25,7 +32,7 @@ div.column-table-cell
                                 - else
                                     a href="users/#{current_user.id}"
                                         img.img-thumbnail src="#{current_user.image.url}" alt=""
-                                a.btn.btn-light href="/meals/new" フードを追加                                    
+                                a.btn.btn-light href="/meals" フードを追加                                    
                             .goal-bar
                                 .progress
                                     .progress-bar aria-valuemax="100" aria-valuemin="0" aria-valuenow="#{@goalPercentage}" role="progressbar" style=("width: #{@goalPercentage}%;")

@@ -11,6 +11,16 @@
 //     });
 // }
 
+function show_ing_modal() {
+    document.getElementById("ing-select").addEventListener('click', function() {
+        $("#modalArea").find(".modal").on("shown.bs.modal", () => {
+            $("#modalArea").find(".modal").focus();
+        });
+            
+        $("#modalArea").find(".modal").modal('show'); 
+    });
+}
+
 function selectIngredients() {
     const modal_form = document.getElementById("meal_modal_form");
     const ingredientLists = modal_form.querySelectorAll("li");
@@ -27,6 +37,10 @@ function selectIngredients() {
         });
     });
 }
+
+// function ingredient_count() {
+//     document.getElementById("")
+// }
 
 function addIngredients() {
     const sendIngredients = document.getElementById("sendIngredients");
@@ -55,4 +69,5 @@ function addIngredients() {
 }
 window.addEventListener("load", selectIngredients);
 window.addEventListener("load", addIngredients);
+window.addEventListener("turbolinks:load", show_ing_modal);
 

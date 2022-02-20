@@ -96,7 +96,7 @@ h2.today-seika {
     color: #f6f6f6;
 }
 
-.card-body {
+.card-body.diary {
     background-color: rgb(247, 239, 239);
 }
 
@@ -124,4 +124,9 @@ a.btn-light {
 .progress {
     height: 20px;
     background-color: white;
+}
+
+.over_weight {
+    color: rgb(231, 0, 0);
+    font-weight: bold;
 }

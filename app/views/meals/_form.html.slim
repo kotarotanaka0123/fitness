@@ -32,8 +32,8 @@
                     td.col-1
                         div#ingredients
                             = hidden_field_tag :"meal[ingredient_ids]"
-                    td.col-2
-                        = link_to "材料から選択", select_ingredients_path, remote: true
+                    td#ing-select.col-2
+                        a href="javascript:void(0);" 材料から選択
     = f.submit nil, class: 'meal-btn btn btn-primary'
         / = f.label :fiber
         / = f.number_field :fiber, STEP: "0.1", class: "form-control form-control-sm"
