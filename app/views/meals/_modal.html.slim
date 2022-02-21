@@ -5,18 +5,20 @@ div#modalArea
                 div.modal-header
                 div.modal-body
                     = form_with model: meal, id: "meal_modal_form" do |f|
-                        ul.list-group
+                        ul.list-group#Ing_List
                             - ingredients.each_with_index do |ingredient, idx|
                                 li.list-group-item id="ingredient#{idx+1}"
-                                    = f.check_box :ingredient_ids, {multiple: true, class: "form-check-input me-1"}, ingredient.id, false
-                                    = ingredient.name
-                                    select name="ingredient_count" id="ing_#{ingredient.id}_count"
+                                    .ing-info 
+                                        = f.check_box :ingredient_ids, {multiple: true, class: "form-check-input me-1"}, ingredient.id, false
+                                        = ingredient.name
+                                        br
+                                        = ingredient.description
+                                    select.form-select name="ingredient_count" id="ing_count_#{idx+1}"
                                         option selected="selected" value="1" 1
                                         option value="2" 2
                                         option value="3" 3
                                         option value="4" 4
                                         option value="5" 5
-                                    br
-                                    = ingredient.description
                 .modal-footer
                     button#sendIngredients type="button" class="btn btn-primary" 追加
+                    

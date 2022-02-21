@@ -140,3 +140,13 @@ h6.title {
     top: 120px;
     width: 46%;
 }
+
+#Ing_List li {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+}
+
+#Ing_List select {
+    width: 20%;
+}

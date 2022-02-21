@@ -52,17 +52,21 @@ class IngredientsController < ApplicationController
     end
 
     def addToMeal
-        # NOTE: 選択した材料の栄養素を合計する。
-        ingredients = Ingredient.where(id: params[:ingredients_ids])
+        return if params[:ingredients_ids].nil?
+
         protein = 0
         carbon = 0
         fat = 0
-        ingredients.each do |ing|
-            protein += ing.protein
-            carbon += ing.carbon
-            fat += ing.fat
+        # NOTE: 選択した材料の栄養素を合計する。
+        params[:ingredients_ids].each do |index, value|
+            ingredient = Ingredient.find(value[0])
+            # NOTE: 個数分計算
+            for num in 1..value[1].to_i do
+                protein += ingredient.protein
+                carbon += ingredient.carbon
+                fat += ingredient.fat
+            end
         end
-
         render json: {
             protein: protein,
             carbon: carbon,
