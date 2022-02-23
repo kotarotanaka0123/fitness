@@ -1,24 +1,20 @@
-<style>
-    .others_meal_form {
-        display: flex;
-    }
-</style>
-
 <% results.each do |r| %>
     <li class="matched-food">
         <div class="search-title-container">
-            <a class="search" index="1" foodtype="0" href="show_info?data=<%=r.id%>" data-remote="true"><%= r.name %></a>
+            <div class="searched_info">
+                <a class="search" index="1" foodtype="0" href="show_info?data=<%=r.id%>" data-remote="true"><%= r.name %></a>
+                <p class="search-nutritional-info"><%= r.description %></p>
+            </div>
             <%= form_with url: time_meals_path(id: r.id, others: true), remote: true, class: "row g-3" do |f| %>
                 <div class="others_meal_form">
                     <div class="select">
                         <%= f.select :meal_type, {"朝食": 'breakfast', "昼食": 'lunch', "間食": 'between', "夕食": 'dinner'}, {include_blank: "本日の食事に追加"}, class: "form-select form-select-sm" %>
                     </div>
                     <div class="button">
-                        <%= f.submit "+", class: 'btn btn-primary rounded-pill add_to_today_meal' %>
+                        <input type="submit" name="submit" value="&#xf14a;" class="fa btn btn-primary add_othersMeal">
                     </div>
                 </div>
             <% end %>
         </div>
-        <p class="search-nutritional-info"><%= r.description %></p>
     </li>
 <% end %>

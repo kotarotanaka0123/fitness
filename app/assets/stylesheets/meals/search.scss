@@ -113,7 +113,7 @@ ul#matching {
     border: 1px solid #808080;
     margin-top: 13px;
     overflow: auto;
-    padding: 4px 8px;
+    padding: 0 8px;
     width: 342px;
     height: 403px;
 }
@@ -201,14 +201,12 @@ ul#matching li {
 }
 
 ul#matching li .search-title-container {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
 }
 
-ul#matching li a {
-    display: inline-block;
-    float: left;
-    padding: 7px 0;
-    line-height: 19px;
+.searched_info {
+    display: block;
 }
 
 ul#matching li a:last-child {
@@ -225,4 +223,13 @@ ul#matching li .search-nutritional-info {
     color: #949392;
     margin-top: -5px;
     margin-bottom: 0;
+}
+
+.add_othersMeal {
+    margin-left: 10px;
+}
+
+.others_meal_form {
+    display: flex;
+    align-items: center;
 }
